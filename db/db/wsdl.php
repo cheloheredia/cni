@@ -42,10 +42,20 @@ class buscaritementradas {
     public $item;
 
 }
+
+class insertaritementradas {
+
+    /**
+     * @var string
+     */
+    public $item;
+
+}
 // Class Map
 $classMap = array(
 	'res' => 'res',
 	'resquery' => 'resquery',
 	'filas' => 'filas',
-    'buscaritementradas' => 'buscaritementradas'
+    'buscaritementradas' => 'buscaritementradas',
+    'insertaritementradas' => 'insertaritementradas'
 );

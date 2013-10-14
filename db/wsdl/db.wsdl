@@ -27,6 +27,18 @@
       		<xsd:element name="columnas" type="xsd:string" maxOccurs="unbounded" minOccurs="0"></xsd:element>
       	</xsd:sequence>
       </xsd:complexType>
+      <xsd:element name="insertaritementradas"
+      	type="tns:insertaritementradas">
+      </xsd:element>
+
+      <xsd:complexType name="insertaritementradas">
+      	<xsd:attribute name="item" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
+      <xsd:element name="res" type="tns:res"></xsd:element>
+
+      <xsd:complexType name="res">
+      	<xsd:attribute name="res" type="xsd:int"></xsd:attribute>
+      </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="buscaritemRequest">
@@ -35,10 +47,20 @@
   <wsdl:message name="buscaritemResponse">
     <wsdl:part element="tns:buscaritemsalidas" name="buscaritemsalidas"/>
   </wsdl:message>
+  <wsdl:message name="insertaritemRequest">
+  	<wsdl:part name="insertaritementradas" element="tns:insertaritementradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertaritemResponse">
+  	<wsdl:part name="insertaritemsalidas" element="tns:res"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="db">
     <wsdl:operation name="buscaritem">
       <wsdl:input message="tns:buscaritemRequest"/>
       <wsdl:output message="tns:buscaritemResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="insertaritem">
+    	<wsdl:input message="tns:insertaritemRequest"></wsdl:input>
+    	<wsdl:output message="tns:insertaritemResponse"></wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="dbSOAP" type="tns:db">
@@ -49,6 +71,19 @@
 
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/buscaritem" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="insertaritem">
+
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/insertaritem" />
   		<wsdl:input>
 
   			<soap:body use="literal" />
