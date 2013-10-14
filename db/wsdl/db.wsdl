@@ -67,6 +67,34 @@
       <xsd:complexType name="insertaragenciaentradas">
       	<xsd:attribute name="agencia" type="xsd:string"></xsd:attribute>
       </xsd:complexType>
+      <xsd:element name="buscaroperadorentradas"
+      	type="tns:buscaroperadorentradas">
+      </xsd:element>
+      <xsd:element name="buscaroperadorResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="buscaroperadorentradas">
+      	<xsd:attribute name="operador" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
+      <xsd:element name="insertaroperadorentradas"
+      	type="tns:insertaroperadorentradas">
+      </xsd:element>
+      <xsd:element name="insertaroperadorResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="insertaroperadorentradas">
+      	<xsd:attribute name="operador" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="buscaritemRequest">
@@ -93,6 +121,18 @@
   <wsdl:message name="insertaragenciaResponse">
   	<wsdl:part name="insertaragenciasalidas" element="tns:res"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="buscaroperadorRequest">
+  	<wsdl:part name="buscaroperadorentradas" element="tns:buscaroperadorentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscaroperadorResponse">
+  	<wsdl:part name="buscaroperadorsalidas" element="tns:resquery"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertaroperadorRequest">
+  	<wsdl:part name="insertaroperadorentradas" element="tns:insertaroperadorentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertaroperadorResponse">
+  	<wsdl:part name="insertaroperadorsalidas" element="tns:res"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="db">
     <wsdl:operation name="buscaritem">
       <wsdl:input message="tns:buscaritemRequest"/>
@@ -109,6 +149,14 @@
     <wsdl:operation name="insertaragencia">
     	<wsdl:input message="tns:insertaragenciaRequest"></wsdl:input>
     	<wsdl:output message="tns:insertaragenciaResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaroperador">
+    	<wsdl:input message="tns:buscaroperadorRequest"></wsdl:input>
+    	<wsdl:output message="tns:buscaroperadorResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertaroperador">
+    	<wsdl:input message="tns:insertaroperadorRequest"></wsdl:input>
+    	<wsdl:output message="tns:insertaroperadorResponse"></wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="dbSOAP" type="tns:db">
@@ -155,8 +203,34 @@
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="insertaragencia">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/insertaragencia" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="buscaroperador">
+
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/buscaroperador" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="insertaroperador">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/insertaroperador" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>

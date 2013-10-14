@@ -64,10 +64,30 @@ class db {
 		$this->desconexion(); //we do the desconection
 		return $response; //we sent back the resquery
 	}
+
 	public function insertaragencia($input) { //function to save the session
 		$this->conexion(); //we start the conection to the db
 		$response = new res(); //we start the response type
 		if ($this->ejecutarquery("insert into agencia values('','".$input->agencia."')")) { //preguntamos se se ejecuto el query de manera correcta
+			$response->res = 0; //devolvemos que se ejecuto el query correctamente
+		} else { //si no se ejecuto el query correctamente
+			$response->res = 1; //notificamos que se ejecuto el query de manera incorrecta
+		}
+		$this->desconexion(); //we do the desconection
+		return $response; //we sent back the resquery
+	}
+
+	public function buscaroperador($input) { //function to save the session
+		$this->conexion(); //we start the conection to the db
+		$response = $this->mostrar("select a.opn, a.opoperador from operador a where a.opoperador = '".$input->operador."'");
+		$this->desconexion(); //we do the desconection
+		return $response; //we sent back the resquery
+	}
+
+	public function insertaroperador($input) { //function to save the session
+		$this->conexion(); //we start the conection to the db
+		$response = new res(); //we start the response type
+		if ($this->ejecutarquery("insert into operador values('','".$input->operador."')")) { //preguntamos se se ejecuto el query de manera correcta
 			$response->res = 0; //devolvemos que se ejecuto el query correctamente
 		} else { //si no se ejecuto el query correctamente
 			$response->res = 1; //notificamos que se ejecuto el query de manera incorrecta
