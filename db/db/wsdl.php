@@ -87,6 +87,35 @@ class insertaroperadorentradas {
     public $operador;
 
 }
+
+class buscaragenciaoperadorentradas {
+
+    /**
+     * @var int
+     */
+    public $agenciaid;
+
+    /**
+     * @var int
+     */
+    public $operadorid;
+
+}
+
+
+class insertaragenciaoperadorentradas {
+
+    /**
+     * @var int
+     */
+    public $agenciaid;
+
+    /**
+     * @var int
+     */
+    public $operadorid;
+
+}
 // Class Map
 $classMap = array(
 	'res' => 'res',
@@ -97,5 +126,7 @@ $classMap = array(
     'buscaragenciaentradas' => 'buscaragenciaentradas',
     'insertaragenciaentradas' => 'insertaragenciaentradas',
     'buscaroperadorentradas' => 'buscaroperadorentradas',
-    'insertaroperadorentradas' => 'insertaroperadorentradas'
+    'insertaroperadorentradas' => 'insertaroperadorentradas',
+    'buscaragenciaoperadorentradas' => 'buscaragenciaoperadorentradas',
+    'insertaragenciaoperadorentradas' => 'insertaragenciaoperadorentradas'
 );

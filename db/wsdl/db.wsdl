@@ -95,6 +95,36 @@
       <xsd:complexType name="insertaroperadorentradas">
       	<xsd:attribute name="operador" type="xsd:string"></xsd:attribute>
       </xsd:complexType>
+      <xsd:element name="buscaragenciaoperadorentradas"
+      	type="tns:buscaragenciaoperadorentradas">
+      </xsd:element>
+      <xsd:element name="buscaragenciaoperadorResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="buscaragenciaoperadorentradas">
+      	<xsd:attribute name="agenciaid" type="xsd:int"></xsd:attribute>
+      	<xsd:attribute name="operadorid" type="xsd:int"></xsd:attribute>
+      </xsd:complexType>
+      <xsd:element name="insertaragenciaoperadorentradas"
+      	type="tns:insertaragenciaoperadorentradas">
+      </xsd:element>
+      <xsd:element name="insertaragenciaoperadorResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="insertaragenciaoperadorentradas">
+      	<xsd:attribute name="agenciaid" type="xsd:int"></xsd:attribute>
+      	<xsd:attribute name="operadorid" type="xsd:int"></xsd:attribute>
+      </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="buscaritemRequest">
@@ -133,6 +163,18 @@
   <wsdl:message name="insertaroperadorResponse">
   	<wsdl:part name="insertaroperadorsalidas" element="tns:res"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="buscaragenciaoperadorRequest">
+  	<wsdl:part name="buscaragenciaoperadorentradas" element="tns:buscaragenciaoperadorentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscaragenciaoperadorResponse">
+  	<wsdl:part name="buscaragenciaoperadorsalidas" element="tns:resquery"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertaragenciaoperadorRequest">
+  	<wsdl:part name="insertaragenciaoperadorentradas" element="tns:insertaragenciaoperadorentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertaragenciaoperadorResponse">
+  	<wsdl:part name="insertaragenciaoperadorsalidas" element="tns:res"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="db">
     <wsdl:operation name="buscaritem">
       <wsdl:input message="tns:buscaritemRequest"/>
@@ -157,6 +199,14 @@
     <wsdl:operation name="insertaroperador">
     	<wsdl:input message="tns:insertaroperadorRequest"></wsdl:input>
     	<wsdl:output message="tns:insertaroperadorResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaragenciaoperador">
+    	<wsdl:input message="tns:buscaragenciaoperadorRequest"></wsdl:input>
+    	<wsdl:output message="tns:buscaragenciaoperadorResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertaragenciaoperador">
+    	<wsdl:input message="tns:insertaragenciaoperadorRequest"></wsdl:input>
+    	<wsdl:output message="tns:insertaragenciaoperadorResponse"></wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="dbSOAP" type="tns:db">
@@ -229,8 +279,34 @@
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="insertaroperador">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/insertaroperador" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="buscaragenciaoperador">
+
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/buscaragenciaoperador" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="insertaragenciaoperador">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/insertaragenciaoperador" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
