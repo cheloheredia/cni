@@ -6,7 +6,7 @@
       	type="tns:buscaritementradas">
 
       </xsd:element>
-      <xsd:element name="buscaritemsalidas"
+      <xsd:element name="resquery"
       	type="tns:resquery">
 
       </xsd:element>
@@ -39,19 +39,59 @@
       <xsd:complexType name="res">
       	<xsd:attribute name="res" type="xsd:int"></xsd:attribute>
       </xsd:complexType>
+      <xsd:element name="buscaragenciaentradas"
+      	type="tns:buscaragenciaentradas">
+      </xsd:element>
+      <xsd:element name="buscaragenciaResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="buscaragenciaentradas">
+      	<xsd:attribute name="agencia" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
+      <xsd:element name="insertaragenciaentradas"
+      	type="tns:insertaragenciaentradas">
+      </xsd:element>
+      <xsd:element name="insertaragenciaResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="insertaragenciaentradas">
+      	<xsd:attribute name="agencia" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="buscaritemRequest">
     <wsdl:part element="tns:buscaritementradas" name="buscaritementradas"/>
   </wsdl:message>
   <wsdl:message name="buscaritemResponse">
-    <wsdl:part element="tns:buscaritemsalidas" name="buscaritemsalidas"/>
+    <wsdl:part element="tns:resquery" name="buscaritemsalidas"/>
   </wsdl:message>
   <wsdl:message name="insertaritemRequest">
   	<wsdl:part name="insertaritementradas" element="tns:insertaritementradas"></wsdl:part>
   </wsdl:message>
   <wsdl:message name="insertaritemResponse">
   	<wsdl:part name="insertaritemsalidas" element="tns:res"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscaragenciaRequest">
+  	<wsdl:part name="buscaragenciaentradas" element="tns:buscaragenciaentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscaragenciaResponse">
+  	<wsdl:part name="buscaragenciasalidas" element="tns:resquery"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertaragenciaRequest">
+  	<wsdl:part name="insertaragenciaentradas" element="tns:insertaragenciaentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertaragenciaResponse">
+  	<wsdl:part name="insertaragenciasalidas" element="tns:res"></wsdl:part>
   </wsdl:message>
   <wsdl:portType name="db">
     <wsdl:operation name="buscaritem">
@@ -61,6 +101,14 @@
     <wsdl:operation name="insertaritem">
     	<wsdl:input message="tns:insertaritemRequest"></wsdl:input>
     	<wsdl:output message="tns:insertaritemResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaragencia">
+    	<wsdl:input message="tns:buscaragenciaRequest"></wsdl:input>
+    	<wsdl:output message="tns:buscaragenciaResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertaragencia">
+    	<wsdl:input message="tns:insertaragenciaRequest"></wsdl:input>
+    	<wsdl:output message="tns:insertaragenciaResponse"></wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="dbSOAP" type="tns:db">
@@ -90,6 +138,29 @@
   		</wsdl:input>
   		<wsdl:output>
 
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="buscaragencia">
+
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/buscaragencia" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="insertaragencia">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/insertaragencia" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>

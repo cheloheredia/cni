@@ -51,11 +51,31 @@ class insertaritementradas {
     public $item;
 
 }
+
+class buscaragenciaentradas {
+
+    /**
+     * @var string
+     */
+    public $agencia;
+
+}
+
+class insertaragenciaentradas {
+
+    /**
+     * @var string
+     */
+    public $agencia;
+
+}
 // Class Map
 $classMap = array(
 	'res' => 'res',
 	'resquery' => 'resquery',
 	'filas' => 'filas',
     'buscaritementradas' => 'buscaritementradas',
-    'insertaritementradas' => 'insertaritementradas'
+    'insertaritementradas' => 'insertaritementradas',
+    'buscaragenciaentradas' => 'buscaragenciaentradas',
+    'insertaragenciaentradas' => 'insertaragenciaentradas'
 );
