@@ -125,6 +125,35 @@
       	<xsd:attribute name="agenciaid" type="xsd:int"></xsd:attribute>
       	<xsd:attribute name="operadorid" type="xsd:int"></xsd:attribute>
       </xsd:complexType>
+      <xsd:element name="buscarnaveentradas"
+      	type="tns:buscarnaveentradas">
+      </xsd:element>
+      <xsd:element name="buscarnaveResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="buscarnaveentradas">
+      	<xsd:attribute name="nave" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
+      <xsd:element name="insertarnaveentradas"
+      	type="tns:insertarnaveentradas">
+      </xsd:element>
+      <xsd:element name="insertarnaveResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="insertarnaveentradas">
+      	<xsd:attribute name="nave" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="operadorid" type="xsd:int"></xsd:attribute>
+      </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="buscaritemRequest">
@@ -175,6 +204,18 @@
   <wsdl:message name="insertaragenciaoperadorResponse">
   	<wsdl:part name="insertaragenciaoperadorsalidas" element="tns:res"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="buscarnaveRequest">
+  	<wsdl:part name="buscarnaveentradas" element="tns:buscarnaveentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscarnaveResponse">
+  	<wsdl:part name="buscarnavesalidas" element="tns:resquery"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertarnaveRequest">
+  	<wsdl:part name="insertarnaveentradas" element="tns:insertarnaveentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertarnaveResponse">
+  	<wsdl:part name="insertarnavesalidas" element="tns:res"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="db">
     <wsdl:operation name="buscaritem">
       <wsdl:input message="tns:buscaritemRequest"/>
@@ -207,6 +248,14 @@
     <wsdl:operation name="insertaragenciaoperador">
     	<wsdl:input message="tns:insertaragenciaoperadorRequest"></wsdl:input>
     	<wsdl:output message="tns:insertaragenciaoperadorResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarnave">
+    	<wsdl:input message="tns:buscarnaveRequest"></wsdl:input>
+    	<wsdl:output message="tns:buscarnaveResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarnave">
+    	<wsdl:input message="tns:insertarnaveRequest"></wsdl:input>
+    	<wsdl:output message="tns:insertarnaveResponse"></wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="dbSOAP" type="tns:db">
@@ -305,12 +354,41 @@
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="insertaragenciaoperador">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/insertaragenciaoperador" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="buscarnave">
+
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/buscarnave" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="insertarnave">
+
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/insertarnave" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
