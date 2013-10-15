@@ -268,6 +268,34 @@
       <xsd:complexType name="insertarmercanciaentradas">
       	<xsd:attribute name="mercancia" type="xsd:string"></xsd:attribute>
       </xsd:complexType>
+      <xsd:element name="buscarservicioentradas"
+      	type="tns:buscarservicioentradas">
+      </xsd:element>
+      <xsd:element name="buscarservicioResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="buscarservicioentradas">
+      	<xsd:attribute name="servicio" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
+      <xsd:element name="insertarservicioentradas"
+      	type="tns:insertarservicioentradas">
+      </xsd:element>
+      <xsd:element name="insertarservicioResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="insertarservicioentradas">
+      	<xsd:attribute name="servicio" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="buscaritemRequest">
@@ -378,6 +406,18 @@
   <wsdl:message name="insertarmercanciaResponse">
   	<wsdl:part name="insertarmercanciasalidas" element="tns:res"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="buscarservicioRequest">
+  	<wsdl:part name="buscarservicioentradas" element="tns:buscarservicioentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscarservicioResponse">
+  	<wsdl:part name="buscarserviciosalidas" element="tns:resquery"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertarservicioRequest">
+  	<wsdl:part name="insertarservicioentradas" element="tns:insertarservicioentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertarservicioResponse">
+  	<wsdl:part name="insertarserviciosalidas" element="tns:res"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="db">
     <wsdl:operation name="buscaritem">
       <wsdl:input message="tns:buscaritemRequest"/>
@@ -450,6 +490,14 @@
     <wsdl:operation name="insertarmercancia">
     	<wsdl:input message="tns:insertarmercanciaRequest"></wsdl:input>
     	<wsdl:output message="tns:insertarmercanciaResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarservicio">
+    	<wsdl:input message="tns:buscarservicioRequest"></wsdl:input>
+    	<wsdl:output message="tns:buscarservicioResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarservicio">
+    	<wsdl:input message="tns:insertarservicioRequest"></wsdl:input>
+    	<wsdl:output message="tns:insertarservicioResponse"></wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="dbSOAP" type="tns:db">
@@ -678,8 +726,34 @@
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="insertarmercancia">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/insertarmercancia" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="buscarservicio">
+
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/buscarservicio" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="insertarservicio">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/insertarservicio" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>

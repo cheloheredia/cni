@@ -209,6 +209,25 @@ class db {
 		$this->desconexion(); //we do the desconection*/
 		return $response; //we sent back the resquery
 	}
+
+	public function buscarservicio($input) { //function to save the session
+		$this->conexion(); //we start the conection to the db
+		$response = $this->mostrar("select a.sn, a.sservicio from servicio a where a.sservicio = '".$input->servicio."'");
+		$this->desconexion(); //we do the desconection
+		return $response; //we sent back the resquery
+	}
+
+	public function insertarservicio($input) { //function to save the session
+		$this->conexion(); //we start the conection to the db
+		$response = new res(); //we start the response type
+		if ($this->ejecutarquery("insert into servicio values('','".$input->servicio."')")) { //preguntamos se se ejecuto el query de manera correcta
+			$response->res = 0; //devolvemos que se ejecuto el query correctamente
+		} else { //si no se ejecuto el query correctamente
+			$response->res = 1; //notificamos que se ejecuto el query de manera incorrecta
+		}
+		$this->desconexion(); //we do the desconection*/
+		return $response; //we sent back the resquery
+	}
 }
 $server = new SoapServer("http://127.0.0.1:12/wsdl/db.wsdl");
 $server->setClass("db");
