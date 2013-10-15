@@ -152,6 +152,25 @@ class db {
 		$this->desconexion(); //we do the desconection*/
 		return $response; //we sent back the resquery
 	}
+
+	public function buscarcontenedor($input) { //function to save the session
+		$this->conexion(); //we start the conection to the db
+		$response = $this->mostrar("select a.con, a.cocontenedor, a.copeso, b.tctipo from contenedor a, tcontenedor b where a.cotipo = b.tcn and a.cocontenedor = '".$input->contenedor."'");
+		$this->desconexion(); //we do the desconection
+		return $response; //we sent back the resquery
+	}
+
+	public function insertarcontenedor($input) { //function to save the session
+		$this->conexion(); //we start the conection to the db
+		$response = new res(); //we start the response type
+		if ($this->ejecutarquery("insert into contenedor values('','".$input->contenedor."',".$input->tipoid.",".$input->peso.")")) { //preguntamos se se ejecuto el query de manera correcta
+			$response->res = 0; //devolvemos que se ejecuto el query correctamente
+		} else { //si no se ejecuto el query correctamente
+			$response->res = 1; //notificamos que se ejecuto el query de manera incorrecta
+		}
+		$this->desconexion(); //we do the desconection*/
+		return $response; //we sent back the resquery
+	}
 }
 $server = new SoapServer("http://127.0.0.1:12/wsdl/db.wsdl");
 $server->setClass("db");

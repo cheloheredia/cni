@@ -156,6 +156,34 @@ class insertartipocontenedorentradas {
     public $tipo;
 
 }
+
+class buscarcontenedorentradas {
+
+    /**
+     * @var string
+     */
+    public $contenedor;
+
+}
+
+class insertarcontenedorentradas {
+
+    /**
+     * @var string
+     */
+    public $contenedor;
+
+    /**
+     * @var int
+     */
+    public $tipoid;
+
+    /**
+     * @var float
+     */
+    public $peso;
+
+}
 // Class Map
 $classMap = array(
 	'res' => 'res',
@@ -172,5 +200,7 @@ $classMap = array(
     'buscarnaveentradas' => 'buscarnaveentradas',
     'insertarnaveentradas' => 'insertarnaveentradas',
     'buscartipocontenedorentradas' => 'buscartipocontenedorentradas',
-    'insertartipocontenedorentradas' => 'insertartipocontenedorentradas'
+    'insertartipocontenedorentradas' => 'insertartipocontenedorentradas',
+    'buscarcontenedorentradas' => 'buscarcontenedorentradas',
+    'insertarcontenedorentradas' => 'insertarcontenedorentradas'
 );
