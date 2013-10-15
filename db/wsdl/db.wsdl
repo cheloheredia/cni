@@ -352,6 +352,41 @@
       <xsd:complexType name="insertarconsignatarioentradas">
       	<xsd:attribute name="consignatario" type="xsd:string"></xsd:attribute>
       </xsd:complexType>
+      <xsd:element name="insertarmanifiestoentradas"
+      	type="tns:insertarmanifiestoentradas">
+      </xsd:element>
+      <xsd:element name="insertarmanifiestoResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="insertarmanifiestoentradas">
+      	<xsd:attribute name="itemid" type="xsd:int"></xsd:attribute>
+      	<xsd:attribute name="agenciaoperadorid" type="xsd:int"></xsd:attribute>
+      	<xsd:attribute name="naveid" type="xsd:int"></xsd:attribute>
+      	<xsd:attribute name="viaje" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="nrmfto" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="tipotransito" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="contenedorid" type="xsd:int"></xsd:attribute>
+      	<xsd:attribute name="bl" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="puertoembarqueid" type="xsd:int"></xsd:attribute>
+      	<xsd:attribute name="purtodestinoid" type="xsd:int"></xsd:attribute>
+      	<xsd:attribute name="puertodescargaid" type="xsd:int"></xsd:attribute>
+      	<xsd:attribute name="mercanciaid" type="xsd:int"></xsd:attribute>
+      	<xsd:attribute name="bruto" type="xsd:float"></xsd:attribute>
+      	<xsd:attribute name="neto" type="xsd:float"></xsd:attribute>
+      	<xsd:attribute name="servicioid" type="xsd:int"></xsd:attribute>
+      	<xsd:attribute name="imoid" type="xsd:int"></xsd:attribute>
+      	<xsd:attribute name="sellos" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="bultos" type="xsd:float"></xsd:attribute>
+      	<xsd:attribute name="consignatarioid" type="xsd:int"></xsd:attribute>
+      	<xsd:attribute name="estadorecepcion" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="periodo" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="fecha" type="xsd:dateTime"></xsd:attribute>
+      </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="buscaritemRequest">
@@ -498,6 +533,12 @@
   <wsdl:message name="insertarconsignatarioResponse">
   	<wsdl:part name="insertarconsignatariosalidas" element="tns:res"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="insertarmanifiestoRequest">
+  	<wsdl:part name="insertarmanifiestoentradas" element="tns:insertarmanifiestoentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertarmanifiestoResponse">
+  	<wsdl:part name="insertarmanifiestosalidas" element="tns:res"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="db">
     <wsdl:operation name="buscaritem">
       <wsdl:input message="tns:buscaritemRequest"/>
@@ -594,6 +635,10 @@
     <wsdl:operation name="insertarconsignatario">
     	<wsdl:input message="tns:insertarconsignatarioRequest"></wsdl:input>
     	<wsdl:output message="tns:insertarconsignatarioResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarmanifiesto">
+    	<wsdl:input message="tns:insertarmanifiestoRequest"></wsdl:input>
+    	<wsdl:output message="tns:insertarmanifiestoResponse"></wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="dbSOAP" type="tns:db">
@@ -899,8 +944,21 @@
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="insertarconsignatario">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/insertarconsignatario" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="insertarmanifiesto">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/insertarmanifiesto" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>

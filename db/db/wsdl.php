@@ -274,6 +274,120 @@ class insertarconsignatarioentradas {
     public $consignatario;
 
 }
+
+class insertarmanifiestoentradas {
+
+    /**
+     * @var int
+     */
+    public $itemid;
+
+    /**
+     * @var int
+     */
+    public $agenciaoperadorid;
+
+    /**
+     * @var int
+     */
+    public $naveid;
+
+    /**
+     * @var string
+     */
+    public $viaje;
+
+    /**
+     * @var string
+     */
+    public $nrmfto;
+
+    /**
+     * @var string
+     */
+    public $tipotransito;
+
+    /**
+     * @var int
+     */
+    public $contenedorid;
+
+    /**
+     * @var string
+     */
+    public $bl;
+
+    /**
+     * @var int
+     */
+    public $puertoembarqueid;
+
+    /**
+     * @var int
+     */
+    public $purtodestinoid;
+
+    /**
+     * @var int
+     */
+    public $puertodescargaid;
+
+    /**
+     * @var int
+     */
+    public $mercanciaid;
+
+    /**
+     * @var float
+     */
+    public $bruto;
+
+    /**
+     * @var float
+     */
+    public $neto;
+
+    /**
+     * @var int
+     */
+    public $servicioid;
+
+    /**
+     * @var int
+     */
+    public $imoid;
+
+    /**
+     * @var string
+     */
+    public $sellos;
+
+    /**
+     * @var float
+     */
+    public $bultos;
+
+    /**
+     * @var int
+     */
+    public $consignatarioid;
+
+    /**
+     * @var string
+     */
+    public $estadorecepcion;
+
+    /**
+     * @var string
+     */
+    public $periodo;
+
+    /**
+     * @var datetime
+     */
+    public $fecha;
+
+}
 // Class Map
 $classMap = array(
 	'res' => 'res',
@@ -302,5 +416,6 @@ $classMap = array(
     'buscarimoentradas' => 'buscarimoentradas',
     'insertarimoentradas' => 'insertarimoentradas',
     'buscarconsignatarioentradas' => 'buscarconsignatarioentradas',
-    'insertarconsignatarioentradas' => 'insertarconsignatarioentradas'
+    'insertarconsignatarioentradas' => 'insertarconsignatarioentradas',
+    'insertarmanifiestoentradas' => 'insertarmanifiestoentradas'
 );
