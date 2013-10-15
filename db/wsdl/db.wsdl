@@ -212,6 +212,34 @@
       	<xsd:attribute name="peso" type="xsd:float"></xsd:attribute>
       	<xsd:attribute name="tipoid" type="xsd:int"></xsd:attribute>
       </xsd:complexType>
+      <xsd:element name="buscarpuertoentradas"
+      	type="tns:buscarpuertoentradas">
+      </xsd:element>
+      <xsd:element name="buscarpuertoResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="buscarpuertoentradas">
+      	<xsd:attribute name="puerto" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
+      <xsd:element name="insertarpuertoentradas"
+      	type="tns:insertarpuertoentradas">
+      </xsd:element>
+      <xsd:element name="insertarpuertoResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="insertarpuertoentradas">
+      	<xsd:attribute name="puerto" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="buscaritemRequest">
@@ -298,6 +326,18 @@
   <wsdl:message name="insertarcontenedorResponse">
   	<wsdl:part name="insertarcontenedorsalidas" element="tns:res"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="buscarpuertoRequest">
+  	<wsdl:part name="buscarpuertoentradas" element="tns:buscarpuertoentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscarpuertoResponse">
+  	<wsdl:part name="buscarpuertosalidas" element="tns:resquery"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertarpuertoRequest">
+  	<wsdl:part name="insertarpuertoentradas" element="tns:insertarpuertoentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertarpuertoResponse">
+  	<wsdl:part name="insertarpuertosalidas" element="tns:res"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="db">
     <wsdl:operation name="buscaritem">
       <wsdl:input message="tns:buscaritemRequest"/>
@@ -354,6 +394,14 @@
     <wsdl:operation name="insertarcontenedor">
     	<wsdl:input message="tns:insertarcontenedorRequest"></wsdl:input>
     	<wsdl:output message="tns:insertarcontenedorResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarpuerto">
+    	<wsdl:input message="tns:buscarpuertoRequest"></wsdl:input>
+    	<wsdl:output message="tns:buscarpuertoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarpuerto">
+    	<wsdl:input message="tns:insertarpuertoRequest"></wsdl:input>
+    	<wsdl:output message="tns:insertarpuertoResponse"></wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="dbSOAP" type="tns:db">
@@ -519,10 +567,10 @@
   	<wsdl:operation name="buscarcontenedor">
 
   		<soap:operation
-  			soapAction="http://127.0.0.1:12/db/buscarcontenedor"></soap:operation>
+  			soapAction="http://127.0.0.1:12/db/buscarcontenedor" />
   		<wsdl:input>
 
-  			<soap:body use="literal"></soap:body>
+  			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
 
@@ -539,7 +587,30 @@
   		</wsdl:input>
   		<wsdl:output>
 
-  			<soap:body use="literal"></soap:body>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="buscarpuerto">
+
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/buscarpuerto" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="insertarpuerto">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/insertarpuerto" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   </wsdl:binding>

@@ -184,6 +184,24 @@ class insertarcontenedorentradas {
     public $peso;
 
 }
+
+class buscarpuertoentradas {
+
+    /**
+     * @var string
+     */
+    public $puerto;
+
+}
+
+class insertarpuertoentradas {
+
+    /**
+     * @var string
+     */
+    public $puerto;
+
+}
 // Class Map
 $classMap = array(
 	'res' => 'res',
@@ -202,5 +220,7 @@ $classMap = array(
     'buscartipocontenedorentradas' => 'buscartipocontenedorentradas',
     'insertartipocontenedorentradas' => 'insertartipocontenedorentradas',
     'buscarcontenedorentradas' => 'buscarcontenedorentradas',
-    'insertarcontenedorentradas' => 'insertarcontenedorentradas'
+    'insertarcontenedorentradas' => 'insertarcontenedorentradas',
+    'buscarpuertoentradas' => 'buscarpuertoentradas',
+    'insertarpuertoentradas' => 'insertarpuertoentradas'
 );
