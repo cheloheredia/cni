@@ -202,6 +202,24 @@ class insertarpuertoentradas {
     public $puerto;
 
 }
+
+class buscarmercanciaentradas {
+
+    /**
+     * @var string
+     */
+    public $mercancia;
+
+}
+
+class insertarmercanciaentradas {
+
+    /**
+     * @var string
+     */
+    public $mercancia;
+
+}
 // Class Map
 $classMap = array(
 	'res' => 'res',
@@ -222,5 +240,7 @@ $classMap = array(
     'buscarcontenedorentradas' => 'buscarcontenedorentradas',
     'insertarcontenedorentradas' => 'insertarcontenedorentradas',
     'buscarpuertoentradas' => 'buscarpuertoentradas',
-    'insertarpuertoentradas' => 'insertarpuertoentradas'
+    'insertarpuertoentradas' => 'insertarpuertoentradas',
+    'buscarmercanciaentradas' => 'buscarmercanciaentradas',
+    'insertarmercanciaentradas' => 'insertarmercanciaentradas'
 );

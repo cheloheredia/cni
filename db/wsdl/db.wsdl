@@ -240,6 +240,34 @@
       <xsd:complexType name="insertarpuertoentradas">
       	<xsd:attribute name="puerto" type="xsd:string"></xsd:attribute>
       </xsd:complexType>
+      <xsd:element name="buscarmercanciaentradas"
+      	type="tns:buscarmercanciaentradas">
+      </xsd:element>
+      <xsd:element name="buscarmercanciaResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="buscarmercanciaentradas">
+      	<xsd:attribute name="mercancia" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
+      <xsd:element name="insertarmercanciaentradas"
+      	type="tns:insertarmercanciaentradas">
+      </xsd:element>
+      <xsd:element name="insertarmercanciaResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="insertarmercanciaentradas">
+      	<xsd:attribute name="mercancia" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="buscaritemRequest">
@@ -338,6 +366,18 @@
   <wsdl:message name="insertarpuertoResponse">
   	<wsdl:part name="insertarpuertosalidas" element="tns:res"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="buscarmercanciaRequest">
+  	<wsdl:part name="buscarmercanciaentradas" element="tns:buscarmercanciaentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscarmercanciaResponse">
+  	<wsdl:part name="buscarmercanciasalidas" element="tns:resquery"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertarmercanciaRequest">
+  	<wsdl:part name="insertarmercanciaentradas" element="tns:insertarmercanciaentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertarmercanciaResponse">
+  	<wsdl:part name="insertarmercanciasalidas" element="tns:res"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="db">
     <wsdl:operation name="buscaritem">
       <wsdl:input message="tns:buscaritemRequest"/>
@@ -403,6 +443,14 @@
     	<wsdl:input message="tns:insertarpuertoRequest"></wsdl:input>
     	<wsdl:output message="tns:insertarpuertoResponse"></wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="buscarmercancia">
+    	<wsdl:input message="tns:buscarmercanciaRequest"></wsdl:input>
+    	<wsdl:output message="tns:buscarmercanciaResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarmercancia">
+    	<wsdl:input message="tns:insertarmercanciaRequest"></wsdl:input>
+    	<wsdl:output message="tns:insertarmercanciaResponse"></wsdl:output>
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="dbSOAP" type="tns:db">
 
@@ -411,157 +459,157 @@
   	<wsdl:operation name="buscaritem">
 
   		<soap:operation
-  			soapAction="http://127.0.0.1:12/db/buscaritem"></soap:operation>
+  			soapAction="http://127.0.0.1:12/db/buscaritem" />
   		<wsdl:input>
 
-  			<soap:body use="literal"></soap:body>
+  			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
 
-  			<soap:body use="literal"></soap:body>
+  			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="insertaritem">
 
   		<soap:operation
-  			soapAction="http://127.0.0.1:12/db/insertaritem"></soap:operation>
+  			soapAction="http://127.0.0.1:12/db/insertaritem" />
   		<wsdl:input>
 
-  			<soap:body use="literal"></soap:body>
+  			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
 
-  			<soap:body use="literal"></soap:body>
+  			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="buscaragencia">
 
   		<soap:operation
-  			soapAction="http://127.0.0.1:12/db/buscaragencia"></soap:operation>
+  			soapAction="http://127.0.0.1:12/db/buscaragencia" />
   		<wsdl:input>
 
-  			<soap:body use="literal"></soap:body>
+  			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
 
-  			<soap:body use="literal"></soap:body>
+  			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="insertaragencia">
 
   		<soap:operation
-  			soapAction="http://127.0.0.1:12/db/insertaragencia"></soap:operation>
+  			soapAction="http://127.0.0.1:12/db/insertaragencia" />
   		<wsdl:input>
 
-  			<soap:body use="literal"></soap:body>
+  			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
 
-  			<soap:body use="literal"></soap:body>
+  			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="buscaroperador">
 
   		<soap:operation
-  			soapAction="http://127.0.0.1:12/db/buscaroperador"></soap:operation>
+  			soapAction="http://127.0.0.1:12/db/buscaroperador" />
   		<wsdl:input>
 
-  			<soap:body use="literal"></soap:body>
+  			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
 
-  			<soap:body use="literal"></soap:body>
+  			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="insertaroperador">
 
   		<soap:operation
-  			soapAction="http://127.0.0.1:12/db/insertaroperador"></soap:operation>
+  			soapAction="http://127.0.0.1:12/db/insertaroperador" />
   		<wsdl:input>
 
-  			<soap:body use="literal"></soap:body>
+  			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
 
-  			<soap:body use="literal"></soap:body>
+  			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="buscaragenciaoperador">
 
   		<soap:operation
-  			soapAction="http://127.0.0.1:12/db/buscaragenciaoperador"></soap:operation>
+  			soapAction="http://127.0.0.1:12/db/buscaragenciaoperador" />
   		<wsdl:input>
 
-  			<soap:body use="literal"></soap:body>
+  			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
 
-  			<soap:body use="literal"></soap:body>
+  			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="insertaragenciaoperador">
 
   		<soap:operation
-  			soapAction="http://127.0.0.1:12/db/insertaragenciaoperador"></soap:operation>
+  			soapAction="http://127.0.0.1:12/db/insertaragenciaoperador" />
   		<wsdl:input>
 
-  			<soap:body use="literal"></soap:body>
+  			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
 
-  			<soap:body use="literal"></soap:body>
+  			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="buscarnave">
 
   		<soap:operation
-  			soapAction="http://127.0.0.1:12/db/buscarnave"></soap:operation>
+  			soapAction="http://127.0.0.1:12/db/buscarnave" />
   		<wsdl:input>
 
-  			<soap:body use="literal"></soap:body>
+  			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
 
-  			<soap:body use="literal"></soap:body>
+  			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="insertarnave">
 
   		<soap:operation
-  			soapAction="http://127.0.0.1:12/db/insertarnave"></soap:operation>
+  			soapAction="http://127.0.0.1:12/db/insertarnave" />
   		<wsdl:input>
 
-  			<soap:body use="literal"></soap:body>
+  			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
 
-  			<soap:body use="literal"></soap:body>
+  			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="buscartipocontenedor">
 
   		<soap:operation
-  			soapAction="http://127.0.0.1:12/db/buscartipocontenedor"></soap:operation>
+  			soapAction="http://127.0.0.1:12/db/buscartipocontenedor" />
   		<wsdl:input>
 
-  			<soap:body use="literal"></soap:body>
+  			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
 
-  			<soap:body use="literal"></soap:body>
+  			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="insertartipocontenedor">
 
   		<soap:operation
-  			soapAction="http://127.0.0.1:12/db/insertartipocontenedor"></soap:operation>
+  			soapAction="http://127.0.0.1:12/db/insertartipocontenedor" />
   		<wsdl:input>
 
-  			<soap:body use="literal"></soap:body>
+  			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
 
-  			<soap:body use="literal"></soap:body>
+  			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="buscarcontenedor">
@@ -574,7 +622,7 @@
   		</wsdl:input>
   		<wsdl:output>
 
-  			<soap:body use="literal"></soap:body>
+  			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="insertarcontenedor">
@@ -604,8 +652,34 @@
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="insertarpuerto">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/insertarpuerto" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="buscarmercancia">
+
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/buscarmercancia" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="insertarmercancia">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/insertarmercancia" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
