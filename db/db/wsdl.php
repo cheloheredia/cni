@@ -256,6 +256,24 @@ class insertarimoentradas {
     public $imo;
 
 }
+
+class buscarconsignatarioentradas {
+
+    /**
+     * @var string
+     */
+    public $consignatario;
+
+}
+
+class insertarconsignatarioentradas {
+
+    /**
+     * @var string
+     */
+    public $consignatario;
+
+}
 // Class Map
 $classMap = array(
 	'res' => 'res',
@@ -282,5 +300,7 @@ $classMap = array(
     'buscarservicioentradas' => 'buscarservicioentradas',
     'insertarservicioentradas' => 'insertarservicioentradas',
     'buscarimoentradas' => 'buscarimoentradas',
-    'insertarimoentradas' => 'insertarimoentradas'
+    'insertarimoentradas' => 'insertarimoentradas',
+    'buscarconsignatarioentradas' => 'buscarconsignatarioentradas',
+    'insertarconsignatarioentradas' => 'insertarconsignatarioentradas'
 );

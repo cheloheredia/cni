@@ -324,6 +324,34 @@
       <xsd:complexType name="insertarimoentradas">
       	<xsd:attribute name="imo" type="xsd:string"></xsd:attribute>
       </xsd:complexType>
+      <xsd:element name="buscarconsignatarioentradas"
+      	type="tns:buscarconsignatarioentradas">
+      </xsd:element>
+      <xsd:element name="buscarconsignatorioResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="buscarconsignatarioentradas">
+      	<xsd:attribute name="consignatario" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
+      <xsd:element name="insertarconsignatarioentradas"
+      	type="tns:insertarconsignatarioentradas">
+      </xsd:element>
+      <xsd:element name="insertarconsignatarioResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="insertarconsignatarioentradas">
+      	<xsd:attribute name="consignatario" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="buscaritemRequest">
@@ -458,6 +486,18 @@
   <wsdl:message name="insertarimoResponse">
   	<wsdl:part name="insertarimosalidas" element="tns:res"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="buscarconsignatarioRequest">
+  	<wsdl:part name="buscarconsignatarioentradas" element="tns:buscarconsignatarioentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscarconsignatarioResponse">
+  	<wsdl:part name="buscarconsignatariosalidas" element="tns:resquery"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertarconsignatarioRequest">
+  	<wsdl:part name="insertarconsignatarioentradas" element="tns:insertarconsignatarioentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertarconsignatarioResponse">
+  	<wsdl:part name="insertarconsignatariosalidas" element="tns:res"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="db">
     <wsdl:operation name="buscaritem">
       <wsdl:input message="tns:buscaritemRequest"/>
@@ -546,6 +586,14 @@
     <wsdl:operation name="insertarimo">
     	<wsdl:input message="tns:insertarimoRequest"></wsdl:input>
     	<wsdl:output message="tns:insertarimoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarconsignatario">
+    	<wsdl:input message="tns:buscarconsignatarioRequest"></wsdl:input>
+    	<wsdl:output message="tns:buscarconsignatarioResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarconsignatario">
+    	<wsdl:input message="tns:insertarconsignatarioRequest"></wsdl:input>
+    	<wsdl:output message="tns:insertarconsignatarioResponse"></wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="dbSOAP" type="tns:db">
@@ -825,8 +873,34 @@
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="insertarimo">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/insertarimo" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="buscarconsignatario">
+
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/buscarconsignatario" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="insertarconsignatario">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/insertarconsignatario" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
