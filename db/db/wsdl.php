@@ -238,6 +238,24 @@ class insertarservicioentradas {
     public $servicio;
 
 }
+
+class buscarimoentradas {
+
+    /**
+     * @var float
+     */
+    public $imo;
+
+}
+
+class insertarimoentradas {
+
+    /**
+     * @var string
+     */
+    public $imo;
+
+}
 // Class Map
 $classMap = array(
 	'res' => 'res',
@@ -262,5 +280,7 @@ $classMap = array(
     'buscarmercanciaentradas' => 'buscarmercanciaentradas',
     'insertarmercanciaentradas' => 'insertarmercanciaentradas',
     'buscarservicioentradas' => 'buscarservicioentradas',
-    'insertarservicioentradas' => 'insertarservicioentradas'
+    'insertarservicioentradas' => 'insertarservicioentradas',
+    'buscarimoentradas' => 'buscarimoentradas',
+    'insertarimoentradas' => 'insertarimoentradas'
 );

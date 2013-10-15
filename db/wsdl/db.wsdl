@@ -296,6 +296,34 @@
       <xsd:complexType name="insertarservicioentradas">
       	<xsd:attribute name="servicio" type="xsd:string"></xsd:attribute>
       </xsd:complexType>
+      <xsd:element name="buscarimoentradas"
+      	type="tns:buscarimoentradas">
+      </xsd:element>
+      <xsd:element name="buscarimoResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="buscarimoentradas">
+      	<xsd:attribute name="imo" type="xsd:float"></xsd:attribute>
+      </xsd:complexType>
+      <xsd:element name="insertarimoentradas"
+      	type="tns:insertarimoentradas">
+      </xsd:element>
+      <xsd:element name="insertarimoResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="insertarimoentradas">
+      	<xsd:attribute name="imo" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="buscaritemRequest">
@@ -418,6 +446,18 @@
   <wsdl:message name="insertarservicioResponse">
   	<wsdl:part name="insertarserviciosalidas" element="tns:res"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="buscarimoRequest">
+  	<wsdl:part name="buscarimoentradas" element="tns:buscarimoentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscarimoResponse">
+  	<wsdl:part name="buscarimosalidas" element="tns:resquery"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertarimoRequest">
+  	<wsdl:part name="insertarimoentradas" element="tns:insertarimoentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertarimoResponse">
+  	<wsdl:part name="insertarimosalidas" element="tns:res"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="db">
     <wsdl:operation name="buscaritem">
       <wsdl:input message="tns:buscaritemRequest"/>
@@ -498,6 +538,14 @@
     <wsdl:operation name="insertarservicio">
     	<wsdl:input message="tns:insertarservicioRequest"></wsdl:input>
     	<wsdl:output message="tns:insertarservicioResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarimo">
+    	<wsdl:input message="tns:buscarimoRequest"></wsdl:input>
+    	<wsdl:output message="tns:buscarimoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarimo">
+    	<wsdl:input message="tns:insertarimoRequest"></wsdl:input>
+    	<wsdl:output message="tns:insertarimoResponse"></wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="dbSOAP" type="tns:db">
@@ -752,8 +800,33 @@
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="insertarservicio">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/insertarservicio" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="buscarimo">
+
+  		<soap:operation soapAction="http://127.0.0.1:12/db/buscarimo" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="insertarimo">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/insertarimo" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
