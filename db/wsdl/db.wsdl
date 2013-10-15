@@ -154,6 +154,34 @@
       	<xsd:attribute name="nave" type="xsd:string"></xsd:attribute>
       	<xsd:attribute name="operadorid" type="xsd:int"></xsd:attribute>
       </xsd:complexType>
+      <xsd:element name="buscartipocontenedorentradas"
+      	type="tns:buscartipocontenedorentradas">
+      </xsd:element>
+      <xsd:element name="buscartipocontenedorResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="buscartipocontenedorentradas">
+      	<xsd:attribute name="tipo" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
+      <xsd:element name="insertartipocontenedorentradas"
+      	type="tns:insertartipocontenedorentradas">
+      </xsd:element>
+      <xsd:element name="insertartipocontenedorResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="insertartipocontenedorentradas">
+      	<xsd:attribute name="tipo" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="buscaritemRequest">
@@ -216,6 +244,18 @@
   <wsdl:message name="insertarnaveResponse">
   	<wsdl:part name="insertarnavesalidas" element="tns:res"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="buscartipocontenedorRequest">
+  	<wsdl:part name="buscartipocontenedorentradas" element="tns:buscartipocontenedorentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscartipocontenedorResponse">
+  	<wsdl:part name="buscartipocontenedorsalidas" element="tns:resquery"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertartipocontenedorRequest">
+  	<wsdl:part name="insertartipocontenedorentradas" element="tns:insertartipocontenedorentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertartipocontenedorResponse">
+  	<wsdl:part name="insertartipocontenedorsalidas" element="tns:res"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="db">
     <wsdl:operation name="buscaritem">
       <wsdl:input message="tns:buscaritemRequest"/>
@@ -256,6 +296,14 @@
     <wsdl:operation name="insertarnave">
     	<wsdl:input message="tns:insertarnaveRequest"></wsdl:input>
     	<wsdl:output message="tns:insertarnaveResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscartipocontenedor">
+    	<wsdl:input message="tns:buscartipocontenedorRequest"></wsdl:input>
+    	<wsdl:output message="tns:buscartipocontenedorResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertartipocontenedor">
+    	<wsdl:input message="tns:insertartipocontenedorRequest"></wsdl:input>
+    	<wsdl:output message="tns:insertartipocontenedorResponse"></wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="dbSOAP" type="tns:db">
@@ -389,6 +437,29 @@
   		</wsdl:input>
   		<wsdl:output>
 
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="buscartipocontenedor">
+
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/buscartipocontenedor" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="insertartipocontenedor">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/insertartipocontenedor" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>

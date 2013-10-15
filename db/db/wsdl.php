@@ -138,6 +138,24 @@ class insertarnaveentradas {
     public $operadorid;    
 
 }
+
+class buscartipocontenedorentradas {
+
+    /**
+     * @var string
+     */
+    public $tipo;
+
+}
+
+class insertartipocontenedorentradas {
+
+    /**
+     * @var string
+     */
+    public $tipo;
+
+}
 // Class Map
 $classMap = array(
 	'res' => 'res',
@@ -152,5 +170,7 @@ $classMap = array(
     'buscaragenciaoperadorentradas' => 'buscaragenciaoperadorentradas',
     'insertaragenciaoperadorentradas' => 'insertaragenciaoperadorentradas',
     'buscarnaveentradas' => 'buscarnaveentradas',
-    'insertarnaveentradas' => 'insertarnaveentradas'
+    'insertarnaveentradas' => 'insertarnaveentradas',
+    'buscartipocontenedorentradas' => 'buscartipocontenedorentradas',
+    'insertartipocontenedorentradas' => 'insertartipocontenedorentradas'
 );
