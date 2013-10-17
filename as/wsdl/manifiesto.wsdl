@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://127.0.0.1:14/manifiesto/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="manifiesto" targetNamespace="http://127.0.0.1:14/manifiesto/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://127.0.0.1:14/manifiesto/">
+      <xsd:element name="subirentradas" type="tns:subirentradas">
+
+      </xsd:element>
+      <xsd:element name="subirsalidas" type="tns:subirsalidas">
+
+      </xsd:element>
+
+      <xsd:complexType name="subirentradas">
+      	<xsd:attribute name="documento" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
+    
+      <xsd:complexType name="subirsalidas">
+      	<xsd:attribute name="error" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="subirRequest">
+    <wsdl:part element="tns:subirentradas" name="subirentradas"/>
+  </wsdl:message>
+  <wsdl:message name="subirResponse">
+    <wsdl:part element="tns:subirsalidas" name="subirsalidas"/>
+  </wsdl:message>
+  <wsdl:portType name="manifiesto">
+    <wsdl:operation name="subir">
+      <wsdl:input message="tns:subirRequest"/>
+      <wsdl:output message="tns:subirResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="manifiestoSOAP" type="tns:manifiesto">
+
+  	<soap:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="subir">
+
+  		<soap:operation
+  			soapAction="http://127.0.0.1:14/manifiesto/subir" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="manifiesto">
+    <wsdl:port binding="tns:manifiestoSOAP" name="manifiestoSOAP">
+      <soap:address location="http://127.0.0.1:14/manifiesto/server.php"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

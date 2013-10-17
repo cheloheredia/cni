@@ -308,7 +308,7 @@
             </xsd:element>
     
       <xsd:complexType name="buscarimoentradas">
-      	<xsd:attribute name="imo" type="xsd:float"></xsd:attribute>
+      	<xsd:attribute name="imo" type="xsd:string"></xsd:attribute>
       </xsd:complexType>
       <xsd:element name="insertarimoentradas"
       	type="tns:insertarimoentradas">
@@ -957,12 +957,15 @@
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="insertarmanifiesto">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/insertarmanifiesto" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
