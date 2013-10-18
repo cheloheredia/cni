@@ -277,16 +277,39 @@ class db {
 		return $response;
 	}
 
-	public function insertarmanifiesto($input) { //function to save the session
-		$this->conexion(); //we start the conection to the db
-		$response = new res(); //we start the response type
-		if ($this->ejecutarquery("insert into manifiesto values('',".$input->itemid.",".$input->agenciaoperadorid.",".$input->naveid.",'".$input->viaje."','".$input->nrmfto."','".$input->tipotransito."',".$input->contenedorid.",'".$input->bl."',".$input->puertoembarqueid.",".$input->puertodescargaid.",".$input->purtodestinoid.",".$input->mercanciaid.",".$input->neto.",".$input->bruto.",".$input->servicioid.",".$input->imoid.",'".$input->sellos."',".$input->bultos.",".$input->consignatarioid.",'".$input->estadorecepcion."','".$input->periodo."','".$input->fecha."')")) { //preguntamos se se ejecuto el query de manera correcta
-			$response->res = 0; //devolvemos que se ejecuto el query correctamente
-		} else { //si no se ejecuto el query correctamente
-			$response->res = 1; //notificamos que se ejecuto el query de manera incorrecta
+	public function insertarmanifiesto($input) {
+		$this->conexion();
+		$response = new res();
+		if ($this->ejecutarquery("insert into manifiesto values('',".$input->itemid.",".$input->agenciaoperadorid
+		.",".$input->naveid.",'".$input->viaje."','".$input->nrmfto."','".$input->tipotransito."',"
+		.$input->contenedorid.",'".$input->bl."',".$input->puertoembarqueid.",".$input->puertodescargaid.","
+		.$input->purtodestinoid.",".$input->mercanciaid.",".$input->neto.",".$input->bruto.",".$input->servicioid
+		.",".$input->imoid.",'".$input->sellos."',".$input->bultos.",".$input->consignatarioid.",'"
+		.$input->estadorecepcion."','".$input->periodo."','".$input->fecha."')")) {
+			$response->res = 0;
+		} else {
+			$response->res = 1;
 		}
-		$this->desconexion(); //we do the desconection*/
-		return $response; //we sent back the resquery
+		$this->desconexion();
+		return $response;
+	}
+
+	public function buscarmanifiestoxfecha($input) {
+		$this->conexion();
+		$response = $this->mostrar("select a.ititem, c.aagencia, e.nnave, b.mviaje, b.mnromfto, b.mtipotransito,".
+		                           " f.cocontenedor, g.tctipo, h.opoperador, b.mbl, i.ppuerto, j.ppuerto, k.ppuerto,".
+		                           " l.mmercancia, f.copeso, b.mneto, b.mbruto, m.sservicio, n.imoimo, b.msellos,".
+		                           " b.mbultos, o.cconsignatario, b.mestado, b.mperiodo from item a, manifiesto b,".
+		                           " agencia c, agenciaoperador d, nave e, contenedor f, tcontenedor g, operador h,".
+		                           " puerto i, puerto j, puerto k, mercancia l, servicio m, imo n, consignatario o".
+		                           " where b.mitiem = a.itn and b.magenciaoperador = d.aon and d.aoagencia = c.an".
+		                           " and d.aooperador = h.opn and b.mnave = e.nn and b.mcontenedor = f.con and".
+		                           " f.cotipo = g.tcn and b.mpuertoembarque = i.pn and b.mpuertodescarga = j.pn".
+		                           " and b.mpuertodestino = k.pn and b.mmercancia = l.mn and b.mservicio = m.sn".
+		                           " and b.mimo = n.imon and b.mconsignatario = o.cn and b.mfecha = '".
+		                           $input->fecha."'");
+		$this->desconexion();
+		return $response;
 	}
 }
 $server = new SoapServer("http://127.0.0.1:12/wsdl/db.wsdl");

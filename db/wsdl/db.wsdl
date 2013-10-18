@@ -387,6 +387,20 @@
       	<xsd:attribute name="periodo" type="xsd:string"></xsd:attribute>
       	<xsd:attribute name="fecha" type="xsd:dateTime"></xsd:attribute>
       </xsd:complexType>
+      <xsd:element name="buscarmanifiestoxfechaentradas"
+      	type="tns:buscarmanifiestoxfechaentradas">
+      </xsd:element>
+      <xsd:element name="buscarmanifiestoxfechaResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="buscarmanifiestoxfechaentradas">
+      	<xsd:attribute name="fecha" type="xsd:dateTime"></xsd:attribute>
+      </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="buscaritemRequest">
@@ -539,6 +553,12 @@
   <wsdl:message name="insertarmanifiestoResponse">
   	<wsdl:part name="insertarmanifiestosalidas" element="tns:res"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="buscarmanifiestoxfechaRequest">
+  	<wsdl:part name="buscarmanifiestoxfechaentradas" element="tns:buscarmanifiestoxfechaentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscarmanifiestoxfechaResponse">
+  	<wsdl:part name="buscarmanifiestoxfechasalidas" element="tns:resquery"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="db">
     <wsdl:operation name="buscaritem">
       <wsdl:input message="tns:buscaritemRequest"/>
@@ -639,6 +659,10 @@
     <wsdl:operation name="insertarmanifiesto">
     	<wsdl:input message="tns:insertarmanifiestoRequest"></wsdl:input>
     	<wsdl:output message="tns:insertarmanifiestoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarmanifiestoxfecha">
+    	<wsdl:input message="tns:buscarmanifiestoxfechaRequest"></wsdl:input>
+    	<wsdl:output message="tns:buscarmanifiestoxfechaResponse"></wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="dbSOAP" type="tns:db">
@@ -966,6 +990,16 @@
   		</wsdl:input>
   		<wsdl:output>
 
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="buscarmanifiestoxfecha">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/buscarmanifiestoxfecha" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>

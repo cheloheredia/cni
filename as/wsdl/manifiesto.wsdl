@@ -15,6 +15,7 @@
     
       <xsd:complexType name="subirsalidas">
       	<xsd:attribute name="error" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="fecha" type="xsd:dateTime"></xsd:attribute>
       </xsd:complexType>
     </xsd:schema>
   </wsdl:types>

@@ -236,8 +236,10 @@ class manifiesto {
 			                                             'fecha'=> $fecha));
 			if ($resdb->res == 0) {
 				$res->error = 'OK';
+				$res->fecha = $fecha;
 			} else {
 				$res->error = 'Existe un error con el cargado del manifiesto, favor vuelva a intentarlo';
+				break;
 			}
 		}
 		unlink($input->documento);

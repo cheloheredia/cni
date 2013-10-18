@@ -18,6 +18,11 @@ class subirsalidas {
      */
     public $error;
 
+    /**
+     * @var detetime
+     */
+    public $fecha;
+
 }
 
 // Class Map
