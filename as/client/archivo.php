@@ -7,7 +7,7 @@ $respuesta=$cliente->subir(array('documento'=> '\\\127.0.0.1/cni/web/tmp/MftoImp
 var_dump($respuesta);*/
 $archivo = $_FILES['archivo']['name'];
 if ($archivo != "") {
-    $destino =  "tmp/".$archivo;
+    $destino =  "../tmp/".$archivo;
     if (move_uploaded_file($_FILES['archivo']['tmp_name'],$destino)) {
         
     }

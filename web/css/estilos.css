@@ -1,0 +1,72 @@
+body,html{
+	height: 100%;
+	background: #fff;
+	padding: 0;
+	margin: 0;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+#table{
+	display: table;
+	width: 600px;
+	height: 100%;
+	margin: auto;
+}
+#cell{
+	display: table-cell;
+	vertical-align: middle;
+}
+#contenido{
+	height: 200px;
+	background: #fff;
+}
+select, input, textarea {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	padding: 2px;
+	border: 1px solid #000;
+	background-color: #ffd76e;
+	color: #000;
+}
+.button {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	font-weight:bold;
+	padding: 2px;
+	border: 1px solid #000;
+	background-color: #ffd76e;
+	color: #000;
+}
+#manual{
+	border:3px #ffd76e solid;
+	margin:auto;width:700px; 
+} 
+.tabla {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	text-align: center; 
+	padding-left:50px;
+}
+.tabla th {
+	padding: 5px;
+	font-size: 10px;
+	background-color: #ffd76e;
+	background-image: url(../images/fondo_th1.png);
+	background-repeat: repeat-x;color: #FFFFFF;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-right-color: #fadaba;
+	border-bottom-color: #fadaba;
+	font-family: â€œTrebuchet MSâ€�, Arial;
+	text-transform: uppercase;
+}
+.tabla td{
+	border:1px solid #eeeeee;
+}
+.paginador{
+	color:#ffd76e; 
+	font-size:10px;
+	font-weight:bold;
+}
