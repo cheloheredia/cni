@@ -245,6 +245,43 @@ class manifiesto {
 		unlink($input->documento);
 		return $res;
 	}
+
+	public function mostrarreciensubido($input) {
+		$res = new mostrarreciensubidosalidas();
+		$resdb = $this->clientdb->buscarmanifiestoxfecha(array('fecha'=> $input->fecha));
+		if ($resdb->error == 0) {
+			$res->error = 'OK';
+			for ($i = 0; $i < sizeof($resdb->matriz); $i++) { 
+				$res->manifiestomaritimo[$i]->item = $resdb->matriz[$i]->columnas[0];
+				$res->manifiestomaritimo[$i]->agencia = $resdb->matriz[$i]->columnas[1];
+				$res->manifiestomaritimo[$i]->nave = $resdb->matriz[$i]->columnas[2];
+				$res->manifiestomaritimo[$i]->viaje = $resdb->matriz[$i]->columnas[3];
+				$res->manifiestomaritimo[$i]->nromfto = $resdb->matriz[$i]->columnas[4];
+				$res->manifiestomaritimo[$i]->tipotransito = $resdb->matriz[$i]->columnas[5];
+				$res->manifiestomaritimo[$i]->contenedor = $resdb->matriz[$i]->columnas[6];
+				$res->manifiestomaritimo[$i]->tipocontenedor = $resdb->matriz[$i]->columnas[7];
+				$res->manifiestomaritimo[$i]->operador = $resdb->matriz[$i]->columnas[8];
+				$res->manifiestomaritimo[$i]->bl = $resdb->matriz[$i]->columnas[9];
+				$res->manifiestomaritimo[$i]->puertoembarque = $resdb->matriz[$i]->columnas[10];
+				$res->manifiestomaritimo[$i]->puertodescarga = $resdb->matriz[$i]->columnas[11];
+				$res->manifiestomaritimo[$i]->puertodestino = $resdb->matriz[$i]->columnas[12];
+				$res->manifiestomaritimo[$i]->mercancia = $resdb->matriz[$i]->columnas[13];
+				$res->manifiestomaritimo[$i]->tara = $resdb->matriz[$i]->columnas[14];
+				$res->manifiestomaritimo[$i]->neto = $resdb->matriz[$i]->columnas[15];
+				$res->manifiestomaritimo[$i]->bruto = $resdb->matriz[$i]->columnas[16];
+				$res->manifiestomaritimo[$i]->servicio = $resdb->matriz[$i]->columnas[17];
+				$res->manifiestomaritimo[$i]->imo = $resdb->matriz[$i]->columnas[18];
+				$res->manifiestomaritimo[$i]->sellos = $resdb->matriz[$i]->columnas[19];
+				$res->manifiestomaritimo[$i]->bultos = $resdb->matriz[$i]->columnas[20];
+				$res->manifiestomaritimo[$i]->consignatario = $resdb->matriz[$i]->columnas[21];
+				$res->manifiestomaritimo[$i]->estado = $resdb->matriz[$i]->columnas[22];
+				$res->manifiestomaritimo[$i]->periodo = $resdb->matriz[$i]->columnas[23];
+			}
+		} else {
+			$res->error = 'Hubo un error al mostrar los datos recien subidos, favor vuelva a intentarlo';
+		}
+		return $res;
+	}
 }
 $server = new SoapServer("http://127.0.0.1:14/wsdl/manifiesto.wsdl");
 $server->setClass("manifiesto");

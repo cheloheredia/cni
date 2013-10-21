@@ -31,8 +31,10 @@ if ($_POST["action"] == "upload") {
             $respuesta = $cliente->subir(array('documento'=> $destino));
             if ($respuesta->error == 'OK') {
                 $status = 'Ingresado Correctamente';
+                $dir = 'http://127.0.0.1:10/action/tablamanifiestosubido.php?fecha='.$respuesta->fecha;
             } else {
                 $status = $respuesta->error;
+                $dir = 'http://127.0.0.1:10/manifiesto.php';
             }
         } else {
             $status = "Error al subir el archivo";
@@ -54,7 +56,7 @@ if ($_POST["action"] == "upload") {
                     draggable: true,
                     buttons: {
                                     "Salir": function(){
-                                            window.location.href = "http://127.0.0.1:10/manifiesto.php";
+                                            window.location.href = "'.$dir.'";
                                     }
                             }
                 }); 
@@ -62,34 +64,6 @@ if ($_POST["action"] == "upload") {
         
     </script>';
 }
-/*include'../client/excel.php';
-include'leeexcel.php';
-$var=leeExcel($archivo);
-$client=new excel();
-$response=$client->manifiestoMaritimo(array("json"=>json_encode($var),"usuario"=> $_SESSION['usuario_id']));
-if($response->error==="OK"){
-	echo ' <script type="text/javascript">
-			$(function() {
-				
-				$("#dialog").html("Ingresado Correctamente");
-				$("#dialog").dialog({
-                    title: "Manifiesto maritimo",
-                    width: 300,
-                    height: 200,
-                    modal: true,
-                    resizable: false,
-                    draggable: true,
-					buttons: {
-									"Salir": function(){
-											window.location.href = "http://localhost/camara/WEBCAMARA/manifiesto.php";
-									}
-							}
-			    });	
-			});
-		
-	</script>';	
-}
-unlink($destino);*/
 ?>
 </head>
 <body>

@@ -17,6 +17,51 @@
       	<xsd:attribute name="error" type="xsd:string"></xsd:attribute>
       	<xsd:attribute name="fecha" type="xsd:dateTime"></xsd:attribute>
       </xsd:complexType>
+      <xsd:element name="mostrarreciensubidoentradas"
+      	type="tns:mostrarreciensubidoentradas">
+      </xsd:element>
+      <xsd:element name="mostrarreciensubidosalidas"
+      	type="tns:mostrarreciensubidosalidas">
+      </xsd:element>
+
+      <xsd:complexType name="mostrarreciensubidoentradas">
+      	<xsd:attribute name="fecha" type="xsd:dateTime"></xsd:attribute>
+      </xsd:complexType>
+    
+      <xsd:complexType name="mostrarreciensubidosalidas">
+      	<xsd:sequence>
+      		<xsd:element name="manifiestomaritimo" type="tns:manifiestomaritimo" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      	</xsd:sequence>
+      	<xsd:attribute name="error" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
+    
+      <xsd:complexType name="manifiestomaritimo">
+
+      	<xsd:attribute name="item" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="agencia" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="nave" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="viaje" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="nromfto" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="tipotransito" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="contenedor" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="tipocontenedor" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="operador" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="bl" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="puertoembarque" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="puertodescarga" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="puertodestino" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="mercancia" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="tara" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="neto" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="bruto" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="servicio" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="imo" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="sellos" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="bultos" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="consignatario" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="estado" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="periodo" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="subirRequest">
@@ -25,10 +70,20 @@
   <wsdl:message name="subirResponse">
     <wsdl:part element="tns:subirsalidas" name="subirsalidas"/>
   </wsdl:message>
+  <wsdl:message name="mostrarreciensubidoRequest">
+  	<wsdl:part name="mostrarreciensubidoentradas" element="tns:mostrarreciensubidoentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="mostrarreciensubidoResponse">
+  	<wsdl:part name="mostrarreciensubidosalidas" element="tns:mostrarreciensubidosalidas"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="manifiesto">
     <wsdl:operation name="subir">
       <wsdl:input message="tns:subirRequest"/>
       <wsdl:output message="tns:subirResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="mostrarreciensubido">
+    	<wsdl:input message="tns:mostrarreciensubidoRequest"></wsdl:input>
+    	<wsdl:output message="tns:mostrarreciensubidoResponse"></wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="manifiestoSOAP" type="tns:manifiesto">
@@ -39,6 +94,19 @@
 
   		<soap:operation
   			soapAction="http://127.0.0.1:14/manifiesto/subir" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="mostrarreciensubido">
+
+  		<soap:operation
+  			soapAction="http://127.0.0.1:14/manifiesto/mostrarreciensubido" />
   		<wsdl:input>
 
   			<soap:body use="literal" />
