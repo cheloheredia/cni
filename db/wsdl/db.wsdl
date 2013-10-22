@@ -401,6 +401,35 @@
       <xsd:complexType name="buscarmanifiestoxfechaentradas">
       	<xsd:attribute name="fecha" type="xsd:dateTime"></xsd:attribute>
       </xsd:complexType>
+      <xsd:element name="buscarasociadoxconsignatarioentradas"
+      	type="tns:buscarasociadoxconsignatarioentradas">
+      </xsd:element>
+      <xsd:element name="buscarasociadoxconsignatarioResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="buscarasociadoxconsignatarioentradas">
+      	<xsd:attribute name="consignatario" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
+      <xsd:element name="buscarmanifiestodeconsignatarioentradas"
+      	type="tns:buscarmanifiestodeconsignatarioentradas">
+      </xsd:element>
+      <xsd:element name="buscarmanifiestodeconsignatarioResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="buscarmanifiestodeconsignatarioentradas">
+      	<xsd:attribute name="fecha" type="xsd:dateTime"></xsd:attribute>
+      	<xsd:attribute name="consignatarioid" type="xsd:int"></xsd:attribute>
+      </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="buscaritemRequest">
@@ -559,6 +588,18 @@
   <wsdl:message name="buscarmanifiestoxfechaResponse">
   	<wsdl:part name="buscarmanifiestoxfechasalidas" element="tns:resquery"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="buscarasociadoxconsignatarioRequest">
+  	<wsdl:part name="buscarasociadoxconsignatarioentradas" element="tns:buscarasociadoxconsignatarioentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscarasociadoxconsignatarioResponse">
+  	<wsdl:part name="buscarasociadoxconsignatariosalidas" element="tns:resquery"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscarmanifiestodeconsignatarioRequest">
+  	<wsdl:part name="buscarmanifiestodeconsignatarioentradas" element="tns:buscarmanifiestodeconsignatarioentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscarmanifiestodeconsignatarioResponse">
+  	<wsdl:part name="buscarmanifiestodeconsignatariosalidas" element="tns:resquery"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="db">
     <wsdl:operation name="buscaritem">
       <wsdl:input message="tns:buscaritemRequest"/>
@@ -664,11 +705,20 @@
     	<wsdl:input message="tns:buscarmanifiestoxfechaRequest"></wsdl:input>
     	<wsdl:output message="tns:buscarmanifiestoxfechaResponse"></wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="buscarasociadoxconsignatario">
+    	<wsdl:input message="tns:buscarasociadoxconsignatarioRequest"></wsdl:input>
+    	<wsdl:output message="tns:buscarasociadoxconsignatarioResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarmanifiestodeconsignatario">
+    	<wsdl:input message="tns:buscarmanifiestodeconsignatarioRequest"></wsdl:input>
+    	<wsdl:output message="tns:buscarmanifiestodeconsignatarioResponse"></wsdl:output>
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="dbSOAP" type="tns:db">
 
   	<soap:binding style="document"
-  		transport="http://schemas.xmlsoap.org/soap/http" />
+  		transport="http://schemas.xmlsoap.org/soap/http">
+  	</soap:binding>
   	<wsdl:operation name="buscaritem">
 
   		<soap:operation
@@ -994,12 +1044,41 @@
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="buscarmanifiestoxfecha">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/buscarmanifiestoxfecha" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="buscarasociadoxconsignatario">
+
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/buscarasociadoxconsignatario" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="buscarmanifiestodeconsignatario">
+
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/buscarmanifiestodeconsignatario" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>

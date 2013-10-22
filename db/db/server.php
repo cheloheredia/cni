@@ -311,6 +311,31 @@ class db {
 		$this->desconexion();
 		return $response;
 	}
+
+	public function buscarasociadoxconsignatario($input) {
+		$this->conexion();
+		$response = $this->mostrar("select a.asasociado, a.asrazonsocial, a.asrotulo, a.asmailprincipal,".
+		                           " a.asmailssecundarios from asociado a, consignatario b where".
+		                           " a.asasociado = b.cn and b.cconsignatario = '".$input->consignatario."'");
+		$this->desconexion();
+		return $response;
+	}
+
+	public function buscarmanifiestodeconsignatario($input) {
+		$this->conexion();
+		$response = $this->mostrar("select b.nnave, a.mnromfto, c.tctipo, e.mmercancia, d.copeso, a.mneto, a.mbruto,".
+		                           " a.mtipotransito, g.opoperador, d.cocontenedor, a.mbl, h.ppuerto, i.ppuerto,".
+		                           " j.ppuerto, k.sservicio, a.msellos, l.imoimo, a.mbultos from manifiesto a,".
+		                           " nave b, tcontenedor c, contenedor d, mercancia e, agenciaoperador f, operador".
+		                           " g, puerto h, puerto i, puerto j, servicio k, imo l where a.mnave = b.nn and".
+		                           " a.mcontenedor = d.con and d.cotipo = c.tcn and a.mmercancia = e.mn and".
+		                           " a.magenciaoperador = f.aon and f.aooperador = g.opn and a.mpuertoembarque = h.pn".
+		                           " and a.mpuertodescarga = i.pn and a.mpuertodestino = j.pn and a.mservicio = k.sn".
+		                           " and a.mimo = l.imon and a.mconsignatario = ".$input->consignatarioid." and".
+		                           " a.mfecha = '".$input->fecha."'");
+		$this->desconexion();
+		return $response;
+	}
 }
 $server = new SoapServer("http://127.0.0.1:12/wsdl/db.wsdl");
 $server->setClass("db");

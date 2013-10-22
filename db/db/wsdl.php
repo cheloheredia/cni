@@ -388,6 +388,29 @@ class insertarmanifiestoentradas {
     public $fecha;
 
 }
+
+class buscarasociadoxconsignatarioentradas {
+
+    /**
+     * @var string
+     */
+    public $consignatario;
+
+}
+
+class buscarmanifiestodeconsignatarioentradas {
+
+    /**
+     * @var int
+     */
+    public $consignatarioid;
+
+    /**
+     * @var datetime
+     */
+    public $fecha;
+
+}
 // Class Map
 $classMap = array(
 	'res' => 'res',
@@ -417,5 +440,7 @@ $classMap = array(
     'insertarimoentradas' => 'insertarimoentradas',
     'buscarconsignatarioentradas' => 'buscarconsignatarioentradas',
     'insertarconsignatarioentradas' => 'insertarconsignatarioentradas',
-    'insertarmanifiestoentradas' => 'insertarmanifiestoentradas'
+    'insertarmanifiestoentradas' => 'insertarmanifiestoentradas',
+    'buscarasociadoxconsignatarioentradas' => 'buscarasociadoxconsignatarioentradas',
+    'buscarmanifiestodeconsignatarioentradas' => 'buscarmanifiestodeconsignatarioentradas'
 );
