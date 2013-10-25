@@ -62,6 +62,20 @@
       	<xsd:attribute name="estado" type="xsd:string"></xsd:attribute>
       	<xsd:attribute name="periodo" type="xsd:string"></xsd:attribute>
       </xsd:complexType>
+      <xsd:element name="generarpdfyenviarentradas"
+      	type="tns:generarpdfyenviarentradas">
+      </xsd:element>
+      <xsd:element name="generarpdfyenviarsalidas"
+      	type="tns:generarpdfyenviarsalidas">
+      </xsd:element>
+
+      <xsd:complexType name="generarpdfyenviarentradas">
+      	<xsd:attribute name="fecha" type="xsd:dateTime"></xsd:attribute>
+      </xsd:complexType>
+    
+      <xsd:complexType name="generarpdfyenviarsalidas">
+      	<xsd:attribute name="error" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="subirRequest">
@@ -76,6 +90,12 @@
   <wsdl:message name="mostrarreciensubidoResponse">
   	<wsdl:part name="mostrarreciensubidosalidas" element="tns:mostrarreciensubidosalidas"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="generarpdfyenviarRequest">
+  	<wsdl:part name="generarpdfyenviarentradas" element="tns:generarpdfyenviarentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="generarpdfyenviarResponse">
+  	<wsdl:part name="generarpdfyenviarsalidas" element="tns:generarpdfyenviarsalidas"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="manifiesto">
     <wsdl:operation name="subir">
       <wsdl:input message="tns:subirRequest"/>
@@ -84,6 +104,10 @@
     <wsdl:operation name="mostrarreciensubido">
     	<wsdl:input message="tns:mostrarreciensubidoRequest"></wsdl:input>
     	<wsdl:output message="tns:mostrarreciensubidoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generarpdfyenviar">
+    	<wsdl:input message="tns:generarpdfyenviarRequest"></wsdl:input>
+    	<wsdl:output message="tns:generarpdfyenviarResponse"></wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="manifiestoSOAP" type="tns:manifiesto">
@@ -113,6 +137,16 @@
   		</wsdl:input>
   		<wsdl:output>
 
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="generarpdfyenviar">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:14/manifiesto/generarpdfyenviar" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>

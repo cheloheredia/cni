@@ -172,11 +172,31 @@ class manifiestomaritimo {
 
 }
 
+class generarpdfyenviarentradas {
+
+    /**
+     * @var datetime
+     */
+    public $fecha;
+
+}
+
+class generarpdfyenviarsalidas {
+
+    /**
+     * @var string
+     */
+    public $error;
+
+}
+
 // Class Map
 $classMap = array(
 	'subirentradas' => 'subirentradas',
 	'subirsalidas' => 'subirsalidas',
     'mostrarreciensubidoentradas' => 'mostrarreciensubidoentradas',
     'mostrarreciensubidosalidas' => 'mostrarreciensubidosalidas',
-    'manifiestomaritimo' => 'manifiestomaritimo'
+    'manifiestomaritimo' => 'manifiestomaritimo',
+    'generarpdfyenviarentradas' => 'generarpdfyenviarentradas',
+    'generarpdfyenviarsalidas' => 'generarpdfyenviarsalidas'
 );

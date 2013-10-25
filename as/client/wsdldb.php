@@ -388,12 +388,34 @@ class insertarmanifiestoentradas {
     public $fecha;
 
 }
-// Class Map
 
+class buscarasociadoxconsignatarioentradas {
+
+    /**
+     * @var string
+     */
+    public $consignatario;
+
+}
+
+class buscarmanifiestodeconsignatarioentradas {
+
+    /**
+     * @var int
+     */
+    public $consignatarioid;
+
+    /**
+     * @var datetime
+     */
+    public $fecha;
+
+}
+// Class Map
 $GLOBALS['classMapdb'] = array(
 	'res' => 'res',
-	'resquery' => 'resquery',
-	'filas' => 'filas',
+    'resquery' => 'resquery',
+    'filas' => 'filas',
     'buscaritementradas' => 'buscaritementradas',
     'insertaritementradas' => 'insertaritementradas',
     'buscaragenciaentradas' => 'buscaragenciaentradas',
@@ -418,5 +440,8 @@ $GLOBALS['classMapdb'] = array(
     'insertarimoentradas' => 'insertarimoentradas',
     'buscarconsignatarioentradas' => 'buscarconsignatarioentradas',
     'insertarconsignatarioentradas' => 'insertarconsignatarioentradas',
-    'insertarmanifiestoentradas' => 'insertarmanifiestoentradas'
+    'insertarmanifiestoentradas' => 'insertarmanifiestoentradas',
+    'buscarasociadoxconsignatarioentradas' => 'buscarasociadoxconsignatarioentradas',
+    'buscarmanifiestodeconsignatarioentradas' => 'buscarmanifiestodeconsignatarioentradas'
 );
+

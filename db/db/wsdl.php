@@ -444,3 +444,4 @@ $classMap = array(
     'buscarasociadoxconsignatarioentradas' => 'buscarasociadoxconsignatarioentradas',
     'buscarmanifiestodeconsignatarioentradas' => 'buscarmanifiestodeconsignatarioentradas'
 );
+
