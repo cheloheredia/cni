@@ -1,4 +1,15 @@
 <?php
+/**
+ * @author Marcelo Heredia
+ * Oct, 2013
+*/
+
+/**
+* Esta funcion llama a la libreria PHPExcel y convierte el documento excel en un array
+*
+* @param string $dir direccion del archivo excel para ser parseado
+* @return array el documento excel parseado
+*/
 function leeExcel($dir){
 	require_once '../phpexcel/Classes/PHPExcel/IOFactory.php';
 	$objPHPExcel = PHPExcel_IOFactory::load($dir);

@@ -32,6 +32,27 @@ if ($response->error == "OK"){
     "paginador' style='cursor:pointer;'>&lt; &lt; Prev</td><td colspan='10'>&nbsp;</td><td class='table-page:next ".
     "paginador' style='cursor:pointer;'>Sig &gt; &gt;</td></tr></tfoot></table>";
 	echo $table;
+    $response = $cliente->generarpdfyenviar(array("fecha" => $_GET['fecha']));
+    if ($response->error != 'OK') {
+        echo '<script type="text/javascript">
+                    $(function() {
+                        $("#dialog").html("'.$response->error.'");
+                        $("#dialog").dialog({
+                            title: "Manifiesto maritimo",
+                            width: 300,
+                            height: 100,
+                            modal: true,
+                            resizable: false,
+                            draggable: true,
+                            buttons: {
+                                        "Salir": function(){
+                                            window.location.href = "http://127.0.0.1:10/manifiesto.php";
+                                        }
+                                    }
+                        }); 
+                    });
+            </script>'; 
+    }
 } else {
 	echo '<script type="text/javascript">
 			$(function() {

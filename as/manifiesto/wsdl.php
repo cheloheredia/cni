@@ -1,7 +1,8 @@
 <?php
-
-// PHP classes corresponding to the data types in defined in WSDL
-
+/**
+ * @author Marcelo Heredia
+ * Oct, 2013
+*/
 class subirentradas {
 
     /**
@@ -190,7 +191,9 @@ class generarpdfyenviarsalidas {
 
 }
 
-// Class Map
+/**
+ * @var array
+ */
 $classMap = array(
 	'subirentradas' => 'subirentradas',
 	'subirsalidas' => 'subirsalidas',
@@ -200,3 +203,4 @@ $classMap = array(
     'generarpdfyenviarentradas' => 'generarpdfyenviarentradas',
     'generarpdfyenviarsalidas' => 'generarpdfyenviarsalidas'
 );
+

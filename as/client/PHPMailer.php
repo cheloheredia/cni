@@ -1,4 +1,19 @@
 <?php
+/**
+ * @author Marcelo Heredia
+ * Oct, 2013
+*/
+
+/**
+* Esta funcion llama a la libreria PHPMailer e evia el pdf como adjunto
+*
+* @param string $to a quien se envia el email
+* @param array $bcc mails a los que se enviaran copias
+* @param string $mensaje mensaje que ira en el cuerpo del email
+* @param string $asunto asunto del email
+* @param string $pdf direccion fisica del pdf para ser adjuntado
+* @return int 0 si no ocurrio ningun error
+*/
 function enviarpdf($to, $bcc, $mensaje, $asunto, $pdf){
 	require_once("../phpmailer/class.phpmailer.php");
     $mail = new PHPMailer(); 

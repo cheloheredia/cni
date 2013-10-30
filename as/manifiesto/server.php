@@ -1,11 +1,17 @@
 <?php
+/**
+ * @author Marcelo Heredia
+ * Oct, 2013
+*/
 ini_set('soap.wsdl_cache_enabled', 0);
 ini_set('soap.wsdl_cache_ttl', 0);
-//class definitions
 require_once('wsdl.php');
 require_once('../client/wsdldb.php');
-//SERVER
 class manifiesto {
+
+	/**
+	* Esta funcion inicia todos los clientes necesarios para el funcionamiento de la clase manifiesto.
+	*/
 	public function __construct(){
 		$this->clientdb = new SoapClient('http://127.0.0.1:12/wsdl/db.wsdl',
 		                                 array('trace' => 1,
@@ -17,6 +23,12 @@ class manifiesto {
 		include_once '../client/PHPMailer.php';
 	}
 
+	/**
+	* Esta funcion realiza la sustitucion de tildes de una cadena.
+	*
+	* @param string $cadena la cadena a la cual hay que cambiar tildes
+	* @return string $texto que es la cadena cambiada
+	*/
 	public function quitar_tildes($cadena) {
 		$no_permitidas = array ("á","é","í","ó","ú","Á","É","Í","Ó","Ú","ñ","À","Ã","Ì","Ò","Ù","Ã™","Ã ","Ã¨","Ã¬",
 		                        "Ã²","Ã¹","ç","Ç","Ã¢","ê","Ã®","Ã´","Ã»","Ã‚","ÃŠ","ÃŽ","Ã”","Ã›","ü","Ã¶","Ã–","Ã¯",
@@ -27,6 +39,13 @@ class manifiesto {
 		return $texto;
 	}
 
+	/**
+	* Esta funcion realiza la subida de los datos del manifiesto a la base de datos.
+	*
+	* @param string $input=>documento direccion donde se encuentra el documento excel subido
+	* @return string $subirsalidas->error OK si no ocurrio ningun error
+	*         datetime $subirsalidas->fecha fecha en la que se subio el manifiesto
+	*/
 	public function subir($input) {
 		$res = new subirsalidas();
 		$fecha = date("Y-m-d H:i:s");
@@ -248,6 +267,14 @@ class manifiesto {
 		return $res;
 	}
 
+	/**
+	* Esta funcion busca los datos recien subidos para mostrarlos.
+	*
+	* @param detetime $input->fecha fecha en la que se subio el manifiesto
+	* @return string $mostrarreciensubidosalidas->error OK si no ocurrio ningun error
+	*		  mafiestomaritimo $mostrarreciensubidosalidas->manifiestomaritimo que contiene el manifiesto recien
+	*             subido
+	*/
 	public function mostrarreciensubido($input) {
 		$res = new mostrarreciensubidosalidas();
 		$resdb = $this->clientdb->buscarmanifiestoxfecha(array('fecha'=> $input->fecha));
@@ -285,6 +312,12 @@ class manifiesto {
 		return $res;
 	}
 
+	/**
+	* Esta funcion genera el pdf del manifiesto recien subido por asociado y lo envia.
+	*
+	* @param detetime $input->fecha fecha en la que se subio el manifiesto
+	* @return string $mostrarreciensubidosalidas->error OK si no ocurrio ningun error
+	*/
 	public function generarpdfyenviar($input) {
 		$res = new generarpdfyenviarsalidas();
 		$resdb = $this->clientdb->buscarmanifiestoxfecha(array('fecha'=> $input->fecha));
@@ -310,7 +343,7 @@ class manifiesto {
 							'<img src="../tmp/CNI.jpg" style="float:left;"><h1 align="center">'.
 							'CAMARA NACIONAL DE INDUSTRIAS</h1></div><p><H5>'.
 							'<DIV ALIGN=right><br>La Paz, '.date('d/m/Y').'</DIV><br><br>Se&ntilde;ores:<br>'.$rotulo.
-							'<br>Presente.-<br><br>Mediante la presente, nos es grato comunicarle que su carga arriv&oacute;'.
+							'<br>Presente.-<br><br>Mediante la presente, nos es grato comunicarle que su carga arrib&oacute;'.
 							' al puerto de "Arica" con el siguente detalle:<br><br></H5></p>'.
 							'<table class="bpmTopnTailC"><tbody><tr class="oddrow"><th>NAVE:</th><td>'.
 							$resdb0->matriz[0]->columnas[0].'</td></tr><tr class="evenrow"><th>NRO. MANIFIESTO:</th><td>'.
@@ -370,3 +403,4 @@ class manifiesto {
 $server = new SoapServer("http://127.0.0.1:14/wsdl/manifiesto.wsdl");
 $server->setClass("manifiesto");
 $server->handle();
+

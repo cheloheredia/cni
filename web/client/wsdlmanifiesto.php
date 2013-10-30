@@ -1,7 +1,8 @@
 <?php
-
-// PHP classes corresponding to the data types in defined in WSDL
-
+/**
+ * @author Marcelo Heredia
+ * Oct, 2013
+*/
 class subirentradas {
 
     /**
@@ -172,11 +173,33 @@ class manifiestomaritimo {
 
 }
 
-// Class Map
+class generarpdfyenviarentradas {
+
+    /**
+     * @var datetime
+     */
+    public $fecha;
+
+}
+
+class generarpdfyenviarsalidas {
+
+    /**
+     * @var string
+     */
+    public $error;
+
+}
+
+/**
+ * @var array
+ */
 $GLOBALS['classMapmanifiesto'] = array(
 	'subirentradas' => 'subirentradas',
     'subirsalidas' => 'subirsalidas',
     'mostrarreciensubidoentradas' => 'mostrarreciensubidoentradas',
     'mostrarreciensubidosalidas' => 'mostrarreciensubidosalidas',
-    'manifiestomaritimo' => 'manifiestomaritimo'
+    'manifiestomaritimo' => 'manifiestomaritimo',
+    'generarpdfyenviarentradas' => 'generarpdfyenviarentradas',
+    'generarpdfyenviarsalidas' => 'generarpdfyenviarsalidas'
 );

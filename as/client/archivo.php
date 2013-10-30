@@ -1,4 +1,9 @@
 <?php
+/**
+ * @author Marcelo Heredia
+ * Oct, 2013
+*/
+
 $archivo = $_FILES['archivo']['name'];
 if ($archivo != "") {
     $destino =  "../tmp/".$archivo;
