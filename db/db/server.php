@@ -589,6 +589,278 @@ class db {
 		$this->desconexion();
 		return $response;
 	}
+
+	/**
+	* Esta funcion busca el turno de la tabla turno.
+	*
+	* @param datetime $input->turno turno que se desea buscar
+	* @return int resquery->error que es 0 cuando no existe un error
+	*		  matriz resquery->matriz que contiene el resultado de la consulta
+	*/
+	public function buscarturno($input) {
+		$this->conexion();
+		$response = $this->mostrar("select a.tn, a.tturno from turno a where a.tturno = '".$input->turno."'");
+		$this->desconexion();
+		return $response;
+	}
+
+	/**
+	* Esta funcion inserta un turno en la tabla turno.
+	*
+	* @param string $input->turno turno para insertar
+	* @return int res->res que es 0 cuando no existe un error
+	*
+	*/
+	public function insertarturno($input) {
+		$this->conexion();
+		$response = new res();
+		if ($this->ejecutarquery("insert into turno values('','".$input->turno."')")) {
+			$response->res = 0;
+		} else {
+			$response->res = 1;
+		}
+		$this->desconexion();
+		return $response;
+	}
+
+	/**
+	* Esta funcion busca un almacen de la tabla almacen.
+	*
+	* @param string $input->almacen almacen que se desea buscar
+	* @return int resquery->error que es 0 cuando no existe un error
+	*		  matriz resquery->matriz que contiene el resultado de la consulta
+	*/
+	public function buscaralmacen($input) {
+		$this->conexion();
+		$response = $this->mostrar("select a.aln, a.alalmacen from almacen a where a.alalmacen = '".$input->almacen."'");
+		$this->desconexion();
+		return $response;
+	}
+
+	/**
+	* Esta funcion inserta un almacen en la tabla almacen.
+	*
+	* @param string $input->almacen turno para insertar
+	* @return int res->res que es 0 cuando no existe un error
+	*
+	*/
+	public function insertaralmacen($input) {
+		$this->conexion();
+		$response = new res();
+		if ($this->ejecutarquery("insert into almacen values('','".$input->almacen."')")) {
+			$response->res = 0;
+		} else {
+			$response->res = 1;
+		}
+		$this->desconexion();
+		return $response;
+	}
+
+	/**
+	* Esta funcion busca un lugar de la tabla lugar.
+	*
+	* @param int $input->almacen almacen que se desea buscar
+	* @param string $input->lugar lugar que se desea buscar
+	* @return int resquery->error que es 0 cuando no existe un error
+	*		  matriz resquery->matriz que contiene el resultado de la consulta
+	*/
+	public function buscarlugar($input) {
+		$this->conexion();
+		$response = $this->mostrar("select a.ln, a.lalmacen, a.llugar from lugar a where a.lalmacen = ".$input->almacen.
+		                           " and a.llugar = '".$input->lugar."'");
+		$this->desconexion();
+		return $response;
+	}
+
+	/**
+	* Esta funcion inserta un lugar en la tabla lugar.
+	*
+	* @param int $input->almacen almacen que se desea insertar
+	* @param string $input->lugar lugar que se desea insertar
+	* @return int res->res que es 0 cuando no existe un error
+	*
+	*/
+	public function insertarlugar($input) {
+		$this->conexion();
+		$response = new res();
+		if ($this->ejecutarquery("insert into lugar values('',".$input->almacen.",'".$input->lugar."')")) {
+			$response->res = 0;
+		} else {
+			$response->res = 1;
+		}
+		$this->desconexion();
+		return $response;
+	}
+
+	/**
+	* Esta funcion busca un transportista de la tabla transportista.
+	*
+	* @param string $input->transportista transportista que se desea buscar
+	* @return int resquery->error que es 0 cuando no existe un error
+	*		  matriz resquery->matriz que contiene el resultado de la consulta
+	*/
+	public function buscartransportista($input) {
+		$this->conexion();
+		$response = $this->mostrar("select a.transn, a.transtransportista from transportista a where".
+		                           " a.transtransportista = '".$input->transportista."'");
+		$this->desconexion();
+		return $response;
+	}
+
+	/**
+	* Esta funcion inserta un transportista en la tabla transportista.
+	*
+	* @param string $input->transportista transportista que se desea insertar
+	* @return int res->res que es 0 cuando no existe un error
+	*
+	*/
+	public function insertartransportista($input) {
+		$this->conexion();
+		$response = new res();
+		if ($this->ejecutarquery("insert into transportista values('','".$input->transportista."')")) {
+			$response->res = 0;
+		} else {
+			$response->res = 1;
+		}
+		$this->desconexion();
+		return $response;
+	}
+
+	/**
+	* Esta funcion busca un camion de la tabla camion.
+	*
+	* @param string $input->camion camion que se desea buscar
+	* @param int $input->transportista transportista que se desea buscar
+	* @return int resquery->error que es 0 cuando no existe un error
+	*		  matriz resquery->matriz que contiene el resultado de la consulta
+	*/
+	public function buscarcamion($input) {
+		$this->conexion();
+		$response = $this->mostrar("select a.can, a.caplaca, a.catransportista from camion a where a.caplaca = '".
+		                           $input->camion."' and a.catransportista = ".$input->transportista);
+		$this->desconexion();
+		return $response;
+	}
+
+	/**
+	* Esta funcion inserta un camion en la tabla camion.
+	*
+	* @param int $input->transportista transportista que se desea insertar
+	* @param string $input->camion camion que se desea insertar
+	* @return int res->res que es 0 cuando no existe un error
+	*
+	*/
+	public function insertarcamion($input) {
+		$this->conexion();
+		$response = new res();
+		if ($this->ejecutarquery("insert into camion values('','".$input->camion."',".$input->transportista.")")) {
+			$response->res = 0;
+		} else {
+			$response->res = 1;
+		}
+		$this->desconexion();
+		return $response;
+	}
+
+	/**
+	* Esta funcion busca un tipo de bulto de la tabla tbulto.
+	*
+	* @param string $input->tipo tipo de bulto que se desea buscar
+	* @return int resquery->error que es 0 cuando no existe un error
+	*		  matriz resquery->matriz que contiene el resultado de la consulta
+	*/
+	public function buscartipobulto($input) {
+		$this->conexion();
+		$response = $this->mostrar("select a.tbn, a.tbtipo from tbulto a where a.tbtipo = '".$input->tipo."'");
+		$this->desconexion();
+		return $response;
+	}
+
+	/**
+	* Esta funcion inserta un tipo de bulto en la tabla tbulto.
+	*
+	* @param string $input->tipo tipo de bulto que se desea insertar
+	* @return int res->res que es 0 cuando no existe un error
+	*
+	*/
+	public function insertartipobulto($input) {
+		$this->conexion();
+		$response = new res();
+		if ($this->ejecutarquery("insert into tbulto values('','".$input->tipo."')")) {
+			$response->res = 0;
+		} else {
+			$response->res = 1;
+		}
+		$this->desconexion();
+		return $response;
+	}
+
+	/**
+	* Esta funcion busca un bulto de la tabla bulto.
+	*
+	* @param int $input->tipo tipo de bulto que se desea buscar
+	* @param string $input->bulto bulto que se desea buscar
+	* @return int resquery->error que es 0 cuando no existe un error
+	*		  matriz resquery->matriz que contiene el resultado de la consulta
+	*/
+	public function buscarbulto($input) {
+		$this->conexion();
+		$response = $this->mostrar("select a.bn, a.bbulto, a.btipo from bulto a where a.bbulto = '".$input->bulto.
+		                           "' and a.btipo = ".$input->tipo);
+		$this->desconexion();
+		return $response;
+	}
+
+	/**
+	* Esta funcion inserta un bulto en la tabla bulto.
+	*
+	* @param int $input->tipo tipo de bulto que se desea insertar
+	* @param string $input->butlo bulto que se desea insertar
+	* @return int res->res que es 0 cuando no existe un error
+	*
+	*/
+	public function insertarbutlo($input) {
+		$this->conexion();
+		$response = new res();
+		if ($this->ejecutarquery("insert into bulto values('','".$input->bulto."',".$input->tipo.")")) {
+			$response->res = 0;
+		} else {
+			$response->res = 1;
+		}
+		$this->desconexion();
+		return $response;
+	}
+
+	/**
+	* Esta funcion inserta un planificacion en la tabla planificacion.
+	*
+	* @param int $input->turno turno de la planificacion que se desea insertar
+	* @param int $input->lugar lugar de la planificacion que se desea insertar
+	* @param int $input->contenedor contenedor de la planificacion que se desea insertar
+	* @param int $input->camion camion de la planificacion que se desea insertar
+	* @param string $input->matriz matriz de la planificacion que se desea insertar
+	* @param string $input->cantidad cantidad de la planificacion que se desea insertar
+	* @param string $input->peso peso de la planificacion que se desea insertar
+	* @param int $input->butlo bulto de la planificacion que se desea insertar
+	* @param string $input->baroti baroti de la planificacion que se desea insertar
+	* @param int $input->destino destion de la planificacion que se desea insertar
+	* @param datetime $input->fecha fecha de la planificacion que se desea insertar
+	* @return int res->res que es 0 cuando no existe un error
+	*
+	*/
+	public function insertarplanificacion($input) {
+		$this->conexion();
+		$response = new res();
+		if ($this->ejecutarquery("insert into planificacion values('',".$input->turno.",".$input->lugar.",".
+		    $input->contenedor.",".$input->camion.",'".$input->matriz."','".$input->cantidad."','".
+		    $input->peso."',".$input->bulto.",'".$input->baroti."',".$input->destino.",'".$input->fecha."')")) {
+			$response->res = 0;
+		} else {
+			$response->res = 1;
+		}
+		$this->desconexion();
+		return $response;
+	}
 }
 $server = new SoapServer("http://127.0.0.1:12/wsdl/db.wsdl");
 $server->setClass("db");
