@@ -1,7 +1,8 @@
 <?php
-
-// PHP classes corresponding to the data types in defined in WSDL
-
+/**
+ * @author Marcelo Heredia
+ * Oct, 2013
+*/
 class res {
 
     /**
@@ -411,7 +412,225 @@ class buscarmanifiestodeconsignatarioentradas {
     public $fecha;
 
 }
-// Class Map
+
+class buscarturnoentradas {
+
+    /**
+     * @var string
+     */
+    public $turno;
+
+}
+
+class insertarturnoentradas {
+
+    /**
+     * @var string
+     */
+    public $turno;
+
+}
+
+class buscaralmacenentradas {
+
+    /**
+     * @var string
+     */
+    public $almacen;
+
+}
+
+class insertaralmacenentradas {
+
+    /**
+     * @var string
+     */
+    public $almacen;
+
+}
+
+class buscarlugarentradas {
+
+    /**
+     * @var int
+     */
+    public $almacen;
+
+    /**
+     * @var string
+     */
+    public $lugar;
+
+}
+
+class insertarlugarentradas {
+
+    /**
+     * @var int
+     */
+    public $almacen;
+
+    /**
+     * @var string
+     */
+    public $lugar;
+
+}
+
+class buscartransportistaentradas {
+
+    /**
+     * @var string
+     */
+    public $transportista;
+
+}
+
+class insertartransportistaentradas {
+
+    /**
+     * @var string
+     */
+    public $transportista;
+
+}
+
+class buscarcamionentradas {
+
+    /**
+     * @var int
+     */
+    public $transportista;
+
+    /**
+     * @var string
+     */
+    public $camion;
+
+}
+
+class insertarcamionentradas {
+
+    /**
+     * @var int
+     */
+    public $transportista;
+
+    /**
+     * @var string
+     */
+    public $camion;
+
+}
+
+class buscartipobultoentradas {
+
+    /**
+     * @var string
+     */
+    public $tipo;
+
+}
+
+class insertartipobultoentradas {
+
+    /**
+     * @var string
+     */
+    public $tipo;
+
+}
+
+class buscarbultoentradas {
+
+    /**
+     * @var string
+     */
+    public $bulto;
+
+    /**
+     * @var int
+     */
+    public $tipo;
+
+}
+
+class insertarbutloentradas {
+
+    /**
+     * @var string
+     */
+    public $bulto;
+
+    /**
+     * @var int
+     */
+    public $tipo;
+
+}
+
+class insertarplanificacionentradas {
+
+    /**
+     * @var int
+     */
+    public $turno;
+
+    /**
+     * @var int
+     */
+    public $lugar;
+
+    /**
+     * @var int
+     */
+    public $contenedor;
+
+    /**
+     * @var int
+     */
+    public $camion;
+
+    /**
+     * @var string
+     */
+    public $matriz;
+
+    /**
+     * @var string
+     */
+    public $cantidad;
+
+    /**
+     * @var string
+     */
+    public $peso;
+
+    /**
+     * @var int
+     */
+    public $bulto;
+
+    /**
+     * @var string
+     */
+    public $baroti;
+
+    /**
+     * @var int
+     */
+    public $destino;
+
+    /**
+     * @var datetime
+     */
+    public $fecha;
+
+}
+
+/**
+* @var array
+*/
 $GLOBALS['classMapdb'] = array(
 	'res' => 'res',
     'resquery' => 'resquery',
@@ -442,6 +661,21 @@ $GLOBALS['classMapdb'] = array(
     'insertarconsignatarioentradas' => 'insertarconsignatarioentradas',
     'insertarmanifiestoentradas' => 'insertarmanifiestoentradas',
     'buscarasociadoxconsignatarioentradas' => 'buscarasociadoxconsignatarioentradas',
-    'buscarmanifiestodeconsignatarioentradas' => 'buscarmanifiestodeconsignatarioentradas'
+    'buscarmanifiestodeconsignatarioentradas' => 'buscarmanifiestodeconsignatarioentradas',
+    'buscarturnoentradas' => 'buscarturnoentradas',
+    'insertarturnoentradas' => 'insertarturnoentradas',
+    'buscaralmacenentradas' => 'buscaralmacenentradas',
+    'insertaralmacenentradas' => 'insertaralmacenentradas',
+    'buscarlugarentradas' => 'buscarlugarentradas',
+    'insertarlugarentradas' => 'insertarlugarentradas',
+    'buscartransportistaentradas' => 'buscartransportistaentradas',
+    'insertartransportistaentradas' => 'insertartransportistaentradas',
+    'buscarcamionentradas' => 'buscarcamionentradas',
+    'insertarcamionentradas' => 'insertarcamionentradas',
+    'buscartipobultoentradas' => 'buscartipobultoentradas',
+    'insertartipobultoentradas' => 'insertartipobultoentradas',
+    'buscarbultoentradas' => 'buscarbultoentradas',
+    'insertarbutloentradas' => 'insertarbutloentradas',
+    'insertarplanificacionentradas' => 'insertarplanificacionentradas'
 );
 
