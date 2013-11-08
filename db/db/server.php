@@ -861,6 +861,27 @@ class db {
 		$this->desconexion();
 		return $response;
 	}
+
+	/**
+	* Esta funcion busca las planificacion subidas en una fecha determinada en la tabla planificacion.
+	*
+	* @param datetime $input->fecha la fecha de subida de la planificacion
+	* @return int resquery->error que es 0 cuando no existe un error
+	*		  matriz resquery->matriz que contiene el resultado de la consulta
+	*/
+	public function buscarplanificacionxfecha($input) {
+		$this->conexion();
+		$response = $this->mostrar("select b.tturno, c.alalmacen, e.cocontenedor, f.tctipo, g.caplaca, a.plmatriz,".
+		                           " a.plcantidad, a.plpeso, i.bbulto, j.tbtipo, d.llugar, a.plbaroti,".
+		                           " h.transtransportista, k.ppuerto from planificacion a, turno b, almacen c,".
+		                           " lugar d, contenedor e, tcontenedor f, camion g, transportista h, bulto i,".
+		                           " tbulto j, puerto k where a.plturno = b.tn and a.pllugar = d.ln and".
+		                           " d.lalmacen = c.aln and a.plcontenedor = e.con and e.cotipo = f.tcn and".
+		                           " a.plcamion = g.can and g.catransportista = h.transn and a.plbulto = i.bn and".
+		                           " i.btipo = j.tbn and a.pldestino = k.pn and a.plfecha = '".$input->fecha."'");
+		$this->desconexion();
+		return $response;
+	}
 }
 $server = new SoapServer("http://127.0.0.1:12/wsdl/db.wsdl");
 $server->setClass("db");

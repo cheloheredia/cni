@@ -628,6 +628,15 @@ class insertarplanificacionentradas {
 
 }
 
+class buscarplanificacionxfechaentradas {
+
+    /**
+     * @var datetime
+     */
+    public $fecha;
+
+}
+
 /**
 * @var array
 */
@@ -676,6 +685,7 @@ $classMap = array(
     'insertartipobultoentradas' => 'insertartipobultoentradas',
     'buscarbultoentradas' => 'buscarbultoentradas',
     'insertarbutloentradas' => 'insertarbutloentradas',
-    'insertarplanificacionentradas' => 'insertarplanificacionentradas'
+    'insertarplanificacionentradas' => 'insertarplanificacionentradas',
+    'buscarplanificacionxfechaentradas' => 'buscarplanificacionxfechaentradas'
 );
 

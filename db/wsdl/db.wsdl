@@ -29,11 +29,9 @@
       </xsd:complexType>
       <xsd:element name="insertaritementradas"
       	type="tns:insertaritementradas">
-      </xsd:element>
+      </xsd:element>
 
-
-      <xsd:complexType name="insertaritementradas">
-
+      <xsd:complexType name="insertaritementradas">
       	<xsd:attribute name="item" type="xsd:string"></xsd:attribute>
       </xsd:complexType>
       <xsd:element name="res" type="tns:res"></xsd:element>
@@ -658,6 +656,20 @@
       	<xsd:attribute name="destino" type="xsd:int"></xsd:attribute>
       	<xsd:attribute name="fecha" type="xsd:dateTime"></xsd:attribute>
       </xsd:complexType>
+      <xsd:element name="buscarplanificacionxfechaentradas"
+      	type="tns:buscarplanificacionxfechaentradas">
+      </xsd:element>
+      <xsd:element name="buscarplanificacionxfechaResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="buscarplanificacionxfechaentradas">
+      	<xsd:attribute name="fecha" type="xsd:dateTime"></xsd:attribute>
+      </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="buscaritemRequest">
@@ -918,6 +930,12 @@
   <wsdl:message name="insertarplanificacionResponse">
   	<wsdl:part name="insertarplanificacionsalidas" element="tns:res"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="buscarplanificacionxfechaRequest">
+  	<wsdl:part name="buscarplanificacionxfechaentradas" element="tns:buscarplanificacionxfechaentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscarplanificacionxfechaResponse">
+  	<wsdl:part name="buscarplanificacionxfechasalidas" element="tns:resquery"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="db">
     <wsdl:operation name="buscaritem">
       <wsdl:input message="tns:buscaritemRequest"/>
@@ -1090,6 +1108,10 @@
     <wsdl:operation name="insertarplanificacion">
     	<wsdl:input message="tns:insertarplanificacionRequest"></wsdl:input>
     	<wsdl:output message="tns:insertarplanificacionResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarplanificacionxfecha">
+    	<wsdl:input message="tns:buscarplanificacionxfechaRequest"></wsdl:input>
+    	<wsdl:output message="tns:buscarplanificacionxfechaResponse"></wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="dbSOAP" type="tns:db">
@@ -1651,6 +1673,16 @@
   		</wsdl:input>
   		<wsdl:output>
 
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="buscarplanificacionxfecha">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/buscarplanificacionxfecha" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
