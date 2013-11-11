@@ -31,7 +31,7 @@ if ($_POST["action"] == "upload") {
             $respuesta = $cliente->subir(array('documento'=> $destino));
             if ($respuesta->error == 'OK') {
                 $status = 'Ingresado Correctamente';
-                //$dir = 'http://127.0.0.1:10/action/tablamanifiestosubido.php?fecha='.$respuesta->fecha;
+                $dir = 'http://127.0.0.1:10/action/tablaplanificacionsubido.php?fecha='.$respuesta->fecha;
             } else {
                 $status = $respuesta->error;
                 $dir = 'http://127.0.0.1:10/planificacion.php';
