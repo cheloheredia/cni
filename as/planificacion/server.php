@@ -254,7 +254,56 @@ class planificacion {
 				}
 			}
 		}	
-		//unlink($input->documento);
+		unlink($input->documento);
+		return $res;
+	}
+
+	/**
+	* Esta funcion busca los datos recien subidos para mostrarlos.
+	*
+	* @param detetime $input->fecha fecha en la que se subio la planificacion
+	* @return string $mostrarreciensubidosalidas->error OK si no ocurrio ningun error
+	*		  turno $mostrarreciensubidosalidas->planificacion que contiene la planficacion recien subida
+	*/
+	public function mostrarreciensubido($input) {
+		$res = new mostrarreciensubidosalidas();
+		$resdb = $this->clientdb->buscarplanificacionxfecha(array('fecha'=> $input->fecha));
+		if ($resdb->error == 0) {
+			$res->error = 'OK';
+			$turno = '';
+			$turnoi = -1;
+			$almacen = '';
+			$almaceni = -1;
+			$tablai = 0;
+			for ($i = 0; $i < sizeof($resdb->matriz); $i++) {
+				if ($resdb->matriz[$i]->columnas[0] != $turno) {
+					$turnoi++;
+					$turno = $resdb->matriz[$i]->columnas[0];
+					$res->planificacion[$turnoi]->turno = $turno;
+				}
+				if ($resdb->matriz[$i]->columnas[0] == $turno && $resdb->matriz[$i]->columnas[1] != $almacen) {
+					$almaceni++;
+					$almacen = $resdb->matriz[$i]->columnas[1];
+					$res->planificacion[$turnoi]->almacen[$almaceni]->almacen = $almacen;
+					$tablai = 0;
+				}
+				$res->planificacion[$turnoi]->almacen[$almaceni]->tabla[$tablai]->contenedor = $resdb->matriz[$i]->columnas[2];
+				$res->planificacion[$turnoi]->almacen[$almaceni]->tabla[$tablai]->tipo = $resdb->matriz[$i]->columnas[3];
+				$res->planificacion[$turnoi]->almacen[$almaceni]->tabla[$tablai]->placa = $resdb->matriz[$i]->columnas[4];
+				$res->planificacion[$turnoi]->almacen[$almaceni]->tabla[$tablai]->matriz = $resdb->matriz[$i]->columnas[5];
+				$res->planificacion[$turnoi]->almacen[$almaceni]->tabla[$tablai]->cantidad = $resdb->matriz[$i]->columnas[6];
+				$res->planificacion[$turnoi]->almacen[$almaceni]->tabla[$tablai]->peso = $resdb->matriz[$i]->columnas[7];
+				$res->planificacion[$turnoi]->almacen[$almaceni]->tabla[$tablai]->descripcion = $resdb->matriz[$i]->columnas[8];
+				$res->planificacion[$turnoi]->almacen[$almaceni]->tabla[$tablai]->tipobulto = $resdb->matriz[$i]->columnas[9];
+				$res->planificacion[$turnoi]->almacen[$almaceni]->tabla[$tablai]->lugar = $resdb->matriz[$i]->columnas[10];
+				$res->planificacion[$turnoi]->almacen[$almaceni]->tabla[$tablai]->baroti = $resdb->matriz[$i]->columnas[11];
+				$res->planificacion[$turnoi]->almacen[$almaceni]->tabla[$tablai]->transportista = $resdb->matriz[$i]->columnas[12];
+				$res->planificacion[$turnoi]->almacen[$almaceni]->tabla[$tablai]->destino = $resdb->matriz[$i]->columnas[13];
+				$tablai++;
+			}
+		} else {
+			$res->error = 'Hubo un error al mostrar los datos recien subidos, favor vuelva a intentarlo';
+		}
 		return $res;
 	}
 }

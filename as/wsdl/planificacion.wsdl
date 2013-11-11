@@ -17,6 +17,52 @@
       	<xsd:attribute name="error" type="xsd:string"></xsd:attribute>
       	<xsd:attribute name="fecha" type="xsd:dateTime"></xsd:attribute>
       </xsd:complexType>
+      <xsd:element name="mostrarreciensubidoentradas"
+      	type="tns:mostrarreciensubidoentradas">
+      </xsd:element>
+      <xsd:element name="mostrarreciensubidosalidas"
+      	type="tns:mostrarreciensubidosalidas">
+      </xsd:element>
+
+      <xsd:complexType name="mostrarreciensubidoentradas">
+      	<xsd:attribute name="fecha" type="xsd:dateTime"></xsd:attribute>
+      </xsd:complexType>
+    
+      <xsd:complexType name="mostrarreciensubidosalidas">
+      	<xsd:sequence>
+      		<xsd:element name="planificacion" type="tns:turno" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      	</xsd:sequence>
+      	<xsd:attribute name="error" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
+    
+      <xsd:complexType name="turno">
+      	<xsd:sequence>
+      		<xsd:element name="almacen" type="tns:almacen" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      	</xsd:sequence>
+      	<xsd:attribute name="turno" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
+    
+      <xsd:complexType name="almacen">
+      	<xsd:sequence>
+      		<xsd:element name="tabla" type="tns:tabla" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+      	</xsd:sequence>
+      	<xsd:attribute name="almacen" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
+    
+      <xsd:complexType name="tabla">
+      	<xsd:attribute name="contenedor" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="tipo" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="placa" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="matriz" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="cantidad" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="peso" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="descripcion" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="tipobulto" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="lugar" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="baroti" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="transportista" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="destino" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="subirRequest">
@@ -25,10 +71,20 @@
   <wsdl:message name="subirResponse">
     <wsdl:part element="tns:subirsalidas" name="subirsalidas"/>
   </wsdl:message>
+  <wsdl:message name="mostrarreciensubidoRequest">
+  	<wsdl:part name="mostrarreciensubidoentradas" element="tns:mostrarreciensubidoentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="mostrarreciensubidoResponse">
+  	<wsdl:part name="mostrarreciensubidosalidas" element="tns:mostrarreciensubidosalidas"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="planificacion">
     <wsdl:operation name="subir">
       <wsdl:input message="tns:subirRequest"/>
       <wsdl:output message="tns:subirResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="mostrarreciensubido">
+    	<wsdl:input message="tns:mostrarreciensubidoRequest"></wsdl:input>
+    	<wsdl:output message="tns:mostrarreciensubidoResponse"></wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="planificacionSOAP" type="tns:planificacion">
@@ -39,6 +95,19 @@
 
   		<soap:operation
   			soapAction="http://127.0.0.1:14/planificacion/subir" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="mostrarreciensubido">
+
+  		<soap:operation
+  			soapAction="http://127.0.0.1:14/planificacion/mostrarreciensubido" />
   		<wsdl:input>
 
   			<soap:body use="literal" />

@@ -3,8 +3,8 @@
 var_dump(leeExcel('C:\Users\Marcelo\Desktop\26.10.2013 1ER xlxs.xlsx'));*/
 include 'planificacion/wsdl.php';
 $cliente=new SoapClient('http://127.0.0.1:14/wsdl/planificacion.wsdl',array( 'trace' => 1,'cache_wsdl' => WSDL_CACHE_NONE, 'features' => SOAP_SINGLE_ELEMENT_ARRAYS, 'classmap'=>$classMap));
-$respuesta=$cliente->subir(array('documento'=> 'C:\Users\Marcelo\Desktop\26.10.2013 1ER xlxs.xlsx'));
-echo ($respuesta->error);
+$respuesta=$cliente->mostrarreciensubido(array('fecha'=> '2013-11-07 21:12:59'));
+var_dump ($respuesta->planificacion[0]->almacen[2]);
 /*include 'client/mPDF.php';
 include 'client/PHPMailer.php';
 $html = '<html>

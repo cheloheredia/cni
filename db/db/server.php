@@ -878,7 +878,8 @@ class db {
 		                           " tbulto j, puerto k where a.plturno = b.tn and a.pllugar = d.ln and".
 		                           " d.lalmacen = c.aln and a.plcontenedor = e.con and e.cotipo = f.tcn and".
 		                           " a.plcamion = g.can and g.catransportista = h.transn and a.plbulto = i.bn and".
-		                           " i.btipo = j.tbn and a.pldestino = k.pn and a.plfecha = '".$input->fecha."'");
+		                           " i.btipo = j.tbn and a.pldestino = k.pn and a.plfecha = '".$input->fecha."' order".
+		                           " by b.tturno, c.alalmacen");
 		$this->desconexion();
 		return $response;
 	}
