@@ -344,34 +344,74 @@ class manifiesto {
 							'CAMARA NACIONAL DE INDUSTRIAS</h1></div><p><H5>'.
 							'<DIV ALIGN=right><br>La Paz, '.date('d/m/Y').'</DIV><br><br>Se&ntilde;ores:<br>'.$rotulo.
 							'<br>Presente.-<br><br>Mediante la presente, nos es grato comunicarle que su carga arrib&oacute;'.
-							' al puerto de "Arica" con el siguente detalle:<br><br></H5></p>'.
-							'<table class="bpmTopnTailC"><tbody><tr class="oddrow"><th>NAVE:</th><td>'.
-							$resdb0->matriz[0]->columnas[0].'</td></tr><tr class="evenrow"><th>NRO. MANIFIESTO:</th><td>'.
-							$resdb0->matriz[0]->columnas[1].'</td></tr><tr class="oddrow"><th>TIPO TRANSITO:</th><td>'.
-							$resdb0->matriz[0]->columnas[7].'</td></tr><tr class="evenrow"><th>OPERADOR:</th><td>'.
-							$resdb0->matriz[0]->columnas[8].'</td></tr><tr class="oddrow"><th>PUERTO DESEMBARQUE:</th>'.
-							'<td>'.$resdb0->matriz[0]->columnas[12].'</td></tr></tbody></table><br>'.
-							'<table class="bpmTopnTailC"><thead><tr class="headerrow"><th>MARCA CONTENEDOR</th>'.
-							'<th>TIPO CONTENEDOR</th><th>MERCANCIA</th><th>TARA</th><th>NETO</th><th>BRUTO</th>'.
-							'<th>BL</th><th>PUERTO ORIGEN</th><th>DESTINO BOLIVIA</th><th>SERVICIO</th><th>SELLOS</th>'.
-							'<th>IMO</th><th>BULTOS</th></tr></thead><tbody>';
-							$rowclass = 'oddrow';
-							for ($j = 0; $j < sizeof($resdb0->matriz); $j++) { 
-								$html .= '<tr class="'.$rowclass.'"><td>'.$resdb0->matriz[$j]->columnas[9].'</td><td>'.
-								$resdb0->matriz[$j]->columnas[2].'</td><td>'.$resdb0->matriz[$j]->columnas[3].
-								'</td><td>'.$resdb0->matriz[$j]->columnas[4].'</td><td>'.$resdb0->matriz[$j]->columnas[5].
-								'</td><td>'.$resdb0->matriz[$j]->columnas[6].'</td><td>'.$resdb0->matriz[$j]->columnas[10].
-								'</td><td>'.$resdb0->matriz[$j]->columnas[11].'</td><td>'.$resdb0->matriz[$j]->columnas[13].
-								'</td><td>'.$resdb0->matriz[$j]->columnas[14].'</td><td>'.
-								$resdb0->matriz[$j]->columnas[15].'</td><td>'.$resdb0->matriz[$j]->columnas[16].
-								'</td><td>'.$resdb0->matriz[$j]->columnas[17].'</td></tr>';
-								if (($j + 1) % 2 == 0) {
-									$rowclass = 'oddrow';
-								} else {
-									$rowclass = 'evenrow';
+							' al puerto de "Arica" con el siguente detalle:<br><br></H5></p>';
+							if (sizeof($resdb0->matriz) == 1) {
+								$html .= '<table class="bpmTopnTailC"><tbody><tr class="oddrow"><th>NAVE:</th><td>'.
+								$resdb0->matriz[0]->columnas[0].'</td><th>NRO. MANIFIESTO:'.
+								'</th><td>'.$resdb0->matriz[0]->columnas[1].'</td></tr><tr class="evenrow">'.
+								'<th>TIPO TRANSITO:</th><td>'.$resdb0->matriz[0]->columnas[7].'</td>'.
+								'<th>OPERADOR:</th><td>'.$resdb0->matriz[0]->columnas[8].
+								'</td></tr><tr class="oddrow"><th>PUERTO DESEMBARQUE:</th><td>'.
+								$resdb0->matriz[0]->columnas[12].'</td><th>MARCA CONTENEDOR:</th><td>'.
+								$resdb0->matriz[0]->columnas[9].'</td></tr><tr class="evenrow"><th>TIPO CONTENEDOR:</th><td>'.
+								$resdb0->matriz[0]->columnas[2].'</td><th>MERCANCIA:</th><td>'.
+								$resdb0->matriz[0]->columnas[3].'</td></tr><tr class="oddrow"><th>TARA:</th><td>'.
+								$resdb0->matriz[0]->columnas[4].'</td><th>NETO:</th><td>'.
+								$resdb0->matriz[0]->columnas[5].'</td></tr><tr class="evenrow"><th>BRUTO:</th><td>'.
+								$resdb0->matriz[0]->columnas[6].'</td><th>BL:</th><td>'.
+								$resdb0->matriz[0]->columnas[10].'</td></tr><tr class="oddrow"><th>PUERTO ORIGEN:</th><td>'.
+								$resdb0->matriz[0]->columnas[11].'</td><th>DESTINO BOLIVIA:</th><td>'.
+								$resdb0->matriz[0]->columnas[13].'</td></tr><tr class="evenrow"><th>SERVICIO:</th><td>'.
+								$resdb0->matriz[0]->columnas[14].'</td><th>SELLOS:</th><td>'.
+								$resdb0->matriz[0]->columnas[15].'</td></tr><tr class="oddrow"><th>IMO:</th><td>'.
+								$resdb0->matriz[0]->columnas[16].'</td><th>BULTOS:</th><td>'.
+								$resdb0->matriz[0]->columnas[17].'</td>';
+							} else {
+								for ($j = 0; $j < sizeof($resdb0->matriz); $j++) { 
+									$arrayauxpuerto[$j] = $resdb0->matriz[$j]->columnas[11];
+								}
+								$arrayauxpuerto = array_unique($arrayauxpuerto, SORT_LOCALE_STRING);
+								$html .= '<table class="bpmTopnTailC"><tbody><tr class="oddrow"><th>NAVE:</th><td>'.
+								$resdb0->matriz[0]->columnas[0].'</td></tr><tr class="evenrow"><th>NRO. MANIFIESTO:</th><td>'.
+								$resdb0->matriz[0]->columnas[1].'</td></tr><tr class="oddrow"><th>TIPO TRANSITO:</th><td>'.
+								$resdb0->matriz[0]->columnas[7].'</td></tr><tr class="evenrow"><th>OPERADOR:</th><td>'.
+								$resdb0->matriz[0]->columnas[8].'</td></tr><tr class="oddrow"><th>PUERTO DESEMBARQUE:</th>'.
+								'<td>'.$resdb0->matriz[0]->columnas[12].'</td></tr>';
+								if (sizeof($arrayauxpuerto) == 1) {
+									$html .= '<tr class="evenrow"><th>PUERTO ORIGEN:</th><td>'.
+									$resdb0->matriz[0]->columnas[11].'</td></tr>';
+								}
+								$html .= '</tbody></table><br>'.
+								'<table class="bpmTopnTailC"><thead><tr class="headerrow"><th>MARCA CONTENEDOR</th>'.
+								'<th>TIPO CONTENEDOR</th><th>MERCANCIA</th><th>TARA</th><th>NETO</th><th>BRUTO</th>'.
+								'<th>BL</th>';
+								if (sizeof($arrayauxpuerto) > 1) {
+									$html .= '<th>PUERTO ORIGEN</th>';
+								}
+								$html .= '<th>DESTINO BOLIVIA</th><th>SERVICIO</th><th>SELLOS</th>'.
+								'<th>IMO</th><th>BULTOS</th></tr></thead><tbody>';
+								$rowclass = 'oddrow';
+								for ($j = 0; $j < sizeof($resdb0->matriz); $j++) { 
+									$html .= '<tr class="'.$rowclass.'"><td>'.$resdb0->matriz[$j]->columnas[9].'</td><td>'.
+									$resdb0->matriz[$j]->columnas[2].'</td><td>'.$resdb0->matriz[$j]->columnas[3].
+									'</td><td>'.$resdb0->matriz[$j]->columnas[4].'</td><td>'.$resdb0->matriz[$j]->columnas[5].
+									'</td><td>'.$resdb0->matriz[$j]->columnas[6].'</td><td>'.$resdb0->matriz[$j]->columnas[10].
+									'</td>';
+									if (sizeof($arrayauxpuerto) > 1) {
+										$html .= '<td>'.$resdb0->matriz[$j]->columnas[11].'</td>';
+									}
+									$html .= '<td>'.$resdb0->matriz[$j]->columnas[13].
+									'</td><td>'.$resdb0->matriz[$j]->columnas[14].'</td><td>'.
+									$resdb0->matriz[$j]->columnas[15].'</td><td>'.$resdb0->matriz[$j]->columnas[16].
+									'</td><td>'.$resdb0->matriz[$j]->columnas[17].'</td></tr>';
+									if (($j + 1) % 2 == 0) {
+										$rowclass = 'oddrow';
+									} else {
+										$rowclass = 'evenrow';
+									}
 								}
 							}
-							$html .= '</tbody></table><br><p color="red">*Fuente: Terminal Puerto Arica</p></body></html>';
+							$html .= '</tbody></table><br><p color="red">*Fuente: Terminal Puerto Arica - TPA</p></body></html>';
 							$pdf = crearsimple($html, $rotulo.date('d-m-Y'));
 							$mensaje = 'Su reporte de carga arrivada a Arica, esta listo.';
 							$asunto = 'PARTE DE RECEPCION MARITIMA';

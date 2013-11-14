@@ -2,9 +2,9 @@
 /*include 'client/excelPHP.php';
 var_dump(leeExcel('C:\Users\Marcelo\Desktop\26.10.2013 1ER xlxs.xlsx'));*/
 include 'planificacion/wsdl.php';
-$cliente=new SoapClient('http://127.0.0.1:14/wsdl/planificacion.wsdl',array( 'trace' => 1,'cache_wsdl' => WSDL_CACHE_NONE, 'features' => SOAP_SINGLE_ELEMENT_ARRAYS, 'classmap'=>$classMap));
-$respuesta=$cliente->mostrarreciensubido(array('fecha'=> '2013-11-07 21:12:59'));
-var_dump ($respuesta->planificacion[0]->almacen[2]);
+$cliente=new SoapClient('http://127.0.0.1:14/wsdl/manifiesto.wsdl',array( 'trace' => 1,'cache_wsdl' => WSDL_CACHE_NONE, 'features' => SOAP_SINGLE_ELEMENT_ARRAYS, 'classmap'=>$classMap));
+$respuesta=$cliente->generarpdfyenviar(array('fecha'=> '2013-10-30 13:27:59'));
+var_dump ($respuesta);
 /*include 'client/mPDF.php';
 include 'client/PHPMailer.php';
 $html = '<html>
