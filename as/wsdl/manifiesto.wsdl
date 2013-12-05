@@ -141,19 +141,22 @@
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="generarpdfyenviar">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:14/manifiesto/generarpdfyenviar" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="manifiesto">
     <wsdl:port binding="tns:manifiestoSOAP" name="manifiestoSOAP">
-      <soap:address location="http://127.0.0.1:14/manifiesto/server.php"/>
+      <soap:address location="http://127.0.0.1:12/manifiesto/server.php"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

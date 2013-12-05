@@ -883,8 +883,20 @@ class db {
 		$this->desconexion();
 		return $response;
 	}
+	/**
+	* Esta funcion busca los recintos de la tabla recinto.
+	*
+	* @return int resquery->error que es 0 cuando no existe un error
+	*		  matriz resquery->matriz que contiene el resultado de la consulta
+	*/
+	public function buscarrecintostodos($input) {
+		$this->conexion();
+		$response = $this->mostrar("select a.ren, a.rerecinto from recinto a");
+		$this->desconexion();
+		return $response;
+	}
 }
-$server = new SoapServer("http://127.0.0.1:12/wsdl/db.wsdl");
+$server = new SoapServer("http://127.0.0.1:14/wsdl/db.wsdl");
 $server->setClass("db");
 $server->handle();
 

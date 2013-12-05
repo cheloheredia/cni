@@ -120,7 +120,7 @@
   </wsdl:binding>
   <wsdl:service name="planificacion">
     <wsdl:port binding="tns:planificacionSOAP" name="planificacionSOAP">
-      <soap:address location="http://127.0.0.1:14/planificacion/server.php"/>
+      <soap:address location="http://127.0.0.1:12/planificacion/server.php"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

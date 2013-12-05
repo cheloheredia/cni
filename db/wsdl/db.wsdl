@@ -670,6 +670,20 @@
       <xsd:complexType name="buscarplanificacionxfechaentradas">
       	<xsd:attribute name="fecha" type="xsd:dateTime"></xsd:attribute>
       </xsd:complexType>
+      <xsd:element name="buscarrecintostodosentradas"
+      	type="tns:buscarrecintostodosentradas">
+      </xsd:element>
+      <xsd:element name="buscarrecintostodosResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="buscarrecintostodosentradas">
+      	<xsd:sequence></xsd:sequence>
+      </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="buscaritemRequest">
@@ -936,6 +950,12 @@
   <wsdl:message name="buscarplanificacionxfechaResponse">
   	<wsdl:part name="buscarplanificacionxfechasalidas" element="tns:resquery"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="buscarrecintostodosRequest">
+  	<wsdl:part name="buscarrecintostodosentradas" element="tns:buscarrecintostodosentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscarrecintostodosResponse">
+  	<wsdl:part name="buscarrecintostodossalidas" element="tns:resquery"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="db">
     <wsdl:operation name="buscaritem">
       <wsdl:input message="tns:buscaritemRequest"/>
@@ -1112,6 +1132,10 @@
     <wsdl:operation name="buscarplanificacionxfecha">
     	<wsdl:input message="tns:buscarplanificacionxfechaRequest"></wsdl:input>
     	<wsdl:output message="tns:buscarplanificacionxfechaResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarrecintostodos">
+    	<wsdl:input message="tns:buscarrecintostodosRequest"></wsdl:input>
+    	<wsdl:output message="tns:buscarrecintostodosResponse"></wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="dbSOAP" type="tns:db">
@@ -1677,8 +1701,21 @@
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="buscarplanificacionxfecha">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/buscarplanificacionxfecha" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="buscarrecintostodos">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/buscarrecintostodos" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
@@ -1689,7 +1726,7 @@
   </wsdl:binding>
   <wsdl:service name="db">
     <wsdl:port binding="tns:dbSOAP" name="dbSOAP">
-      <soap:address location="http://127.0.0.1:12/db/server.php"/>
+      <soap:address location="http://127.0.0.1:14/db/server.php"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
