@@ -7,13 +7,14 @@ ini_set('soap.wsdl_cache_enabled', 0);
 ini_set('soap.wsdl_cache_ttl', 0);
 require_once('wsdl.php');
 require_once('../client/wsdldb.php');
+require_once('../ini/ini.php');
 class dab {
 
 	/**
 	* Esta funcion inicia todos los clientes necesarios para el funcionamiento de la clase dab.
 	*/
 	public function __construct(){
-		$this->clientdb = new SoapClient('http://127.0.0.1:14/wsdl/db.wsdl',
+		$this->clientdb = new SoapClient($GLOBALS['dbsdir'].'/wsdl/db.wsdl',
 		                                 array('trace' => 1,
 		                                       'cache_wsdl' => WSDL_CACHE_NONE,
 		                                       'features' => SOAP_SINGLE_ELEMENT_ARRAYS,
@@ -48,7 +49,7 @@ class dab {
 	*/
 	public function mostrarrecintos($input) {
 		$res = new mostrarrecintossalidas();
-		$resdb = $this->clientdb->buscarrecintostodos();
+		$resdb = $this->clientdb->buscarrecintosac(array('recinto' => $input->recinto));
 		if ($resdb->res == 0) {
 			$res->error = 'OK';
 			for ($i = 0; $i < sizeof($resdb->matriz); $i++) { 
@@ -62,7 +63,7 @@ class dab {
 	}
 
 }
-$server = new SoapServer("http://127.0.0.1:12/wsdl/dab.wsdl");
+$server = new SoapServer($asdir."/wsdl/dab.wsdl");
 $server->setClass("dab");
 $server->handle();
 

@@ -2,8 +2,9 @@
 /*include 'client/excelPHP.php';
 var_dump(leeExcel('C:\Users\Marcelo\Desktop\26.10.2013 1ER xlxs.xlsx'));*/
 include 'planificacion/wsdl.php';
-$cliente=new SoapClient('http://127.0.0.1:12/wsdl/dab.wsdl',array( 'trace' => 1,'cache_wsdl' => WSDL_CACHE_NONE, 'features' => SOAP_SINGLE_ELEMENT_ARRAYS, 'classmap'=>$classMap));
-$respuesta=$cliente->mostrarrecintos();
+include 'ini/ini.php';
+$cliente=new SoapClient($asdir.'/wsdl/dab.wsdl',array( 'trace' => 1,'cache_wsdl' => WSDL_CACHE_NONE, 'features' => SOAP_SINGLE_ELEMENT_ARRAYS, 'classmap'=>$classMap));
+$respuesta=$cliente->mostrarrecintos(array('recinto'=>'la'));
 var_dump ($respuesta);
 /*include 'client/mPDF.php';
 include 'client/PHPMailer.php';

@@ -12,9 +12,10 @@
       </xsd:element>
 
       <xsd:complexType name="mostrarrecintosentradas">
-      	<xsd:sequence></xsd:sequence>
+
+      	<xsd:attribute name="recinto" type="xsd:string"></xsd:attribute>
       </xsd:complexType>
-    
+
       <xsd:complexType name="mostrarrecintossalidas">
       	<xsd:sequence>
       		<xsd:element name="recinto" type="tns:recinto" maxOccurs="unbounded" minOccurs="0"></xsd:element>
@@ -60,7 +61,7 @@
   </wsdl:binding>
   <wsdl:service name="dab">
     <wsdl:port binding="tns:dabSOAP" name="dabSOAP">
-      <soap:address location="http://127.0.0.1:12/dab/server.php"/>
+      <soap:address location="http://127.0.0.1:14/dab/server.php"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -6,6 +6,7 @@
 ini_set('soap.wsdl_cache_enabled', 0);
 ini_set('soap.wsdl_cache_ttl', 0);
 require_once('wsdl.php');
+require_once('../ini/ini.php');
 class db {
 
 	/**
@@ -884,19 +885,21 @@ class db {
 		return $response;
 	}
 	/**
-	* Esta funcion busca los recintos de la tabla recinto.
+	* Esta funcion busca los recintos que coincidan de la tabla recinto.
 	*
+	* @param string $input->recinto recinto que se quere buscar coincidencias
 	* @return int resquery->error que es 0 cuando no existe un error
 	*		  matriz resquery->matriz que contiene el resultado de la consulta
 	*/
-	public function buscarrecintostodos($input) {
+	public function buscarrecintosac($input) {
 		$this->conexion();
-		$response = $this->mostrar("select a.ren, a.rerecinto from recinto a");
+		$response = $this->mostrar("select a.ren, a.rerecinto from recinto a where a.rerecinto like '%".
+		                           $input->recinto."%' limit 10");
 		$this->desconexion();
 		return $response;
 	}
 }
-$server = new SoapServer("http://127.0.0.1:14/wsdl/db.wsdl");
+$server = new SoapServer($dbsdir."/wsdl/db.wsdl");
 $server->setClass("db");
 $server->handle();
 

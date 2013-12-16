@@ -637,6 +637,15 @@ class buscarplanificacionxfechaentradas {
 
 }
 
+class buscarrecintosacentradas {
+
+    /**
+     * @var datetime
+     */
+    public $recinto;
+
+}
+
 /**
 * @var array
 */
@@ -686,6 +695,7 @@ $classMap = array(
     'buscarbultoentradas' => 'buscarbultoentradas',
     'insertarbutloentradas' => 'insertarbutloentradas',
     'insertarplanificacionentradas' => 'insertarplanificacionentradas',
-    'buscarplanificacionxfechaentradas' => 'buscarplanificacionxfechaentradas'
+    'buscarplanificacionxfechaentradas' => 'buscarplanificacionxfechaentradas',
+    'buscarrecintosacentradas' => 'buscarrecintosacentradas'
 );
 
