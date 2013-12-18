@@ -884,6 +884,7 @@ class db {
 		$this->desconexion();
 		return $response;
 	}
+
 	/**
 	* Esta funcion busca los recintos que coincidan de la tabla recinto.
 	*
@@ -895,6 +896,329 @@ class db {
 		$this->conexion();
 		$response = $this->mostrar("select a.ren, a.rerecinto from recinto a where a.rerecinto like '%".
 		                           $input->recinto."%' limit 10");
+		$this->desconexion();
+		return $response;
+	}
+
+	/**
+	* Esta funcion busca el tipo de mercancio de la tabla tmercanciadab.
+	*
+	* @param string $input->tipo tipo que se quere buscar
+	* @return int resquery->error que es 0 cuando no existe un error
+	*		  matriz resquery->matriz que contiene el resultado de la consulta
+	*/
+	public function buscartmercanciadab($input) {
+		$this->conexion();
+		$response = $this->mostrar("select a.tmdn, a.tmdtipo from tmercanciadab a where a.tmdtipo = '".$input->tipo."'");
+		$this->desconexion();
+		return $response;
+	}
+
+	/**
+	* Esta funcion inserta un tipo de mercancia dab en la tabla tmercanciadab.
+	*
+	* @param int $input->tipo tipo de mercacia dab que se desea insertar
+	* @return int res->res que es 0 cuando no existe un error
+	*
+	*/
+	public function insertartmercanciadab($input) {
+		$this->conexion();
+		$response = new res();
+		if ($this->ejecutarquery("insert into tmercanciadab values('','".$input->tipo."')")) {
+			$response->res = 0;
+		} else {
+			$response->res = 1;
+		}
+		$this->desconexion();
+		return $response;
+	}
+
+	/**
+	* Esta funcion busca la mercancia de la tabla mercanciadab.
+	*
+	* @param string $input->mercancia mercancia que se quere buscar
+	* @param int $input->tipo tipo que se quere buscar
+	* @return int resquery->error que es 0 cuando no existe un error
+	*		  matriz resquery->matriz que contiene el resultado de la consulta
+	*/
+	public function buscarmercanciadab($input) {
+		$this->conexion();
+		$response = $this->mostrar("select a.mdn, a.mdmercancia, a.mdtipo from mercanciadab a where a.mdmercancia = '".
+		                           $input->mercancia."' and a.mdtipo = ".$input->tipo);
+		$this->desconexion();
+		return $response;
+	}
+
+	/**
+	* Esta funcion inserta una mercancia dab en la tabla mercanciadab.
+	*
+	* @param string $input->mercancia mercancia que se quere insertar
+	* @param int $input->tipo tipo que se quere insertar
+	* @return int res->res que es 0 cuando no existe un error
+	*
+	*/
+	public function insertarmercaciadab($input) {
+		$this->conexion();
+		$response = new res();
+		if ($this->ejecutarquery("insert into mercanciadab values('','".$input->mercancia."',".$input->tipo.")")) {
+			$response->res = 0;
+		} else {
+			$response->res = 1;
+		}
+		$this->desconexion();
+		return $response;
+	}
+
+	/**
+	* Esta funcion busca el alamacendab de la tabla almacendab.
+	*
+	* @param string $input->almacen almacen que se quere buscar
+	* @param int $input->recinto recinto que se quere buscar
+	* @return int resquery->error que es 0 cuando no existe un error
+	*		  matriz resquery->matriz que contiene el resultado de la consulta
+	*/
+	public function buscaralmacendab($input) {
+		$this->conexion();
+		$response = $this->mostrar("select a.adn, a.adalamacen, a.adrecinto from almacendab a where a.adalamacen = '".
+		                           $input->almacen."' and a.adrecinto = ".$input->recinto);
+		$this->desconexion();
+		return $response;
+	}
+
+	/**
+	* Esta funcion inserta un almacen dab en la tabla almacendab.
+	*
+	* @param string $input->almacen almacen que se quere insertar
+	* @param int $input->recinto recinto que se quere insertar
+	* @return int res->res que es 0 cuando no existe un error
+	*
+	*/
+	public function insertaralmacendab($input) {
+		$this->conexion();
+		$response = new res();
+		if ($this->ejecutarquery("insert into almacendab values('','".$input->almacen."',".$input->recinto.")")) {
+			$response->res = 0;
+		} else {
+			$response->res = 1;
+		}
+		$this->desconexion();
+		return $response;
+	}
+
+	/**
+	* Esta funcion busca el tipo de deposito de la tabla tdposito.
+	*
+	* @param string $input->tipo tipo de deposito que se quere buscar
+	* @return int resquery->error que es 0 cuando no existe un error
+	*		  matriz resquery->matriz que contiene el resultado de la consulta
+	*/
+	public function buscartdeposito($input) {
+		$this->conexion();
+		$response = $this->mostrar("select a.tdn, a.tdtipo from tdeposito a where a.tdtipo = '".$input->tipo."'");
+		$this->desconexion();
+		return $response;
+	}
+
+	/**
+	* Esta funcion inserta un tipo de deposito dab en la tabla tdeposito.
+	*
+	* @param string $input->tipo tipo de deposito que se quere buscar
+	* @return int res->res que es 0 cuando no existe un error
+	*
+	*/
+	public function insertartdeposito($input) {
+		$this->conexion();
+		$response = new res();
+		if ($this->ejecutarquery("insert into tdeposito values('','".$input->tipo."')")) {
+			$response->res = 0;
+		} else {
+			$response->res = 1;
+		}
+		$this->desconexion();
+		return $response;
+	}
+
+	/**
+	* Esta funcion busca un estado dab de la tabla estadodab.
+	*
+	* @param string $input->estado tipo de deposito que se quere buscar
+	* @return int resquery->error que es 0 cuando no existe un error
+	*		  matriz resquery->matriz que contiene el resultado de la consulta
+	*/
+	public function buscarestadodab($input) {
+		$this->conexion();
+		$response = $this->mostrar("select a.edn, a.edestado from estadodab a where a.edestado = '".$input->estado."'");
+		$this->desconexion();
+		return $response;
+	}
+
+	/**
+	* Esta funcion inserta un estado dab en la tabla estadodab.
+	*
+	* @param string $input->estado estado que se quere insertar
+	* @return int res->res que es 0 cuando no existe un error
+	*
+	*/
+	public function insertarestadodab($input) {
+		$this->conexion();
+		$response = new res();
+		if ($this->ejecutarquery("insert into estadodab values('','".$input->estado."')")) {
+			$response->res = 0;
+		} else {
+			$response->res = 1;
+		}
+		$this->desconexion();
+		return $response;
+	}
+
+	/**
+	* Esta funcion busca un camion dab de la tabla camiondab.
+	*
+	* @param string $input->camion tipo de deposito que se quere buscar
+	* @return int resquery->error que es 0 cuando no existe un error
+	*		  matriz resquery->matriz que contiene el resultado de la consulta
+	*/
+	public function buscarcamiondab($input) {
+		$this->conexion();
+		$response = $this->mostrar("select a.cdn, a.cdcamion from camiondab a where a.cdcamion = '".$input->camion."'");
+		$this->desconexion();
+		return $response;
+	}
+
+
+	/**
+	* Esta funcion inserta un camion dab en la tabla camiondab.
+	*
+	* @param string $input->camion estado que se quere insertar
+	* @return int res->res que es 0 cuando no existe un error
+	*
+	*/
+	public function insertarcamiondab($input) {
+		$this->conexion();
+		$response = new res();
+		if ($this->ejecutarquery("insert into camiondab values('','".$input->camion."')")) {
+			$response->res = 0;
+		} else {
+			$response->res = 1;
+		}
+		$this->desconexion();
+		return $response;
+	}
+
+	/**
+	* Esta funcion busca un reporte dab de la tabla reportedab.
+	*
+	* @param string $input->viaje reporte que se quere buscar
+	* @return int resquery->error que es 0 cuando no existe un error
+	*		  matriz resquery->matriz que contiene el resultado de la consulta
+	*/
+	public function buscarreportedab($input) {
+		$this->conexion();
+		$response = $this->mostrar("select a.rdn, a.rdviaje, a.rdingreso, a.rdembarque, a.rditem, a.rdfechaingreso, ".
+		                           "a.rdfechabalanza, rdfechaprecepcion, a.rdfechasalida, a.rdconsignatario, ".
+		                           "a.rdbultosman, a.rdpesoman, a.rdbultosrec, a.rdpesorec, a.rdsaldopeso, ".
+		                           "a.rdsaldobultos, a.rddescripcion, a.rdalmacen, a.rdregistrodeposito, ".
+		                           "a.rdfechavenc, a.rdestado, a.rddvi, a.rdcamion, a.rdchasis from reportedab a ".
+		                           "where a.rdviaje = '".$input->viaje."'");
+		$this->desconexion();
+		return $response;
+	}
+
+	/**
+	* Esta funcion actualiza un reporte dab en la tabla reportedab.
+	*
+	* @param int $input->id id del reporte a actualizar
+	* @param string $input->ingreso ingreso del reporte a actualizar
+	* @param string $input->enbarque enbarque del reporte a actualizar
+	* @param string $input->item item del reporte a actualizar
+	* @param date $input->fechaingreso fecha de ingreso a recinto del reporte a actualizar
+	* @param date $input->fechabalanza fecha de paso por balanza del reporte a actualizar
+	* @param date $input->fecharecepcion fecha del parte por recepcion del reporte a actualizar
+	* @param date $input->fechasalida fecha de la salida del reporte a actualizar
+	* @param int $input->consignatarioid consignatario del reporte a actualizar
+	* @param string $input->bultosmanifiesto bultos manifestados del reporte a actualizar
+	* @param string $input->pesomanifestado peso manifestado del reporte a actualizar
+	* @param string $input->bultosrecevidos bultos recibidos del reporte a actualizar
+	* @param string $input->pesorecivido peso recibido del reporte a actualizar
+	* @param string $input->saldopeso saldo de peso del reporte a actualizar
+	* @param string $input->saldobultos saldo de bultos del reporte a actualizar
+	* @param int $input->descripcionid descripcion del reporte a actualizar
+	* @param int $input->almacenid almacen del reporte a actualizar
+	* @param int $input->registrodepositoid tipo de deposito del reporte a actualizar
+	* @param date $input->fechavencimiento fecha de vencimiento del reporte a actualizar
+	* @param int $input->estadoid estado del reporte a actualizar
+	* @param string $input->dvi dvi del reporte a actualizar
+	* @param int $input->camionid camion del reporte a actualizar
+	* @param string $input->chasis chasis del reporte a actualizar
+	* @param datetime $input->fecha fecha del reporte a actualizar
+	* @return int res->res que es 0 cuando no existe un error
+	*
+	*/
+	public function actualizarreportedab($input) {
+		$this->conexion();
+		$response = new res();
+		if ($this->ejecutarquery("update reportedab set rdingreso = '".$input->ingreso."', rdembarque = '".
+		    $input->enbarque."', rditem = '".$input->item."', rdfechaingreso = '".$input->fechaingreso.
+		    "', rdfechabalanza = '".$input->fechabalanza."', rdfechaprecepcion = '".$input->fecharecepcion.
+		    "', rdfechasalida = '".$input->fechasalida."', rdconsignatario = ".$input->consignatarioid.
+		    ", rdbultosman = '".$input->bultosmanifiesto."', rdpesoman = '".$input->pesomanifestado.
+		    "', rdbultosrec = '".$input->bultosrecevidos."', rdpesorec = '".$input->pesorecivido."', rdsaldopeso = '".
+		    $input->saldopeso."', rdsaldobultos = '".$input->saldobultos."', rddescripcion = ".$input->descripcionid.
+		    ", rdalmacen = ".$input->almacenid.", rdregistrodeposito = ".$input->registrodepositoid.", rdfechavenc = '".
+		    $input->fechavencimiento."', rdestado = ".$input->estadoid.", rddvi = '".$input->dvi."', rdcamion = ".
+		    $input->camionid.", rdchasis = '".$input->chasis."' where rdn = ".$input->id)) {
+			$response->res = 0;
+		} else {
+			$response->res = 1;
+		}
+		$this->desconexion();
+		return $response;
+	}
+
+	/**
+	* Esta funcion inserta un reporte dab en la tabla reportedab.
+	*
+	* @param string $input->viaje viaje del reporte a insertar
+	* @param string $input->ingreso ingreso del reporte a insertar
+	* @param string $input->enbarque enbarque del reporte a insertar
+	* @param string $input->item item del reporte a insertar
+	* @param date $input->fechaingreso fecha de ingreso a recinto del reporte a insertar
+	* @param date $input->fechabalanza fecha de paso por balanza del reporte a insertar
+	* @param date $input->fecharecepcion fecha del parte por recepcion del reporte a insertar
+	* @param date $input->fechasalida fecha de la salida del reporte a insertar
+	* @param int $input->consignatarioid consignatario del reporte a insertar
+	* @param string $input->bultosmanifiesto bultos manifestados del reporte a insertar
+	* @param string $input->pesomanifestado peso manifestado del reporte a insertar
+	* @param string $input->bultosrecevidos bultos recibidos del reporte a insertar
+	* @param string $input->pesorecivido peso recibido del reporte a insertar
+	* @param string $input->saldopeso saldo de peso del reporte a insertar
+	* @param string $input->saldobultos saldo de bultos del reporte a insertar
+	* @param int $input->descripcionid descripcion del reporte a insertar
+	* @param int $input->almacenid almacen del reporte a insertar
+	* @param int $input->registrodepositoid tipo de deposito del reporte a insertar
+	* @param date $input->fechavencimiento fecha de vencimiento del reporte a insertar
+	* @param int $input->estadoid estado del reporte a insertar
+	* @param string $input->dvi dvi del reporte a insertar
+	* @param int $input->camionid camion del reporte a insertar
+	* @param string $input->chasis chasis del reporte a insertar
+	* @param datetime $input->fecha fecha del reporte a insertar
+	* @return int res->res que es 0 cuando no existe un error
+	*
+	*/
+	public function insertarreportedab($input) {
+		$this->conexion();
+		$response = new res();
+		if ($this->ejecutarquery("insert into reportedab values('', '".$input->viaje."', '".$input->ingreso."', '".
+		    $input->enbarque."', '".$input->item."', '".$input->fechaingreso."', '".$input->fechabalanza."', '".
+		    $input->fecharecepcion."', '".$input->fechasalida."', ".$input->consignatarioid.", '".
+		    $input->bultosmanifiesto."', '".$input->pesomanifestado."', '".$input->bultosrecevidos."', '".
+		    $input->pesorecivido."', '".$input->saldopeso."', '".$input->saldobultos."', ".$input->descripcionid.", ".
+		    $input->almacenid.", ".$input->registrodepositoid.", '".$input->fechavencimiento."', ".$input->estadoid.
+		    ", '".$input->dvi."', ".$input->camionid.", '".$input->chasis."', '".$input->fecha."')")) {
+			$response->res = 0;
+		} else {
+			$response->res = 1;
+		}
 		$this->desconexion();
 		return $response;
 	}

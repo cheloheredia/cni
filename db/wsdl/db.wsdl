@@ -685,6 +685,253 @@
 
       	<xsd:attribute name="recinto" type="xsd:string"></xsd:attribute>
       </xsd:complexType>
+      <xsd:element name="buscartmercanciadabentradas"
+      	type="tns:buscartmercanciadabentradas">
+      </xsd:element>
+      <xsd:element name="buscartmercanciadabResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="buscartmercanciadabentradas">
+      	<xsd:attribute name="tipo" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
+      <xsd:element name="insertartmercanciadabentradas"
+      	type="tns:buscartmercanciadabentradas">
+      </xsd:element>
+      <xsd:element name="insertartmercanciadabResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+      <xsd:element name="buscarmercanciadabentradas"
+      	type="tns:buscarmercanciadabentradas">
+      </xsd:element>
+      <xsd:element name="buscarmercanciadabResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="buscarmercanciadabentradas">
+      	<xsd:attribute name="mercancia" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="tipo" type="xsd:int"></xsd:attribute>
+      </xsd:complexType>
+      <xsd:element name="insertarmercaciadabentradas"
+      	type="tns:buscarmercanciadabentradas">
+      </xsd:element>
+      <xsd:element name="insertarmercaciadabResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+      <xsd:element name="buscarrecintoentradas"
+      	type="tns:buscarrecintoentradas">
+      </xsd:element>
+      <xsd:element name="buscarrecintoResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="buscarrecintoentradas">
+      	<xsd:attribute name="recinto" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
+      <xsd:element name="buscaralmacendabentradas"
+      	type="tns:buscaralmacendabentradas">
+      </xsd:element>
+      <xsd:element name="buscaralmacendabResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="buscaralmacendabentradas">
+      	<xsd:attribute name="almacen" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="recinto" type="xsd:int"></xsd:attribute>
+      </xsd:complexType>
+      <xsd:element name="insertaralmacendabentradas"
+      	type="tns:buscaralmacendabentradas">
+      </xsd:element>
+      <xsd:element name="insertaralmacendabResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+      <xsd:element name="buscartdepositoentradas"
+      	type="tns:buscartmercanciadabentradas">
+      </xsd:element>
+      <xsd:element name="buscartdepositoResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:element name="insertartdepositoentradas"
+      	type="tns:buscartmercanciadabentradas">
+      </xsd:element>
+      <xsd:element name="insertartdepositoResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+      <xsd:element name="buscarestadodabentradas"
+      	type="tns:buscarestadodabentradas">
+      </xsd:element>
+      <xsd:element name="buscarestadodabResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="buscarestadodabentradas">
+      	<xsd:attribute name="estado" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
+      <xsd:element name="insertarestadodabentradas"
+      	type="tns:buscarestadodabentradas">
+      </xsd:element>
+      <xsd:element name="insertarestadodabResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+      <xsd:element name="buscarcamiondabentradas"
+      	type="tns:buscarcamiondabentradas">
+      </xsd:element>
+      <xsd:element name="buscarcamiondabResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="buscarcamiondabentradas">
+      	<xsd:attribute name="camion" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
+      <xsd:element name="insertarcamiondabentradas"
+      	type="tns:buscarcamiondabentradas">
+      </xsd:element>
+      <xsd:element name="insertarcamiondabResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+      <xsd:element name="buscarreportedabentradas"
+      	type="tns:buscarreportedabentradas">
+      </xsd:element>
+      <xsd:element name="buscarreportedabResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="buscarreportedabentradas">
+      	<xsd:attribute name="viaje" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
+      <xsd:element name="actualizarreportedabentradas"
+      	type="tns:actualizarreportedabentradas">
+      </xsd:element>
+      <xsd:element name="actualizarreportedabResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="actualizarreportedabentradas">
+      	<xsd:attribute name="id" type="xsd:int"></xsd:attribute>
+      	<xsd:attribute name="ingreso" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="enbarque" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="item" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="fechaingreso" type="xsd:date"></xsd:attribute>
+      	<xsd:attribute name="fechabalanza" type="xsd:date"></xsd:attribute>
+      	<xsd:attribute name="fecharecepcion" type="xsd:date"></xsd:attribute>
+      	<xsd:attribute name="fechasalida" type="xsd:int"></xsd:attribute>
+      	<xsd:attribute name="consignatarioid" type="xsd:int"></xsd:attribute>
+      	<xsd:attribute name="bultosmanifiesto" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="pesomanifestado" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="bultosrecevidos" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="pesorecivido" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="saldopeso" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="saldobultos" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="descripcionid" type="xsd:int"></xsd:attribute>
+      	<xsd:attribute name="almacenid" type="xsd:int"></xsd:attribute>
+      	<xsd:attribute name="registrodepositoid" type="xsd:int"></xsd:attribute>
+      	<xsd:attribute name="fechavencimiento" type="xsd:date"></xsd:attribute>
+      	<xsd:attribute name="estadoid" type="xsd:int"></xsd:attribute>
+      	<xsd:attribute name="dvi" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="camionid" type="xsd:int"></xsd:attribute>
+
+      	<xsd:attribute name="chasis" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="fecha" type="xsd:dateTime"></xsd:attribute>
+      </xsd:complexType>
+      <xsd:element name="insertarreportedabentradas"
+      	type="tns:insertarreportedabentradas">
+      </xsd:element>
+      <xsd:element name="insertarreportedabResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    
+      <xsd:complexType name="insertarreportedabentradas">
+      	<xsd:attribute name="viaje" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="ingreso" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="enbarque" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="item" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="fechaingreso" type="xsd:date"></xsd:attribute>
+      	<xsd:attribute name="fechabalanza" type="xsd:date"></xsd:attribute>
+      	<xsd:attribute name="fecharecepcion" type="xsd:date"></xsd:attribute>
+      	<xsd:attribute name="fechasalida" type="xsd:date"></xsd:attribute>
+      	<xsd:attribute name="consignatarioid" type="xsd:int"></xsd:attribute>
+      	<xsd:attribute name="bultosmanifiesto" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="pesomanifestado" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="bultosrecevidos" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="pesorecivido" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="saldopeso" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="saldobultos" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="descripcionid" type="xsd:int"></xsd:attribute>
+      	<xsd:attribute name="almacenid" type="xsd:int"></xsd:attribute>
+      	<xsd:attribute name="registrodepositoid" type="xsd:int"></xsd:attribute>
+      	<xsd:attribute name="fechavencimiento" type="xsd:date"></xsd:attribute>
+      	<xsd:attribute name="estadoid" type="xsd:int"></xsd:attribute>
+      	<xsd:attribute name="dvi" type="xsd:string"></xsd:attribute>
+
+      	<xsd:attribute name="camionid" type="xsd:int"></xsd:attribute>
+      	<xsd:attribute name="chasis" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="fecha" type="xsd:dateTime"></xsd:attribute>
+      </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="buscaritemRequest">
@@ -957,6 +1204,102 @@
   <wsdl:message name="buscarrecintosacResponse">
   	<wsdl:part name="buscarrecintosacsalidas" element="tns:resquery"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="buscartmercanciadabRequest">
+  	<wsdl:part name="buscartmercanciadabentradas" element="tns:buscartmercanciadabentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscartmercanciadabResponse">
+  	<wsdl:part name="buscartmercanciadabsalidas" element="tns:resquery"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertartmercanciadabRequest">
+  	<wsdl:part name="insertartmercanciadabentradas" element="tns:insertartmercanciadabentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertartmercanciadabResponse">
+  	<wsdl:part name="insertartmercanciadabsalidas" element="tns:res"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscarmercanciadabRequest">
+  	<wsdl:part name="buscarmercanciadabentradas" element="tns:buscarmercanciadabentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscarmercanciadabResponse">
+  	<wsdl:part name="buscarmercanciadabsalidas" element="tns:resquery"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertarmercaciadabRequest">
+  	<wsdl:part name="insertarmercaciadabentradas" element="tns:insertarmercaciadabentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertarmercaciadabResponse">
+  	<wsdl:part name="insertarmercaciadabsalidas" element="tns:res"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscarrecintoRequest">
+  	<wsdl:part name="buscarrecintoentradas" element="tns:buscarrecintoentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscarrecintoResponse">
+  	<wsdl:part name="buscarrecintosalidas" element="tns:resquery"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscaralmacendabRequest">
+  	<wsdl:part name="buscaralmacendabentradas" element="tns:buscaralmacendabentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscaralmacendabResponse">
+  	<wsdl:part name="buscaralmacendabsalidas" element="tns:resquery"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertaralmacendabRequest">
+  	<wsdl:part name="insertaralmacendabentradas" element="tns:insertaralmacendabentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertaralmacendabResponse">
+  	<wsdl:part name="insertaralmacendabsalidas" element="tns:res"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscartdepositoRequest">
+  	<wsdl:part name="buscartdepositoentradas" element="tns:buscartdepositoentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscartdepositoResponse">
+  	<wsdl:part name="buscartdepositosalidas" element="tns:resquery"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertartdepositoRequest">
+  	<wsdl:part name="insertartdepositoentradas" element="tns:insertartdepositoentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertartdepositoResponse">
+  	<wsdl:part name="insertartdepositosalidas" element="tns:res"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscarestadodabRequest">
+  	<wsdl:part name="buscarestadodabentradas" element="tns:buscarestadodabentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscarestadodabResponse">
+  	<wsdl:part name="buscarestadodabsalidas" element="tns:resquery"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertarestadodabRequest">
+  	<wsdl:part name="insertarestadodabentradas" element="tns:insertarestadodabentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertarestadodabResponse">
+  	<wsdl:part name="insertarestadodabsalidas" element="tns:res"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscarcamiondabRequest">
+  	<wsdl:part name="buscarcamiondabentradas" element="tns:buscarcamiondabentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscarcamiondabResponse">
+  	<wsdl:part name="buscarcamiondabsalidas" element="tns:resquery"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertarcamiondabRequest">
+  	<wsdl:part name="insertarcamiondabentradas" element="tns:insertarcamiondabentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertarcamiondabResponse">
+  	<wsdl:part name="insertarcamiondabsalidas" element="tns:res"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscarreportedabRequest">
+  	<wsdl:part name="buscarreportedabentradas" element="tns:buscarreportedabentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscarreportedabResponse">
+  	<wsdl:part name="buscarreportedabsalidas" element="tns:resquery"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="actualizarreportedabRequest">
+  	<wsdl:part name="actualizarreportedabentradas" element="tns:actualizarreportedabentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="actualizarreportedabResponse">
+  	<wsdl:part name="actualizarreportedabsalidas" element="tns:res"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertarreportedabRequest">
+  	<wsdl:part name="insertarreportedabentradas" element="tns:insertarreportedabentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertarreportedabResponse">
+  	<wsdl:part name="insertarreportedabsalidas" element="tns:res"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="db">
     <wsdl:operation name="buscaritem">
       <wsdl:input message="tns:buscaritemRequest"/>
@@ -1137,6 +1480,70 @@
     <wsdl:operation name="buscarrecintosac">
     	<wsdl:input message="tns:buscarrecintosacRequest"></wsdl:input>
     	<wsdl:output message="tns:buscarrecintosacResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscartmercanciadab">
+    	<wsdl:input message="tns:buscartmercanciadabRequest"></wsdl:input>
+    	<wsdl:output message="tns:buscartmercanciadabResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertartmercanciadab">
+    	<wsdl:input message="tns:insertartmercanciadabRequest"></wsdl:input>
+    	<wsdl:output message="tns:insertartmercanciadabResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarmercanciadab">
+    	<wsdl:input message="tns:buscarmercanciadabRequest"></wsdl:input>
+    	<wsdl:output message="tns:buscarmercanciadabResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarmercaciadab">
+    	<wsdl:input message="tns:insertarmercaciadabRequest"></wsdl:input>
+    	<wsdl:output message="tns:insertarmercaciadabResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarrecinto">
+    	<wsdl:input message="tns:buscarrecintoRequest"></wsdl:input>
+    	<wsdl:output message="tns:buscarrecintoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscaralmacendab">
+    	<wsdl:input message="tns:buscaralmacendabRequest"></wsdl:input>
+    	<wsdl:output message="tns:buscaralmacendabResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertaralmacendab">
+    	<wsdl:input message="tns:insertaralmacendabRequest"></wsdl:input>
+    	<wsdl:output message="tns:insertaralmacendabResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscartdeposito">
+    	<wsdl:input message="tns:buscartdepositoRequest"></wsdl:input>
+    	<wsdl:output message="tns:buscartdepositoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertartdeposito">
+    	<wsdl:input message="tns:insertartdepositoRequest"></wsdl:input>
+    	<wsdl:output message="tns:insertartdepositoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarestadodab">
+    	<wsdl:input message="tns:buscarestadodabRequest"></wsdl:input>
+    	<wsdl:output message="tns:buscarestadodabResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarestadodab">
+    	<wsdl:input message="tns:insertarestadodabRequest"></wsdl:input>
+    	<wsdl:output message="tns:insertarestadodabResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarcamiondab">
+    	<wsdl:input message="tns:buscarcamiondabRequest"></wsdl:input>
+    	<wsdl:output message="tns:buscarcamiondabResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarcamiondab">
+    	<wsdl:input message="tns:insertarcamiondabRequest"></wsdl:input>
+    	<wsdl:output message="tns:insertarcamiondabResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarreportedab">
+    	<wsdl:input message="tns:buscarreportedabRequest"></wsdl:input>
+    	<wsdl:output message="tns:buscarreportedabResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizarreportedab">
+    	<wsdl:input message="tns:actualizarreportedabRequest"></wsdl:input>
+    	<wsdl:output message="tns:actualizarreportedabResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarreportedab">
+    	<wsdl:input message="tns:insertarreportedabRequest"></wsdl:input>
+    	<wsdl:output message="tns:insertarreportedabResponse"></wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="dbSOAP" type="tns:db">
@@ -1724,6 +2131,166 @@
   		</wsdl:input>
   		<wsdl:output>
 
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="buscartmercanciadab">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/buscartmercanciadab" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="insertartmercanciadab">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/insertartmercanciadab" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="buscarmercanciadab">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/buscarmercanciadab" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="insertarmercaciadab">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/insertarmercaciadab" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="buscarrecinto">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/buscarrecinto" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="buscaralmacendab">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/buscaralmacendab" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="insertaralmacendab">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/insertaralmacendab" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="buscartdeposito">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/buscartdeposito" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="insertartdeposito">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/insertartdeposito" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="buscarestadodab">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/buscarestadodab" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="insertarestadodab">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/insertarestadodab" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="buscarcamiondab">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/buscarcamiondab" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="insertarcamiondab">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/insertarcamiondab" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="buscarreportedab">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/buscarreportedab" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="actualizarreportedab">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/actualizarreportedab" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="insertarreportedab">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/insertarreportedab" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>

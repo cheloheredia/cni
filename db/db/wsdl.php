@@ -640,9 +640,64 @@ class buscarplanificacionxfechaentradas {
 class buscarrecintosacentradas {
 
     /**
-     * @var datetime
+     * @var string
      */
     public $recinto;
+
+}
+
+class buscartmercanciadabentradas {
+
+    /**
+     * @var string
+     */
+    public $tipo;
+
+}
+
+class buscarmercanciadabentradas {
+
+    /**
+     * @var string
+     */
+    public $mercancia;
+
+    /**
+     * @var int
+     */
+    public $tipo;
+
+}
+
+class buscaralmacendabentradas {
+
+    /**
+     * @var string
+     */
+    public $almacen;
+
+    /**
+     * @var int
+     */
+    public $recinto;
+
+}
+
+class buscarestadodabentradas {
+
+    /**
+     * @var string
+     */
+    public $estado;
+
+}
+
+class buscarreportedabentradas {
+
+    /**
+     * @var string
+     */
+    public $viaje;
 
 }
 
@@ -696,6 +751,11 @@ $classMap = array(
     'insertarbutloentradas' => 'insertarbutloentradas',
     'insertarplanificacionentradas' => 'insertarplanificacionentradas',
     'buscarplanificacionxfechaentradas' => 'buscarplanificacionxfechaentradas',
-    'buscarrecintosacentradas' => 'buscarrecintosacentradas'
+    'buscarrecintosacentradas' => 'buscarrecintosacentradas',
+    'buscartmercanciadabentradas' => 'buscartmercanciadabentradas',
+    'buscarmercanciadabentradas' => 'buscarmercanciadabentradas',
+    'buscaralmacendabentradas' => 'buscaralmacendabentradas',
+    'buscarestadodabentradas' => 'buscarestadodabentradas',
+    'buscarreportedabentradas' => 'buscarreportedabentradas'
 );
 
