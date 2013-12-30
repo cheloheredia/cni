@@ -7,13 +7,14 @@ ini_set('soap.wsdl_cache_enabled', 0);
 ini_set('soap.wsdl_cache_ttl', 0);
 require_once('wsdl.php');
 require_once('../client/wsdldb.php');
+require_once('../ini/ini.php');
 class planificacion {
 
 	/**
 	* Esta funcion inicia todos los clientes necesarios para el funcionamiento de la clase planificacion.
 	*/
 	public function __construct(){
-		$this->clientdb = new SoapClient('http://127.0.0.1:12/wsdl/db.wsdl',
+		$this->clientdb = new SoapClient($GLOBALS['dbsdir'].'/wsdl/db.wsdl',
 		                                 array('trace' => 1,
 		                                       'cache_wsdl' => WSDL_CACHE_NONE,
 		                                       'features' => SOAP_SINGLE_ELEMENT_ARRAYS,
@@ -307,7 +308,7 @@ class planificacion {
 		return $res;
 	}
 }
-$server = new SoapServer("http://127.0.0.1:14/wsdl/planificacion.wsdl");
+$server = new SoapServer($asdir."/wsdl/planificacion.wsdl");
 $server->setClass("planificacion");
 $server->handle();
 

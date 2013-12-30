@@ -1,5 +1,4 @@
-<script type="text/javascript" src="../js/table.js"></script>
-<link href="../css/ui-lightness/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+<script type="text/javascript" src="../lib/table.js"></script>
 <?php
 include '../client/wsdlmanifiesto.php';
 $cliente = new SoapClient('http://127.0.0.1:14/wsdl/manifiesto.wsdl',
@@ -34,7 +33,8 @@ if ($response->error == "OK"){
 	echo $table;
     $response = $cliente->generarpdfyenviar(array("fecha" => $_GET['fecha']));
     if ($response->error != 'OK') {
-        echo '<script type="text/javascript">
+        echo $response->error;
+        /*echo '<script type="text/javascript">
                     $(function() {
                         $("#dialog").html("'.$response->error.'");
                         $("#dialog").dialog({
@@ -51,10 +51,11 @@ if ($response->error == "OK"){
                                     }
                         }); 
                     });
-            </script>'; 
+            </script>'; */
     }
 } else {
-	echo '<script type="text/javascript">
+    echo $response->error;
+	/*echo '<script type="text/javascript">
 			$(function() {
 				$("#dialog").html("'.$response->error.'");
 				$("#dialog").dialog({
@@ -71,6 +72,6 @@ if ($response->error == "OK"){
 							}
 			    });	
 			});
-	</script>';	
+	</script>';	*/
 }
         

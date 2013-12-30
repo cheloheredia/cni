@@ -1,5 +1,5 @@
 <?php
-if ($_POST["action"] == "upload") {
+if ($_POST["opt"] == "manifiesto") {
     $tamano = $_FILES["archivo"]['size'];
     $tipo = $_FILES["archivo"]['type'];
     $archivo = $_FILES["archivo"]['name'];
@@ -22,11 +22,9 @@ if ($_POST["action"] == "upload") {
                                             'classmap'=>$GLOBALS['classMapmanifiesto']));
             $respuesta = $cliente->subir(array('documento'=> $destino));
             if ($respuesta->error == 'OK') {
-                $status = 'Ingresado Correctamente';
-                $dir = 'http://127.0.0.1:10/action/tablamanifiestosubido.php?fecha='.$respuesta->fecha;
+                $status = $respuesta->fecha;
             } else {
                 $status = $respuesta->error;
-                $dir = 'http://127.0.0.1:10/manifiesto.php';
             }
         } else {
             $status = "Error al subir el archivo";
@@ -35,25 +33,6 @@ if ($_POST["action"] == "upload") {
     } else {
         $status = "Error al subir archivo";
     }
-    echo ' <script type="text/javascript">
-            $(function() {
-                
-                $("#dialog").html("'.$status.'");
-                $("#dialog").dialog({
-                    title: "Manifiesto maritimo",
-                    width: 300,
-                    height: 200,
-                    modal: true,
-                    resizable: false,
-                    draggable: true,
-                    buttons: {
-                                    "Salir": function(){
-                                            window.location.href = "'.$dir.'";
-                                    }
-                            }
-                }); 
-            });
-        
-    </script>';
+    echo $status;
 }
 

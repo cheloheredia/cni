@@ -10,7 +10,7 @@ body,html{
 	display: table;
 	width: 600px;
 	height: 100%;
-	margin: auto;
+	margin: 0;
 }
 #cell{
 	display: table-cell;
@@ -25,7 +25,7 @@ select, input, textarea {
 	font-size: 9px;
 	padding: 2px;
 	border: 1px solid #000;
-	background-color: #ffd76e;
+	background-color: #f7af37;
 	color: #000;
 }
 .button {
@@ -45,13 +45,12 @@ select, input, textarea {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size:12px;
 	text-align: center; 
-	padding-left:50px;
+	padding-left:0px;
 }
 .tabla th {
 	padding: 5px;
 	font-size: 10px;
 	background-color: #ffd76e;
-	background-image: url(../images/fondo_th1.png);
 	background-repeat: repeat-x;color: #FFFFFF;
 	border-right-width: 1px;
 	border-bottom-width: 1px;
@@ -70,3 +69,14 @@ select, input, textarea {
 	font-size:10px;
 	font-weight:bold;
 }
+.mensaje{
+	position: absolute;
+	width: 100%;
+	color:#ffffff;
+	font-weight:bold;
+	text-align: center;
+	background-repeat: repeat-y;
+	background-position: center;
+	background-image: url('../images/mensaje.jpg'); 
+}
+
