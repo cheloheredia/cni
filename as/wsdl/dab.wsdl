@@ -27,6 +27,21 @@
       	<xsd:attribute name="id" type="xsd:int"></xsd:attribute>
       	<xsd:attribute name="recinto" type="xsd:string"></xsd:attribute>
       </xsd:complexType>
+      <xsd:element name="subirentradas" type="tns:subirentradas"></xsd:element>
+      <xsd:element name="subirsalidas" type="tns:subirsalidas">
+      </xsd:element>
+
+      <xsd:complexType name="subirentradas">
+      	<xsd:attribute name="documento" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="recinto" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
+    
+      <xsd:complexType name="subirsalidas">
+      	<xsd:sequence>
+      		<xsd:element name="fecha" type="xsd:dateTime"></xsd:element>
+      	</xsd:sequence>
+      	<xsd:attribute name="error" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="mostrarrecintosRequest">
@@ -35,10 +50,20 @@
   <wsdl:message name="mostrarrecintosResponse">
     <wsdl:part element="tns:mostrarrecintossalidas" name="mostrarrecintossalidas"/>
   </wsdl:message>
+  <wsdl:message name="subirRequest">
+  	<wsdl:part name="subirentradas" element="tns:subirentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="subirResponse">
+  	<wsdl:part name="subirsalidas" element="tns:subirsalidas"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="dab">
     <wsdl:operation name="mostrarrecintos">
       <wsdl:input message="tns:mostrarrecintosRequest"/>
       <wsdl:output message="tns:mostrarrecintosResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="subir">
+    	<wsdl:input message="tns:subirRequest"></wsdl:input>
+    	<wsdl:output message="tns:subirResponse"></wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="dabSOAP" type="tns:dab">
@@ -55,6 +80,15 @@
   		</wsdl:input>
   		<wsdl:output>
 
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="subir">
+  		<soap:operation soapAction="http://127.0.0.1:12/dab/subir" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>

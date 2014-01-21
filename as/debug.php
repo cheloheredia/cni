@@ -1,10 +1,10 @@
 <?php
 /*include 'client/excelPHP.php';
-var_dump(leeExcel('C:\Users\Marcelo\Desktop\26.10.2013 1ER xlxs.xlsx'));*/
-include 'planificacion/wsdl.php';
+var_dump(leeExcel('C:\Users\Marcelo\Desktop\parte de recepcion - dab-06-05-2013.xls'));*/
+include 'dab/wsdl.php';
 include 'ini/ini.php';
 $cliente=new SoapClient($asdir.'/wsdl/dab.wsdl',array( 'trace' => 1,'cache_wsdl' => WSDL_CACHE_NONE, 'features' => SOAP_SINGLE_ELEMENT_ARRAYS, 'classmap'=>$classMap));
-$respuesta=$cliente->mostrarrecintos(array('recinto'=>'la'));
+$respuesta=$cliente->subir(array('recinto'=>'La Paz', 'documento'=>'../tmp/parte de recepcion - dab-06-05-2013.xls'));
 var_dump ($respuesta);
 /*include 'client/mPDF.php';
 include 'client/PHPMailer.php';

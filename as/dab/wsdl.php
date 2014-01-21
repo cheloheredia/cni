@@ -31,11 +31,41 @@ class recinto {
 
 }
 
+class subirentradas {
+
+    /**
+     * @var string
+     */
+    public $documento;
+
+    /**
+     * @var string
+     */
+    public $recinto;
+
+}
+
+class subirsalidas {
+
+    /**
+     * @var datetime
+     */
+    public $fecha;
+
+    /**
+     * @var string
+     */
+    public $error;
+
+}
+
 /**
  * @var array
  */
 $classMap = array(
 	'mostrarrecintossalidas' => 'mostrarrecintossalidas',
-	'recinto' => 'recinto'
+	'recinto' => 'recinto',
+    'subirentradas' => 'subirentradas',
+    'subirsalidas' => 'subirsalidas'
 );
 

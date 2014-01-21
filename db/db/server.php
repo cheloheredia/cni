@@ -1166,7 +1166,7 @@ class db {
 		    $input->saldopeso."', rdsaldobultos = '".$input->saldobultos."', rddescripcion = ".$input->descripcionid.
 		    ", rdalmacen = ".$input->almacenid.", rdregistrodeposito = ".$input->registrodepositoid.", rdfechavenc = '".
 		    $input->fechavencimiento."', rdestado = ".$input->estadoid.", rddvi = '".$input->dvi."', rdcamion = ".
-		    $input->camionid.", rdchasis = '".$input->chasis."' where rdn = ".$input->id)) {
+		    $input->camionid.", rdchasis = '".$input->chasis."', rdfecha = '".$input->fecha."' where rdn = ".$input->id)) {
 			$response->res = 0;
 		} else {
 			$response->res = 1;
