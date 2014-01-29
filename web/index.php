@@ -13,8 +13,11 @@
     <div id="tabs">
         <ul style="font-size:12px;">
             <li><a href="#tabs-1">MANIFIESTO MARITIMO</a></li>
+            <li><a href="#tabs-2">DAB</a></li>
         </ul>
 	<div id="tabs-1" style="background:#FFF;">  
+  </div>
+  <div id="tabs-2" style="background:#FFF;">  
   </div>
 </div>
     <div id="dialog"></div> 

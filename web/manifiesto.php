@@ -9,6 +9,7 @@
 </head>
 <body>
     <div border="0" id='formulario' style="border:2px #FF9933 solid; overflow-x:scroll;">
+      <label for="archivo">Archivo Manifiesto Maritimo:</label>
       <input name="archivo" id="archivo" type="file" size="35" style='padding-left: auto; padding-right: auto;'/><br>
       <input name="opt" id='opt' type="hidden" value="manifiesto" />
       <input name="enviar" id='enviar' type="button" value="Subir Archivo" /><br>

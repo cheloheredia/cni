@@ -5,5 +5,6 @@
 $(function(){
     $("#tabs" ).tabs();
     $("#tabs-1").load('manifiesto.php');
+    $("#tabs-2").load('dab.php');
 });
 

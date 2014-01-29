@@ -55,3 +55,25 @@ function esDatetime(fecha){
     return res;
 }
 
+function itemMarcado(event, ui)
+{
+    var item = ui.item.label;
+    switch(ui.item.value.opt){
+        case 'recinto':
+            $("#recinto").val(item);
+            break;
+    }
+    event.preventDefault();
+}
+
+function itemSeleccionado(event, ui)
+{
+    var item = ui.item.label;
+    switch(ui.item.value.opt){
+        case 'recinto':
+            $("#recinto").val(item);
+            $("#recinto").prop('disabled', true);
+            break;
+    }
+    event.preventDefault();
+}

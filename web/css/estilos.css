@@ -27,6 +27,7 @@ select, input, textarea {
 	border: 1px solid #000;
 	background-color: #f7af37;
 	color: #000;
+	min-width: 210px;
 }
 .button {
 	font-family: Verdana, Arial, Helvetica, sans-serif;

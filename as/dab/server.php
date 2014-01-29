@@ -91,13 +91,12 @@ class dab {
 		if ($resdb->error == 0) {
 			$recintoid = $resdb->matriz[0]->columnas[0];
 			$resexcel = leeExcel($input->documento);
+			$aux = 1;
 			for ($i = 1; $i < sizeof($resexcel); $i++) {
 				$texto = strtoupper($resexcel[$i][9]);
 				$resdb = $this->clientdb->buscarconsignatario(array('consignatario'=> $texto));
 				if ($resdb->error == 1) {
-					$res->error = 'Algunos registros fueron omitidos por que sus consignatarios no fueron manifestados'.
-					' anteriormente';
-					$res->fecha = $fecha;
+					$aux++;
 					continue;
 				}
 				$consignatarioid = $resdb->matriz[0]->columnas[0];
@@ -247,6 +246,13 @@ class dab {
 			}
 		} else {
 			$res->error = 'El recinto no existe, favor vuelva a intentarlo';
+		}
+		if ($aux == sizeof($resexcel)) {
+			$res->error = 'No fue cargado el archivo ya que sus consignatarios no fueron presentados anteriormente';
+		}
+		if ($aux < sizeof($resexcel) && $aux > 1) {
+			$res->error = 'Algunos registros fueron omitidos por que sus consignatarios no fueron manifestados anteriormente';
+			$res->fecha = $fecha;
 		}
 		if ($res->error == 'OK') {
 			$res->fecha = $fecha;
