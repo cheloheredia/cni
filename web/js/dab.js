@@ -56,13 +56,12 @@ $(function () {
                     $("#respuestadab").html($('<br><span class="mensaje">Subiendo archivo...</span><br>'));
                 },
                 success: function(data){
-                    console.log(data);
-                    /*if (esDatetime(data) == true) {
-                        $("#formulario").load('action/tabla.php',{fecha:data, opt:$('#opt').val()});
-                        $("#respuesta").html('');
+                    if (esDatetime(data) == true) {
+                        $("#formulariodab").load('action/tabla.php',{fecha:data, opt:$('#optdab').val()});
+                        $("#respuestadab").html('');
                     } else {
-                        $("#respuesta").html($('<br><span class="mensaje">'+data+'</span><br>'));
-                    }*/
+                        $("#respuestadab").html($('<br><span class="mensaje">'+data+'</span><br>'));
+                    }
                 }
             });
         }

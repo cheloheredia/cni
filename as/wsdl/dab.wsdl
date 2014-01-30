@@ -42,6 +42,60 @@
       	</xsd:sequence>
       	<xsd:attribute name="error" type="xsd:string"></xsd:attribute>
       </xsd:complexType>
+      <xsd:element name="mostrardabreciensubidoendradas"
+      	type="tns:mostrardabreciensubidoendradas">
+      </xsd:element>
+      <xsd:element name="mostrardabreciensubidosalidas"
+      	type="tns:mostrardabreciensubidosalidas">
+      </xsd:element>
+
+      <xsd:complexType name="mostrardabreciensubidoendradas">
+      	<xsd:attribute name="fecha" type="xsd:dateTime"></xsd:attribute>
+      </xsd:complexType>
+    
+      <xsd:complexType name="mostrardabreciensubidosalidas">
+      	<xsd:sequence>
+      		<xsd:element name="dab" type="tns:dabreporte"
+      			maxOccurs="unbounded" minOccurs="0">
+      		</xsd:element>
+      	</xsd:sequence>
+      	<xsd:attribute name="error" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
+    
+      <xsd:complexType name="dabreporte">
+      	<xsd:sequence>
+      		<xsd:element name="reporte" type="tns:reportedab"
+      			maxOccurs="unbounded" minOccurs="0">
+      		</xsd:element>
+      	</xsd:sequence>
+      	<xsd:attribute name="recinto" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
+    
+      <xsd:complexType name="reportedab">
+      	<xsd:attribute name="viaje" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="nroingreso" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="item" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="fechaingreso" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="fechabalanza" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="fecharecepcion" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="fechasalida" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="consignatario" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="bultosman" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="pesoman" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="bultorec" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="pesorec" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="saldopeso" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="saldobulto" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="mercancia" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="almacen" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="deposito" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="tmercancia" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="fechavenc" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="estado" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="dui" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="camion" type="xsd:string"></xsd:attribute>
+      	<xsd:attribute name="chasis" type="xsd:string"></xsd:attribute>
+      </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="mostrarrecintosRequest">
@@ -56,6 +110,12 @@
   <wsdl:message name="subirResponse">
   	<wsdl:part name="subirsalidas" element="tns:subirsalidas"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="mostrardabreciensubidoRequest">
+  	<wsdl:part name="mostrardabreciensubidoendradas" element="tns:mostrardabreciensubidoendradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="mostrardabreciensubidoResponse">
+  	<wsdl:part name="mostrardabreciensubidosalidas" element="tns:mostrardabreciensubidosalidas"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="dab">
     <wsdl:operation name="mostrarrecintos">
       <wsdl:input message="tns:mostrarrecintosRequest"/>
@@ -64,6 +124,10 @@
     <wsdl:operation name="subir">
     	<wsdl:input message="tns:subirRequest"></wsdl:input>
     	<wsdl:output message="tns:subirResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mostrardabreciensubido">
+    	<wsdl:input message="tns:mostrardabreciensubidoRequest"></wsdl:input>
+    	<wsdl:output message="tns:mostrardabreciensubidoResponse"></wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="dabSOAP" type="tns:dab">
@@ -84,11 +148,27 @@
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="subir">
+
   		<soap:operation soapAction="http://127.0.0.1:12/dab/subir" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="mostrardabreciensubido">
+
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/dab/mostrardabreciensubido" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>

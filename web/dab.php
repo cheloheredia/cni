@@ -9,7 +9,7 @@
   <script src="js/dab.js"></script>
 </head>
 <body>
-    <div border="0" id='formulario' style="border:2px #FF9933 solid; overflow-x:scroll;">
+    <div border="0" id='formulariodab' style="border:2px #FF9933 solid; overflow-x:scroll;">
       <label for="recinto">Recinto:</label>
       <input type="text" name="recinto" id="recinto" /><br>
       <label for="archivodab">Archivo DAB:</label>

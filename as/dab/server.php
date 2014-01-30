@@ -251,7 +251,7 @@ class dab {
 			$res->error = 'No fue cargado el archivo ya que sus consignatarios no fueron presentados anteriormente';
 		}
 		if ($aux < sizeof($resexcel) && $aux > 1) {
-			$res->error = 'Algunos registros fueron omitidos por que sus consignatarios no fueron manifestados anteriormente';
+			$res->error = 'OK';
 			$res->fecha = $fecha;
 		}
 		if ($res->error == 'OK') {
@@ -261,6 +261,50 @@ class dab {
 		return $res;
 	}
 
+	/**
+	* Esta funcion busca los datos recien subidos para mostrarlos.
+	*
+	* @param detetime $input->fecha fecha en la que se subio el manifiesto
+	* @return string $mostrardabreciensubidosalidas->error OK si no ocurrio ningun error
+	*		  mafiestomaritimo $mostrardabreciensubidosalidas->dab que contiene el manifiesto recien
+	*             subido
+	*/
+	public function mostrardabreciensubido($input) {
+		$res = new mostrardabreciensubidosalidas();
+		$resdb = $this->clientdb->buscardabfecha(array('fecha'=> $input->fecha));
+		if ($resdb->error == 0) {
+			$res->error = 'OK';
+			$res->dab->recinto = $resdb->matriz[0]->columnas[24];
+			for ($i = 0; $i < sizeof($resdb->matriz); $i++) { 
+				$res->dab->reporte[$i]->viaje = $resdb->matriz[$i]->columnas[1];
+				$res->dab->reporte[$i]->nroingreso = $resdb->matriz[$i]->columnas[2];
+				$res->dab->reporte[$i]->item = $resdb->matriz[$i]->columnas[3];
+				$res->dab->reporte[$i]->fechaingreso = $resdb->matriz[$i]->columnas[4];
+				$res->dab->reporte[$i]->fechabalanza = $resdb->matriz[$i]->columnas[5];
+				$res->dab->reporte[$i]->fecharecepcion = $resdb->matriz[$i]->columnas[6];
+				$res->dab->reporte[$i]->fechasalida = $resdb->matriz[$i]->columnas[7];
+				$res->dab->reporte[$i]->consignatario = $resdb->matriz[$i]->columnas[8];
+				$res->dab->reporte[$i]->bultosman = $resdb->matriz[$i]->columnas[9];
+				$res->dab->reporte[$i]->pesoman = $resdb->matriz[$i]->columnas[10];
+				$res->dab->reporte[$i]->bultorec = $resdb->matriz[$i]->columnas[11];
+				$res->dab->reporte[$i]->pesorec = $resdb->matriz[$i]->columnas[12];
+				$res->dab->reporte[$i]->saldopeso = $resdb->matriz[$i]->columnas[13];
+				$res->dab->reporte[$i]->saldobulto = $resdb->matriz[$i]->columnas[14];
+				$res->dab->reporte[$i]->mercancia = $resdb->matriz[$i]->columnas[15];
+				$res->dab->reporte[$i]->almacen = $resdb->matriz[$i]->columnas[16];
+				$res->dab->reporte[$i]->deposito = $resdb->matriz[$i]->columnas[17];
+				$res->dab->reporte[$i]->tmercancia = $resdb->matriz[$i]->columnas[18];
+				$res->dab->reporte[$i]->fechavenc = $resdb->matriz[$i]->columnas[19];
+				$res->dab->reporte[$i]->estado = $resdb->matriz[$i]->columnas[20];
+				$res->dab->reporte[$i]->dui = $resdb->matriz[$i]->columnas[21];
+				$res->dab->reporte[$i]->camion = $resdb->matriz[$i]->columnas[22];
+				$res->dab->reporte[$i]->chasis = $resdb->matriz[$i]->columnas[23];
+			}
+		} else {
+			$res->error = 'Hubo un error al mostrar los datos recien subidos, favor vuelva a intentarlo';
+		}
+		return $res;
+	}
 }
 $server = new SoapServer($asdir."/wsdl/dab.wsdl");
 $server->setClass("dab");
