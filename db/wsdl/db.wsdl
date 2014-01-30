@@ -932,6 +932,16 @@
       	<xsd:attribute name="chasis" type="xsd:string"></xsd:attribute>
       	<xsd:attribute name="fecha" type="xsd:dateTime"></xsd:attribute>
       </xsd:complexType>
+      <xsd:element name="buscardabfechaentradas"
+      	type="tns:buscarmanifiestoxfechaentradas">
+      </xsd:element>
+      <xsd:element name="buscardabfechaResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="buscaritemRequest">
@@ -1300,6 +1310,12 @@
   <wsdl:message name="insertarreportedabResponse">
   	<wsdl:part name="insertarreportedabsalidas" element="tns:res"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="buscardabfechaRequest">
+  	<wsdl:part name="buscardabfechaentradas" element="tns:buscardabfechaentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscardabfechaResponse">
+  	<wsdl:part name="buscardabfechasalidas" element="tns:resquery"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="db">
     <wsdl:operation name="buscaritem">
       <wsdl:input message="tns:buscaritemRequest"/>
@@ -1544,6 +1560,10 @@
     <wsdl:operation name="insertarreportedab">
     	<wsdl:input message="tns:insertarreportedabRequest"></wsdl:input>
     	<wsdl:output message="tns:insertarreportedabResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscardabfecha">
+    	<wsdl:input message="tns:buscardabfechaRequest"></wsdl:input>
+    	<wsdl:output message="tns:buscardabfechaResponse"></wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="dbSOAP" type="tns:db">
@@ -2135,158 +2155,216 @@
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="buscartmercanciadab">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/buscartmercanciadab" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="insertartmercanciadab">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/insertartmercanciadab" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="buscarmercanciadab">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/buscarmercanciadab" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="insertarmercaciadab">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/insertarmercaciadab" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="buscarrecinto">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/buscarrecinto" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="buscaralmacendab">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/buscaralmacendab" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="insertaralmacendab">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/insertaralmacendab" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="buscartdeposito">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/buscartdeposito" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="insertartdeposito">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/insertartdeposito" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="buscarestadodab">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/buscarestadodab" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="insertarestadodab">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/insertarestadodab" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="buscarcamiondab">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/buscarcamiondab" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="insertarcamiondab">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/insertarcamiondab" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="buscarreportedab">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/buscarreportedab" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="actualizarreportedab">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/actualizarreportedab" />
   		<wsdl:input>
+
   			<soap:body use="literal" />
   		</wsdl:input>
   		<wsdl:output>
+
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="insertarreportedab">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/insertarreportedab" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="buscardabfecha">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/buscardabfecha" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>

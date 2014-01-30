@@ -1222,6 +1222,29 @@ class db {
 		$this->desconexion();
 		return $response;
 	}
+
+	/**
+    * Esta funcion busca los dabs subidos en una fecha determinada en la tabla reportedab.
+    *
+    * @param datetime $input->fecha la fecha de subida del manifiesto
+    * @return int resquery->error que es 0 cuando no existe un error
+    *         matriz resquery->matriz que contiene el resultado de la consulta
+    */
+    public function buscardabfecha($input) {
+        $this->conexion();
+        $response = $this->mostrar("select a.rdn, a.rdviaje, a.rdingreso,a.rditem, a.rdfechaingreso, a.rdfechabalanza,".
+                                   " a.rdfechaprecepcion, a.rdfechasalida, b.cconsignatario, a.rdbultosman,".
+                                   " a.rdpesoman, a.rdbultosrec, a.rdpesorec, a.rdsaldopeso, a.rdsaldobultos,".
+                                   " c.mdmercancia, d.adalamacen, e.tdtipo, f.tmdtipo, a.rdfechavenc, g.edestado,".
+                                   " a.rddvi, h.cdcamion, a.rdchasis, i.rerecinto from reportedab a, consignatario b,".
+                                   " mercanciadab c, almacendab d, tdeposito e, tmercanciadab f, estadodab g,".
+                                   " camiondab h, recinto i where a.rdconsignatario = b.cn and a.rddescripcion = c.mdn".
+                                   " and c.mdtipo = f.tmdn and a.rdalmacen = d.adn and d.adrecinto = i.ren and".
+                                   " a.rdregistrodeposito = e.tdn and a.rdestado = g.edn and a.rdcamion = h.cdn and".
+                                   " a.rdfecha = '".$input->fecha."'");
+        $this->desconexion();
+        return $response;
+    }
 }
 $server = new SoapServer($dbsdir."/wsdl/db.wsdl");
 $server->setClass("db");
