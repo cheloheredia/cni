@@ -59,6 +59,15 @@ class subirsalidas {
 
 }
 
+class mostrardabreciensubidoendradas {
+
+    /**
+     * @var datetime
+     */
+    public $fecha;
+
+}
+
 class mostrardabreciensubidosalidas {
 
     /**
@@ -206,6 +215,15 @@ class reportedab {
 
 }
 
+class generarpdfyenviarsalidas {
+
+    /**
+     * @var string
+     */
+    public $error;
+
+}
+
 /**
  * @var array
  */
@@ -214,8 +232,10 @@ $classMap = array(
 	'recinto' => 'recinto',
     'subirentradas' => 'subirentradas',
     'subirsalidas' => 'subirsalidas',
+    'mostrardabreciensubidoendradas' => 'mostrardabreciensubidoendradas',
     'mostrardabreciensubidosalidas' => 'mostrardabreciensubidosalidas',
     'dabreporte' => 'dabreporte',
-    'reportedab' => 'reportedab'
+    'reportedab' => 'reportedab',
+    'generarpdfyenviarsalidas' => 'generarpdfyenviarsalidas'
 );
 
