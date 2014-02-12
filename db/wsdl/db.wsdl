@@ -942,6 +942,16 @@
             		</xsd:sequence>
             	</xsd:complexType>
             </xsd:element>
+      <xsd:element name="buscardabconsiganatarioentradas"
+      	type="tns:buscarmanifiestodeconsignatarioentradas">
+      </xsd:element>
+      <xsd:element name="buscardabconsiganatarioResponse">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="out" type="xsd:string"></xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="buscaritemRequest">
@@ -1316,6 +1326,12 @@
   <wsdl:message name="buscardabfechaResponse">
   	<wsdl:part name="buscardabfechasalidas" element="tns:resquery"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="buscardabconsiganatarioRequest">
+  	<wsdl:part name="buscardabconsiganatarioentradas" element="tns:buscardabconsiganatarioentradas"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buscardabconsiganatarioResponse">
+  	<wsdl:part name="buscardabconsiganatariosalidas" element="tns:resquery"></wsdl:part>
+  </wsdl:message>
   <wsdl:portType name="db">
     <wsdl:operation name="buscaritem">
       <wsdl:input message="tns:buscaritemRequest"/>
@@ -1564,6 +1580,10 @@
     <wsdl:operation name="buscardabfecha">
     	<wsdl:input message="tns:buscardabfechaRequest"></wsdl:input>
     	<wsdl:output message="tns:buscardabfechaResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscardabconsiganatario">
+    	<wsdl:input message="tns:buscardabconsiganatarioRequest"></wsdl:input>
+    	<wsdl:output message="tns:buscardabconsiganatarioResponse"></wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="dbSOAP" type="tns:db">
@@ -2363,8 +2383,21 @@
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="buscardabfecha">
+
   		<soap:operation
   			soapAction="http://127.0.0.1:12/db/buscardabfecha" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="buscardabconsiganatario">
+  		<soap:operation
+  			soapAction="http://127.0.0.1:12/db/buscardabconsiganatario" />
   		<wsdl:input>
   			<soap:body use="literal" />
   		</wsdl:input>
