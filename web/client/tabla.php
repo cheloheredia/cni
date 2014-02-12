@@ -66,10 +66,10 @@ if ($_POST['opt'] == 'dab') {
         }
         $table.="</tbody></table>";
         echo $table;
-        /*$response = $cliente->generarpdfyenviar(array("fecha" => $_POST['fecha']));
+        $response = $cliente->generarpdfyenviar(array("fecha" => $_POST['fecha']));
         if ($response->error != 'OK') {
             echo '<br><span class="mensaje">'.$response->error.'</span><br>';
-        }*/
+        }
     } else {
         echo '<br><span class="mensaje">'.$response->error.'</span><br>';
     }
