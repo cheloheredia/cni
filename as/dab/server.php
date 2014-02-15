@@ -20,8 +20,8 @@ class dab {
 		                                       'features' => SOAP_SINGLE_ELEMENT_ARRAYS,
 		                                       'classmap' => $GLOBALS['classMapdb']));
 		include_once '../client/excelPHP.php';
-		//include_once '../client/mPDF.php';
-		//include_once '../client/PHPMailer.php';
+		include_once '../client/mPDF.php';
+		include_once '../client/PHPMailer.php';
 	}
 
 	/**
@@ -338,28 +338,32 @@ class dab {
 							'CAMARA NACIONAL DE INDUSTRIAS</h1></div><p><H5>'.
 							'<DIV ALIGN=right><br>La Paz, '.date('d/m/Y').'</DIV><br><br>Se&ntilde;ores:<br>'.$rotulo.
 							'<br>Presente.-<br><br>Mediante la presente, nos es grato comunicarle estado de su carga'.
-							' en almacenes DAB con el siguente detalle:<br><br></H5></p>';
+							' en el recinto de '.$resdb0->matriz[0]->columnas[24].' DAB con el siguente detalle:<br><br></H5></p>';
 							if (sizeof($resdb0->matriz) == 1) {
-								$html .= '<table class="bpmTopnTailC"><tbody><tr class="oddrow"><th>NAVE:</th><td>'.
-								$resdb0->matriz[0]->columnas[0].'</td><th>NRO. MANIFIESTO:'.
-								'</th><td>'.$resdb0->matriz[0]->columnas[1].'</td></tr><tr class="evenrow">'.
-								'<th>TIPO TRANSITO:</th><td>'.$resdb0->matriz[0]->columnas[7].'</td>'.
-								'<th>OPERADOR:</th><td>'.$resdb0->matriz[0]->columnas[8].
-								'</td></tr><tr class="oddrow"><th>PUERTO DESEMBARQUE:</th><td>'.
-								$resdb0->matriz[0]->columnas[12].'</td><th>MARCA CONTENEDOR:</th><td>'.
-								$resdb0->matriz[0]->columnas[9].'</td></tr><tr class="evenrow"><th>TIPO CONTENEDOR:</th><td>'.
-								$resdb0->matriz[0]->columnas[2].'</td><th>MERCANCIA:</th><td>'.
-								$resdb0->matriz[0]->columnas[3].'</td></tr><tr class="oddrow"><th>TARA:</th><td>'.
-								$resdb0->matriz[0]->columnas[4].'</td><th>NETO:</th><td>'.
-								$resdb0->matriz[0]->columnas[5].'</td></tr><tr class="evenrow"><th>BRUTO:</th><td>'.
-								$resdb0->matriz[0]->columnas[6].'</td><th>BL:</th><td>'.
-								$resdb0->matriz[0]->columnas[10].'</td></tr><tr class="oddrow"><th>PUERTO ORIGEN:</th><td>'.
-								$resdb0->matriz[0]->columnas[11].'</td><th>DESTINO BOLIVIA:</th><td>'.
-								$resdb0->matriz[0]->columnas[13].'</td></tr><tr class="evenrow"><th>SERVICIO:</th><td>'.
-								$resdb0->matriz[0]->columnas[14].'</td><th>SELLOS:</th><td>'.
-								$resdb0->matriz[0]->columnas[15].'</td></tr><tr class="oddrow"><th>IMO:</th><td>'.
-								$resdb0->matriz[0]->columnas[16].'</td><th>BULTOS:</th><td>'.
-								$resdb0->matriz[0]->columnas[17].'</td>';
+								$html .= '<table class="bpmTopnTailC"><tbody><tr class="oddrow"><th>VIAJE:</th><td>'.
+								$resdb0->matriz[0]->columnas[1].'</td><th>INGRESO:'.
+								'</th><td>'.$resdb0->matriz[0]->columnas[2].'</td></tr><tr class="evenrow">'.
+								'<th>ITEM:</th><td>'.$resdb0->matriz[0]->columnas[3].'</td>'.
+								'<th>FECHA INGRESO:</th><td>'.$resdb0->matriz[0]->columnas[4].
+								'</td></tr><tr class="oddrow"><th>FECHA BALANZA:</th><td>'.
+								$resdb0->matriz[0]->columnas[5].'</td><th>FECHA PARTE RECEPCION:</th><td>'.
+								$resdb0->matriz[0]->columnas[6].'</td></tr><tr class="evenrow"><th>FECHA SALIDA:</th><td>'.
+								$resdb0->matriz[0]->columnas[7].'</td><th>BULTOS MANIFESTADOS:</th><td>'.
+								$resdb0->matriz[0]->columnas[9].'</td></tr><tr class="oddrow"><th>PESO MANIFESTADO:</th><td>'.
+								$resdb0->matriz[0]->columnas[10].'</td><th>BULTOS RECIVIDOS:</th><td>'.
+								$resdb0->matriz[0]->columnas[11].'</td></tr><tr class="evenrow"><th>PESO RECIVIDO:</th><td>'.
+								$resdb0->matriz[0]->columnas[12].'</td><th>SALDO BULTOS:</th><td>'.
+								$resdb0->matriz[0]->columnas[13].'</td></tr><tr class="oddrow"><th>SALDO PESO:</th><td>'.
+								$resdb0->matriz[0]->columnas[14].'</td><th>DESCRIPCION:</th><td>'.
+								$resdb0->matriz[0]->columnas[15].'</td></tr><tr class="evenrow"><th>ALMACEN:</th><td>'.
+								$resdb0->matriz[0]->columnas[16].'</td><th>REG. DEPOSITO:</th><td>'.
+								$resdb0->matriz[0]->columnas[17].'</td></tr><tr class="oddrow"><th>TIPO MERCANCIA:</th><td>'.
+								$resdb0->matriz[0]->columnas[18].'</td><th>FECHA VENCIMIENTO:</th><td>'.
+								$resdb0->matriz[0]->columnas[19].'</td></tr><tr class="evenrow"><th>ESTADO:</th><td>'.
+								$resdb0->matriz[0]->columnas[20].'</td><th>DUI:</th><td>'.
+								$resdb0->matriz[0]->columnas[21].'</td></tr><tr class="oddrow"><th>CAMION:</th><td>'.
+								$resdb0->matriz[0]->columnas[22].'</td><th>CHASIS:</th><td>'.
+								$resdb0->matriz[0]->columnas[23].'</td></tr>';
 							} else {
 								for ($j = 0; $j < sizeof($resdb0->matriz); $j++) { 
 									$arrayauxpuerto[$j] = $resdb0->matriz[$j]->columnas[11];
@@ -405,7 +409,7 @@ class dab {
 									}
 								}
 							}
-							$html .= '</tbody></table><br><p color="red">*Fuente: Terminal Puerto Arica - TPA</p></body></html>';
+							$html .= '</tbody></table><br><p color="red">*Fuente: Depositos Aduaneros Bolivianos - DAB</p></body></html>';
 							$pdf = crearsimple($html, $rotulo.date('d-m-Y'));
 							$mensaje = 'Su reporte de carga DAB, esta listo.';
 							$asunto = 'REPORTE DAB';

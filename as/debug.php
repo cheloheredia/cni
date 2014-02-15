@@ -4,7 +4,7 @@ var_dump(leeExcel('C:\Users\Marcelo\Desktop\parte de recepcion - dab-06-05-2013.
 include 'dab/wsdl.php';
 include 'ini/ini.php';
 $cliente=new SoapClient($asdir.'/wsdl/dab.wsdl',array( 'trace' => 1,'cache_wsdl' => WSDL_CACHE_NONE, 'features' => SOAP_SINGLE_ELEMENT_ARRAYS, 'classmap'=>$classMap));
-$respuesta=$cliente->mostrardabreciensubido(array('fecha'=>'2014-01-30 19:45:37'));
+$respuesta=$cliente->generarpdfyenviar(array('fecha'=>'2014-01-30 21:45:02'));
 print_r($respuesta);
 /*include 'client/mPDF.php';
 include 'client/PHPMailer.php';
